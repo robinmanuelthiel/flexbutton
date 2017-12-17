@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    x:Class="Xamarin.Forms.Flex.FlexButton"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:extensions="clr-namespace:Xamarin.Forms.Flex.Extensions"
+    xmlns:local="clr-namespace:Xamarin.Forms.Flex.FlexButton"
+    BackgroundColor="Transparent"
+    VerticalOptions="Center">
+
+    <Frame
+        x:Name="Container"
+        BackgroundColor="{Binding BackgroundColor}"
+        CornerRadius="{Binding CornerRadius}"
+        HasShadow="false"
+        Padding="0">
+
+        <!-- BorderColor does not work on Android at the moment (Xamarin.Forms bug) -->
+        <!--OutlineColor="{Binding BorderColor}">-->
+
+        <Frame.GestureRecognizers>
+            <extensions:TouchGestureRecognizer x:Name="TouchRecognizer" />
+        </Frame.GestureRecognizers>
+
+        <ContentView
+            x:Name="ContainerContent"
+            HorizontalOptions="Center"
+            VerticalOptions="Center">
+
+            <Image x:Name="ButtonIcon" Source="{Binding Icon}" HorizontalOptions="Center"
+            VerticalOptions="Center"/>
+        </ContentView>
+    </Frame>
+</ContentView>
