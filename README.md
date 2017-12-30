@@ -12,27 +12,28 @@ PM> Install-Package Forms.Controls.Flexbutton
 
 **[iOS only] Initialize the control in your *AppDelegate.cs*.**
 ```csharp
-Xamarin.Forms.FlexButton.Init(); // Call this after Forms.Init();
+FlexButton.Init(); // Call this after Forms.Init();
 ```
 
 
 **Add the XML namespace**
 ```xml
-xmlns:swipecards="clr-namespace:SwipeCards.Controls;assembly=SwipeCards.Controls"
+xmlns:flex="clr-namespace:Flex.Controls;assembly=Flex"
 ```
 
 **Add the control**
 ```xml
-<swipecards:CardStackView
-    x:Name="CardStackView"
-    ItemsSource="{Binding Cards}">
-    
-    <swipecards:CardStackView.ItemTemplate>
-        <DataTemplate>
-            <Label Text="{Binding}" VerticalOptions="Center" HorizontalOptions="Center" />
-        </DataTemplate>
-    </swipecards:CardStackView.ItemTemplate>   
-</swipecards:CardStackView>
+<flex:FlexButton
+    WidthRequest="76"
+    HeightRequest="76"
+    CornerRadius="38"
+    Icon="lightbulb.png"
+    IconColor="#ffffff"
+    HighlightIconColor="#49516F"
+    BackgroundColor="#6279B8"
+    HighlightBackgroundColor="#8EA4D2"
+    TouchedDown="DemoButton_TouchedDown"
+    TouchedUp="DemoButton_TouchedUp"/>
 ```
 ## Preview
 ![Preview](/Design/Swipecards.gif)
