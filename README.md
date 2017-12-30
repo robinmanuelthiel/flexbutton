@@ -10,7 +10,7 @@ Flexible button control for Xamarin.Forms.
 PM> Install-Package Forms.Controls.Flexbutton
 ```
 
-**[iOS only] Initialize the control
+**[iOS only] Initialize the control**
 
 In your **AppDelegate.cs** call this after `Forms.Init();`
 ```csharp
