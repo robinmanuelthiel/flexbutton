@@ -1,15 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
-
-  <PropertyGroup>
-    <TargetFramework>netstandard1.4</TargetFramework>
-  </PropertyGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Xamarin.Forms" Version="2.5.0.121934" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Controls\" />
-    <Folder Include="Effects\" />
-    <Folder Include="Extensions\" />
-  </ItemGroup>
+    <PropertyGroup>
+        <TargetFramework>netstandard1.4</TargetFramework>
+        <PackageId>Forms.Controls.FlexButton</PackageId>
+        <PackageVersion>0.1.0</PackageVersion>
+        <Authors>Robin-Manuel Thiel</Authors>
+        <PackageProjectUrl>https://github.com/robinmanuelthiel/flexbutton</PackageProjectUrl>
+        <PackageIconUrl>https://raw.githubusercontent.com/robinmanuelthiel/flexbutton/master/Design/Logo-150.png</PackageIconUrl>
+        <Summary>A flexible button control for Xamarin.Forms</Summary>
+        <PackageTags>flex xamarin.forms control button flexbutton</PackageTags>
+        <Title>FlexButton for Xamarin.Forms</Title>
+        <Description>A flexible button control for Xamarin.Forms</Description>
+    </PropertyGroup>
+    <ItemGroup>
+        <PackageReference Include="Xamarin.Forms" Version="2.5.0.121934" />
+        <PackageReference Include="NuGet.Build.Packaging" Version="0.2.0" />
+    </ItemGroup>
+    <ItemGroup>
+        <Folder Include="Controls\" />
+        <Folder Include="Effects\" />
+        <Folder Include="Extensions\" />
+    </ItemGroup>
 </Project>
