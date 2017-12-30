@@ -27,16 +27,37 @@
         <BoxView BackgroundColor="#eee" HeightRequest="1" Margin="0,20"/>
         
         <!-- Small Button -->
-        <flex:FlexButton
-            HorizontalOptions="Center"
-            WidthRequest="50"
-            HeightRequest="50"
-            CornerRadius="25"
-            Icon="lightbulb.png"
-            IconColor="#ffffff"
-            HighlightIconColor="#49516F"
-            BackgroundColor="#6279B8"
-            HighlightBackgroundColor="#8EA4D2"/>
+        <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+            <flex:FlexButton                
+                WidthRequest="40"
+                HeightRequest="40"
+                CornerRadius="20"
+                Icon="lightbulb.png"
+                IconColor="#ffffff"
+                HighlightIconColor="#49516F"
+                BackgroundColor="#6279B8"
+                HighlightBackgroundColor="#8EA4D2"/>
+
+            <flex:FlexButton
+                WidthRequest="40"
+                HeightRequest="40"
+                CornerRadius="20"
+                Icon="lightbulb.png"
+                IconColor="#ffffff"
+                HighlightIconColor="#49516F"
+                BackgroundColor="#6279B8"
+                HighlightBackgroundColor="#8EA4D2"/>
+
+            <flex:FlexButton
+                WidthRequest="40"
+                HeightRequest="40"
+                CornerRadius="20"
+                Icon="lightbulb.png"
+                IconColor="#ffffff"
+                HighlightIconColor="#49516F"
+                BackgroundColor="#6279B8"
+                HighlightBackgroundColor="#8EA4D2"/>
+        </StackLayout>
 
         <!-- Wide Button -->
         <flex:FlexButton
