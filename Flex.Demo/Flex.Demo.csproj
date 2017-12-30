@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFramework>netstandard1.4</TargetFramework>
+    </PropertyGroup>
+    <ItemGroup>
+        <PackageReference Include="Xamarin.Forms" Version="2.5.0.121934" />
+    </ItemGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\Flex\Flex.csproj" />
+    </ItemGroup>
+</Project>
