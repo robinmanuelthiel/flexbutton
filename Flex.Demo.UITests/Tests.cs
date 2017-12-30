@@ -5,7 +5,7 @@ using NUnit.Framework;
 using Xamarin.UITest;
 using Xamarin.UITest.Queries;
 
-namespace FlexDemo.UITests
+namespace Flex.Demo.UITests
 {
     [TestFixture(Platform.Android)]
     [TestFixture(Platform.iOS)]
