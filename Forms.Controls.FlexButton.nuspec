@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata minClientVersion="">
+    <id>Forms.Controls.FlexButton</id>
+    <version>0.1.3</version>
+    <title>FlexButton for Xamarin.Forms</title>
+    <authors>Robin-Manuel Thiel</authors>
+    <owners>Robin-Manuel Thiel</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <projectUrl>https://github.com/robinmanuelthiel/flexbutton</projectUrl>
+    <description>A flexible button control for Xamarin.Forms</description>
+    <summary>A flexible button control for Xamarin.Forms</summary>
+    <releaseNotes></releaseNotes>
+    <copyright></copyright>
+    <language></language>
+    <tags>flex xamarin.forms control button flexbutton</tags>
+    <dependencies>
+      <group targetFramework=".NETStandard1.0">
+        <dependency id="Xamarin.Forms" version="2.5.0.121934" />
+      </group>
+
+      <group targetFramework="Xamarin.iOS1.0">
+        <dependency id="Xamarin.Forms" version="2.5.0.121934" />
+      </group>
+
+      <group targetFramework="MonoAndroid8.0">
+        <dependency id="Xamarin.Forms" version="2.5.0.121934" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <!-- .NET Standard -->
+    <file src="Flex/bin/Release/netstandard1.0/Flex.dll" target="lib/netstandard1.0" />
+
+    <!-- Xamarin.iOS -->
+    <file src="Flex/bin/Release/netstandard1.0/Flex.dll" target="lib/xamarinios10" />
+    <file src="Flex.iOS/bin/Release/Flex.iOS.dll" target="lib/xamarinios10" />    
+
+    <!-- Xamarin.Android -->
+    <file src="Flex/bin/Release/netstandard1.0/Flex.dll" target="lib/monoandroid10" />
+    <file src="Flex.Android/bin/Release/Flex.Android.dll" target="lib/monoandroid10" />
+  </files>
+</package>

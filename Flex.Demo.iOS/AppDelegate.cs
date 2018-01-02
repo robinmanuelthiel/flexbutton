@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Flex;
 using Foundation;
 using UIKit;
 
@@ -13,7 +12,6 @@ namespace Flex.Demo.iOS
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             global::Xamarin.Forms.Forms.Init();
-            FlexButton.Init();
 
             // Code for starting up the Xamarin Test Cloud Agent
 #if DEBUG

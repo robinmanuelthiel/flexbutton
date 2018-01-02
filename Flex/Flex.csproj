@@ -1,7 +1,7 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
-        <TargetFramework>netstandard1.4</TargetFramework>
+        <TargetFramework>netstandard1.0</TargetFramework>
         <PackageId>Forms.Controls.FlexButton</PackageId>
         <PackageVersion>0.1.0</PackageVersion>
         <Authors>Robin-Manuel Thiel</Authors>
