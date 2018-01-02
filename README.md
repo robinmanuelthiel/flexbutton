@@ -37,22 +37,20 @@ xmlns:flex="clr-namespace:Flex.Controls;assembly=Flex"
     TouchedUp="DemoButton_TouchedUp"/>
 ```
 ## Preview
-![Preview](/Design/Swipecards.gif)
+![Preview](/Design/FlexButton.gif)
 
 ## API Reference
 | Property | Default | Description |
 |------------------|---------|-------------|
-| CardMoveDistance | null | How far the card has to be dragged to trigger the swipe. Default is 30% of the control |
+| BackgroundColor | Transparent | Background color of the button |
+| HighlightBackgroundColor | Transparent | Background color of the button when pressed down |
+| IconColor | White | Foreground color overlay for icon |
+| CornerRadiusProperty | 0 | Button borner radius |
+| HighlightIconColor | White | Foreground color overlay for icon when pressed down |
+| IconPadding | 30% of with and height | Inside distance from icon to button borders |
 
-| Command | Parameter | Description |
+| Event | Description |
 |------------------|---------|-------------|
-| SwipedLeftCommand | Selected Item | Triggered, when card got swiped to the left |
-| SwipedRightCommand | Selected Item | Triggered, when card got swiped to the right |
-
-| Action | Parameter | Description |
-|------------------|---------|-------------|
-| SwipedLeft | Selected Item | Triggered, when card got swiped to the left |
-| SwipedRight | Selected Item | Triggered, when card got swiped to the right |
-| StartedDragging | Selected Item | Triggered, when card got dragged |
-| FinishedDragging | Selected Item | Triggered, when dragging finished |
+| TouchedDown | Triggered, when button got pressed down |
+| TouchedUp | Triggered, when button got released |
 
