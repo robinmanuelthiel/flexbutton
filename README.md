@@ -1,5 +1,5 @@
 # FlexButton
-Flexible button control for Xamarin.Forms.
+Flexible button control for Xamarin.Forms that notifies you when it got **PRESSED and RELEASED** and let's you adjust **HIGLIGHT COLORS**, **ICONS** and **PADDINGS**.
 
 [![NuGet](https://img.shields.io/nuget/v/Forms.Controls.FlexButton.svg?label=NuGet&style=flat-square)](https://www.nuget.org/packages/Forms.Controls.FlexButton/)
 
