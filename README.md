@@ -47,10 +47,10 @@ xmlns:flex="clr-namespace:Flex.Controls;assembly=Flex"
 | IconColor | White | Foreground color overlay for icon |
 | CornerRadiusProperty | 0 | Button borner radius |
 | HighlightIconColor | White | Foreground color overlay for icon when pressed down |
-| IconPadding | 30% of with and height | Inside distance from icon to button borders |
+| IconPadding | 30% of button width and height | Inside distance from icon to button borders |
 
 | Event | Description |
-|------------------|---------|-------------|
+|------------------|---------|
 | TouchedDown | Triggered, when button got pressed down |
 | TouchedUp | Triggered, when button got released |
 
