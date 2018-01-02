@@ -42,15 +42,15 @@ xmlns:flex="clr-namespace:Flex.Controls;assembly=Flex"
 ## API Reference
 | Property | Default | Description |
 |------------------|---------|-------------|
-| BackgroundColor | Transparent | Background color of the button |
-| HighlightBackgroundColor | Transparent | Background color of the button when pressed down |
-| IconColor | White | Foreground color overlay for icon |
-| CornerRadiusProperty | 0 | Button borner radius |
-| HighlightIconColor | White | Foreground color overlay for icon when pressed down |
-| IconPadding | 30% of button width and height | Inside distance from icon to button borders |
+| `BackgroundColor` | `Transparent` | Background color of the button |
+| `HighlightBackgroundColor` | `Transparent` | Background color of the button when pressed down |
+| `IconColor` | `White` | Foreground color overlay for icon |
+| `CornerRadiusProperty` | `0` | Button borner radius |
+| `HighlightIconColor` | `White` | Foreground color overlay for icon when pressed down |
+| `IconPadding` | 30% of button width and height | Inside distance from icon to button borders |
 
 | Event | Description |
 |------------------|---------|
-| TouchedDown | Triggered, when button got pressed down |
-| TouchedUp | Triggered, when button got released |
+| `TouchedDown` | Triggered, when button got pressed down |
+| `TouchedUp` | Triggered, when button got released |
 
