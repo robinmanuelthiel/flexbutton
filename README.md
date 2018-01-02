@@ -1,13 +1,12 @@
 # FlexButton
 Flexible button control for Xamarin.Forms.
 
-<!--
-[![NuGet](https://img.shields.io/nuget/v/Forms.Controls.SwipeCards.svg?label=NuGet&style=flat-square)](https://www.nuget.org/packages/Forms.Controls.SwipeCards/)-->
+[![NuGet](https://img.shields.io/nuget/v/Forms.Controls.FlexButton.svg?label=NuGet&style=flat-square)](https://www.nuget.org/packages/Forms.Controls.FlexButton/)
 
 ## How to use
-**Add the [NuGet package](https://www.nuget.org/packages/Forms.Controls.SwipeCards/) to the Xamarin.Forms project**
+**Add the [NuGet package](https://www.nuget.org/packages/Forms.Controls.FlexButton/) to the Xamarin.Forms project**
 ```
-PM> Install-Package Forms.Controls.Flexbutton
+PM> Install-Package Forms.Controls.FlexButton
 ```
 
 **[iOS only] Initialize the control**
