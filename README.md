@@ -1,5 +1,5 @@
 # FlexButton
-Flexible button control for Xamarin.Forms with events for different states, color overlays and adjustable shapes and paddings.
+Flexible button control for Xamarin.Forms with events for different states, color overlays and adjustable shapes and paddings. Supports iOS and Android.
 
 [![NuGet](https://img.shields.io/nuget/v/Forms.Controls.FlexButton.svg?label=NuGet&style=flat-square)](https://www.nuget.org/packages/Forms.Controls.FlexButton/)
 
@@ -11,7 +11,7 @@ Flexible button control for Xamarin.Forms with events for different states, colo
 - Round button (corner radius)
 
 ## How to use
-**Add the [NuGet package](https://www.nuget.org/packages/Forms.Controls.FlexButton/) to the Xamarin.Forms project**
+**Add the [NuGet package](https://www.nuget.org/packages/Forms.Controls.FlexButton/) to the Xamarin.Forms project and all platform projects**
 ```
 PM> Install-Package Forms.Controls.FlexButton
 ```
@@ -44,6 +44,8 @@ xmlns:flex="clr-namespace:Flex.Controls;assembly=Flex"
     TouchedUp="DemoButton_TouchedUp"/>
 ```
 ## Preview
+Take a look a the [Demo Project](/Demo) in this repository for a full sample.
+
 ![Preview](/Design/FlexButton.gif)
 
 ## API Reference
