@@ -1,7 +1,14 @@
 # FlexButton
-Flexible button control for Xamarin.Forms that notifies you when it got **PRESSED and RELEASED**, lets you adjust **COLOR OVERLAYS** for background and icons and gives you control over **PADDING** and **SHAPES**.
+Flexible button control for Xamarin.Forms with events for different states, color overlays and adjustable shapes and paddings.
 
 [![NuGet](https://img.shields.io/nuget/v/Forms.Controls.FlexButton.svg?label=NuGet&style=flat-square)](https://www.nuget.org/packages/Forms.Controls.FlexButton/)
+
+**Features:**
+- Adjustable button size
+- Icons with adjustable size
+- Color overlays for background and icon (normal and pressed state)
+- Events for button press and release
+- Round button (corner radius)
 
 ## How to use
 **Add the [NuGet package](https://www.nuget.org/packages/Forms.Controls.FlexButton/) to the Xamarin.Forms project**
