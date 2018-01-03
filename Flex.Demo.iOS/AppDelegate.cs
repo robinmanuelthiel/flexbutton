@@ -12,6 +12,7 @@ namespace Flex.Demo.iOS
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             global::Xamarin.Forms.Forms.Init();
+            FlexButton.Init();
 
             // Code for starting up the Xamarin Test Cloud Agent
 #if DEBUG
