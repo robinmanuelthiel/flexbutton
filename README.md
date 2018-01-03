@@ -1,7 +1,14 @@
 # FlexButton
-Flexible button control for Xamarin.Forms.
+Flexible button control for Xamarin.Forms with events for different states, color overlays and adjustable shapes and paddings.
 
 [![NuGet](https://img.shields.io/nuget/v/Forms.Controls.FlexButton.svg?label=NuGet&style=flat-square)](https://www.nuget.org/packages/Forms.Controls.FlexButton/)
+
+**Features:**
+- Adjustable button size
+- Icons with adjustable size
+- Color overlays for background and icon (normal and pressed state)
+- Events for button press and release
+- Round button (corner radius)
 
 ## How to use
 **Add the [NuGet package](https://www.nuget.org/packages/Forms.Controls.FlexButton/) to the Xamarin.Forms project**
@@ -37,22 +44,20 @@ xmlns:flex="clr-namespace:Flex.Controls;assembly=Flex"
     TouchedUp="DemoButton_TouchedUp"/>
 ```
 ## Preview
-![Preview](/Design/Swipecards.gif)
+![Preview](/Design/FlexButton.gif)
 
 ## API Reference
 | Property | Default | Description |
 |------------------|---------|-------------|
-| CardMoveDistance | null | How far the card has to be dragged to trigger the swipe. Default is 30% of the control |
+| `BackgroundColor` | `Transparent` | Background color of the button |
+| `HighlightBackgroundColor` | `Transparent` | Background color of the button when pressed down |
+| `IconColor` | `White` | Foreground color overlay for icon |
+| `CornerRadiusProperty` | `0` | Button borner radius |
+| `HighlightIconColor` | `White` | Foreground color overlay for icon when pressed down |
+| `IconPadding` | 30% of button width and height | Inside distance from icon to button borders |
 
-| Command | Parameter | Description |
-|------------------|---------|-------------|
-| SwipedLeftCommand | Selected Item | Triggered, when card got swiped to the left |
-| SwipedRightCommand | Selected Item | Triggered, when card got swiped to the right |
-
-| Action | Parameter | Description |
-|------------------|---------|-------------|
-| SwipedLeft | Selected Item | Triggered, when card got swiped to the left |
-| SwipedRight | Selected Item | Triggered, when card got swiped to the right |
-| StartedDragging | Selected Item | Triggered, when card got dragged |
-| FinishedDragging | Selected Item | Triggered, when dragging finished |
+| Event | Description |
+|------------------|---------|
+| `TouchedDown` | Triggered, when button got pressed down |
+| `TouchedUp` | Triggered, when button got released |
 
