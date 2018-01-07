@@ -43,23 +43,27 @@ xmlns:flex="clr-namespace:Flex.Controls;assembly=Flex"
     TouchedDown="DemoButton_TouchedDown"
     TouchedUp="DemoButton_TouchedUp"/>
 ```
+
 ## Preview
-Take a look a the [Demo Project](/Demo) in this repository for a full sample.
+Take a look a the [Demo Project](/Flex.Demo) in this repository for a full sample.
 
 ![Preview](/Design/FlexButton.gif)
 
 ## API Reference
 | Property | Default | Description |
 |------------------|---------|-------------|
+| `Icon` | `null` | Name of the icon file to use |
+| `Text` | `string.Empty` | Button text to be displayed |
+| `ForegroundColor` | `White` | Foreground color overlay for icon and text |
 | `BackgroundColor` | `Transparent` | Background color of the button |
+| `HighlightForegroundColor` | `White` | Foreground color overlay for icon and text when pressed down |
 | `HighlightBackgroundColor` | `Transparent` | Background color of the button when pressed down |
-| `IconColor` | `White` | Foreground color overlay for icon |
-| `CornerRadiusProperty` | `0` | Button borner radius |
-| `HighlightIconColor` | `White` | Foreground color overlay for icon when pressed down |
-| `IconPadding` | 30% of button width and height | Inside distance from icon to button borders |
+| `CornerRadius` | `0` | Button borner radius |
+| `Padding` | 30% of height, 10-30% of width  | Inside distance from icon to button borders |
 
 | Event | Description |
 |------------------|---------|
 | `TouchedDown` | Triggered, when button got pressed down |
 | `TouchedUp` | Triggered, when button got released |
+| `Clicked` | Same as `TouchedUP` |
 

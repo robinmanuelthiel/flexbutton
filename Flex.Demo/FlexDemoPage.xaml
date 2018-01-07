@@ -15,8 +15,8 @@
             HeightRequest="76"
             CornerRadius="38"
             Icon="lightbulb.png"
-            IconColor="#ffffff"
-            HighlightIconColor="#49516F"
+            ForegroundColor="#ffffff"
+            HighlightForegroundColor="#49516F"
             BackgroundColor="#6279B8"
             HighlightBackgroundColor="#8EA4D2"
             TouchedDown="DemoButton_TouchedDown"
@@ -33,8 +33,8 @@
                 HeightRequest="40"
                 CornerRadius="20"
                 Icon="lightbulb.png"
-                IconColor="#ffffff"
-                HighlightIconColor="#49516F"
+                ForegroundColor="#ffffff"
+                HighlightForegroundColor="#49516F"
                 BackgroundColor="#6279B8"
                 HighlightBackgroundColor="#8EA4D2"/>
 
@@ -43,8 +43,8 @@
                 HeightRequest="40"
                 CornerRadius="20"
                 Icon="lightbulb.png"
-                IconColor="#ffffff"
-                HighlightIconColor="#49516F"
+                ForegroundColor="#ffffff"
+                HighlightForegroundColor="#49516F"
                 BackgroundColor="#6279B8"
                 HighlightBackgroundColor="#8EA4D2"/>
 
@@ -53,8 +53,8 @@
                 HeightRequest="40"
                 CornerRadius="20"
                 Icon="lightbulb.png"
-                IconColor="#ffffff"
-                HighlightIconColor="#49516F"
+                ForegroundColor="#ffffff"
+                HighlightForegroundColor="#49516F"
                 BackgroundColor="#6279B8"
                 HighlightBackgroundColor="#8EA4D2"/>
         </StackLayout>
@@ -67,8 +67,8 @@
             CornerRadius="20"
             Icon="lightbulb.png"
             Text="Icon and Text"
-            IconColor="#ffffff"
-            HighlightIconColor="#49516F"
+            ForegroundColor="#ffffff"
+            HighlightForegroundColor="#49516F"
             BackgroundColor="#6279B8"
             HighlightBackgroundColor="#8EA4D2"/>
 
@@ -78,8 +78,8 @@
             Text="Button with text only lorem ipsum dolor sit amet bla bla bla"
             Margin="20,0"
             Padding="20"
-            IconColor="#ffffff"
-            HighlightIconColor="#49516F"
+            ForegroundColor="#ffffff"
+            HighlightForegroundColor="#49516F"
             BackgroundColor="#6279B8"
             HighlightBackgroundColor="#8EA4D2"/>
 
@@ -91,8 +91,8 @@
             HeightRequest="76"
             CornerRadius="38"
             Icon="lightbulb.png"
-            IconColor="#6279B8"
-            HighlightIconColor="#ffffff"
+            ForegroundColor="#6279B8"
+            HighlightForegroundColor="#ffffff"
             BackgroundColor="Transparent"
             HighlightBackgroundColor="#6279B8"/>
     </StackLayout>

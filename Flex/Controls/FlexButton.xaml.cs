@@ -37,18 +37,18 @@ namespace Flex.Controls
             set { SetValue(HighlightBackgroundColorProperty, value); }
         }
 
-        public static readonly BindableProperty IconColorProperty = BindableProperty.Create(nameof(IconColor), typeof(Color), typeof(FlexButton), Color.White, propertyChanged: IconOrIconColorPropertyChanged);
-        public Color IconColor
+        public static readonly BindableProperty ForegroundColorProperty = BindableProperty.Create(nameof(ForegroundColor), typeof(Color), typeof(FlexButton), Color.White, propertyChanged: IconOrForegroundColorPropertyChanged);
+        public Color ForegroundColor
         {
-            get { return (Color)GetValue(IconColorProperty); }
-            set { SetValue(IconColorProperty, value); }
+            get { return (Color)GetValue(ForegroundColorProperty); }
+            set { SetValue(ForegroundColorProperty, value); }
         }
 
-        public static readonly BindableProperty HighlightIconColorProperty = BindableProperty.Create(nameof(HighlightIconColor), typeof(Color), typeof(FlexButton), Color.White);
-        public Color HighlightIconColor
+        public static readonly BindableProperty HighlightForegroundColorProperty = BindableProperty.Create(nameof(HighlightForegroundColor), typeof(Color), typeof(FlexButton), Color.White);
+        public Color HighlightForegroundColor
         {
-            get { return (Color)GetValue(HighlightIconColorProperty); }
-            set { SetValue(HighlightIconColorProperty, value); }
+            get { return (Color)GetValue(HighlightForegroundColorProperty); }
+            set { SetValue(HighlightForegroundColorProperty, value); }
         }
 
         #endregion
@@ -67,31 +67,31 @@ namespace Flex.Controls
             set { SetValue(CornerRadiusProperty, value); }
         }
 
-        public static readonly BindableProperty PaddingProperty =
+        public static readonly new BindableProperty PaddingProperty =
             BindableProperty.Create(
                 nameof(Padding),
                 typeof(Thickness),
                 typeof(FlexButton),
                 new Thickness(-1));
 
-        public Thickness Padding
+        public new Thickness Padding
         {
             get { return (Thickness)GetValue(PaddingProperty); }
             set { SetValue(PaddingProperty, value); }
         }
 
-        public static readonly BindableProperty IconProperty = BindableProperty.Create(nameof(Icon), typeof(ImageSource), typeof(FlexButton), null, propertyChanged: IconOrIconColorPropertyChanged);
+        public static readonly BindableProperty IconProperty = BindableProperty.Create(nameof(Icon), typeof(ImageSource), typeof(FlexButton), null, propertyChanged: IconOrForegroundColorPropertyChanged);
         public ImageSource Icon
         {
             get { return (ImageSource)GetValue(IconProperty); }
             set { SetValue(IconProperty, value); }
         }
 
-        static void IconOrIconColorPropertyChanged(BindableObject bindable, object oldValue, object newValue)
+        static void IconOrForegroundColorPropertyChanged(BindableObject bindable, object oldValue, object newValue)
         {
             var flexButton = ((FlexButton)bindable);
             flexButton.SetButtonMode();
-            flexButton.ColorIcon(flexButton.IconColor);
+            flexButton.ColorIcon(flexButton.ForegroundColor);
         }
 
         static void TextOrOrientationChanged(BindableObject bindable, object oldValue, object newValue)
@@ -140,6 +140,7 @@ namespace Flex.Controls
 
         public event EventHandler<EventArgs> TouchedDown;
         public event EventHandler<EventArgs> TouchedUp;
+        public event EventHandler<EventArgs> Clicked;
 
         public FlexButton()
         {
@@ -155,7 +156,7 @@ namespace Flex.Controls
 
         void ButtonIcon_SizeChanged(object sender, EventArgs e)
         {
-            ColorIcon((IconColor));
+            ColorIcon((ForegroundColor));
         }
 
         void FlexButton_SizeChanged(object sender, EventArgs e)
@@ -182,17 +183,18 @@ namespace Flex.Controls
             TouchedDown?.Invoke(this, null);
 
             Container.BackgroundColor = HighlightBackgroundColor;
-            ButtonText.TextColor = HighlightIconColor;
-            ColorIcon(HighlightIconColor);
+            ButtonText.TextColor = HighlightForegroundColor;
+            ColorIcon(HighlightForegroundColor);
         }
 
         private void TouchUp()
         {
             TouchedUp?.Invoke(this, null);
+            Clicked?.Invoke(this, null);
 
             Container.BackgroundColor = BackgroundColor;
-            ButtonText.TextColor = IconColor;
-            ColorIcon(IconColor);
+            ButtonText.TextColor = ForegroundColor;
+            ColorIcon(ForegroundColor);
         }
 
         private void ColorIcon(Color color)
