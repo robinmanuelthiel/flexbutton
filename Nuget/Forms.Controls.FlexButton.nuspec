@@ -30,14 +30,14 @@
   </metadata>
   <files>
     <!-- .NET Standard -->
-    <file src="Flex/bin/Release/netstandard1.0/Flex.dll" target="lib/netstandard1.0" />
+    <file src="../Flex/bin/Release/netstandard1.0/Flex.dll" target="lib/netstandard1.0" />
 
     <!-- Xamarin.iOS -->
-    <file src="Flex/bin/Release/netstandard1.0/Flex.dll" target="lib/xamarinios10" />
-    <file src="Flex.iOS/bin/Release/Flex.iOS.dll" target="lib/xamarinios10" />    
+    <file src="../Flex/bin/Release/netstandard1.0/Flex.dll" target="lib/xamarinios10" />
+    <file src="../Flex.iOS/bin/Release/Flex.iOS.dll" target="lib/xamarinios10" />    
 
     <!-- Xamarin.Android -->
-    <file src="Flex/bin/Release/netstandard1.0/Flex.dll" target="lib/monoandroid10" />
-    <file src="Flex.Android/bin/Release/Flex.Android.dll" target="lib/monoandroid10" />
+    <file src="../Flex/bin/Release/netstandard1.0/Flex.dll" target="lib/monoandroid10" />
+    <file src="../Flex.Android/bin/Release/Flex.Android.dll" target="lib/monoandroid10" />
   </files>
 </package>
