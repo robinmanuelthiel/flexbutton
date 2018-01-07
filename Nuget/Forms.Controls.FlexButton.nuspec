@@ -8,8 +8,8 @@
     <owners>Robin-Manuel Thiel</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <projectUrl>https://github.com/robinmanuelthiel/flexbutton</projectUrl>
-    <description>A flexible button control for Xamarin.Forms</description>
-    <summary>A flexible button control for Xamarin.Forms</summary>
+    <description>Flexible button control for Xamarin.Forms</description>
+    <summary>Flexible button control for Xamarin.Forms</summary>
     <releaseNotes></releaseNotes>
     <copyright></copyright>
     <language></language>
