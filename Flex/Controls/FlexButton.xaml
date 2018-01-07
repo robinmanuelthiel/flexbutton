@@ -58,7 +58,7 @@
                     VerticalTextAlignment="Center"
                     HorizontalTextAlignment="Center"
                     Margin="10,0"
-                    TextColor="{Binding IconColor}" />
+                    TextColor="{Binding ForegroundColor}" />
             </Grid>
         </ContentView>
     </Frame>
@@ -69,5 +69,5 @@
             HorizontalOptions="Center"
             HorizontalTextAlignment="Center"
             Margin="0"
-            TextColor="{Binding IconColor}" />-->
+            TextColor="{Binding ForegroundColor}" />-->
 </ContentView>
