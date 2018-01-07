@@ -66,7 +66,7 @@
             HeightRequest="76"
             CornerRadius="20"
             Icon="lightbulb.png"
-            Text="Button with text"
+            Text="Icon and Text"
             IconColor="#ffffff"
             HighlightIconColor="#49516F"
             BackgroundColor="#6279B8"
@@ -75,9 +75,9 @@
         <!-- Wide Text -->
         <flex:FlexButton
             HorizontalOptions="Center"
-            Text="Button with text only"
+            Text="Button with text only lorem ipsum dolor sit amet bla bla bla"
             Margin="20,0"
-            IconPadding="20"
+            Padding="20"
             IconColor="#ffffff"
             HighlightIconColor="#49516F"
             BackgroundColor="#6279B8"

@@ -67,17 +67,17 @@ namespace Flex.Controls
             set { SetValue(CornerRadiusProperty, value); }
         }
 
-        public static readonly BindableProperty IconPaddingProperty =
+        public static readonly BindableProperty PaddingProperty =
             BindableProperty.Create(
-                nameof(IconPadding),
+                nameof(Padding),
                 typeof(Thickness),
                 typeof(FlexButton),
                 new Thickness(-1));
 
-        public Thickness IconPadding
+        public Thickness Padding
         {
-            get { return (Thickness)GetValue(IconPaddingProperty); }
-            set { SetValue(IconPaddingProperty, value); }
+            get { return (Thickness)GetValue(PaddingProperty); }
+            set { SetValue(PaddingProperty, value); }
         }
 
         public static readonly BindableProperty IconProperty = BindableProperty.Create(nameof(Icon), typeof(ImageSource), typeof(FlexButton), null, propertyChanged: IconOrIconColorPropertyChanged);
@@ -160,18 +160,18 @@ namespace Flex.Controls
 
         void FlexButton_SizeChanged(object sender, EventArgs e)
         {
-            // Set IconPadding to 30% of with / height by default if no specific padding is set
-            if (IconPadding.Equals(new Thickness(-1)))
+            // Set Padding to 30% of with / height by default if no specific padding is set
+            if (Padding.Equals(new Thickness(-1)))
             {
                 switch (mode)
                 {
                     default:
                     case ButtonMode.IconOnly:
-                        IconPadding = new Thickness(WidthRequest * .3, HeightRequest * .3);
+                        Padding = new Thickness(WidthRequest * .3, HeightRequest * .3);
                         break;
                     case ButtonMode.IconWithText:
                     case ButtonMode.TextOnly:
-                        IconPadding = new Thickness(WidthRequest * .1, HeightRequest * .3);
+                        Padding = new Thickness(WidthRequest * .1, HeightRequest * .3);
                         break;
                 }
             }

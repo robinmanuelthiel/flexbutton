@@ -28,7 +28,7 @@
 
             <Grid 
                 x:Name="ContainerContent"
-                Margin="{Binding IconPadding}" 
+                Margin="{Binding Padding}" 
                 RowSpacing="0"
                 ColumnSpacing="0">
                 
