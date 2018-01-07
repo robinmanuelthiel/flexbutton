@@ -5,12 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 using Flex.Effects;
 using Xamarin.Forms;
+using Flex.Extensions;
 
 namespace Flex.Controls
 {
-    //[ContentProperty(nameof(ButtonContent))]
     public partial class FlexButton : ContentView
     {
+        private ButtonMode mode;
 
         #region Color Properties
 
@@ -52,6 +53,13 @@ namespace Flex.Controls
 
         #endregion
 
+        public static readonly BindableProperty TextProperty = BindableProperty.Create(nameof(Text), typeof(string), typeof(FlexButton), string.Empty, propertyChanged: TextOrOrientationChanged);
+        public string Text
+        {
+            get { return (string)GetValue(TextProperty); }
+            set { SetValue(TextProperty, value); }
+        }
+
         public static readonly BindableProperty CornerRadiusProperty = BindableProperty.Create(nameof(CornerRadius), typeof(int), typeof(FlexButton), 0);
         public int CornerRadius
         {
@@ -81,13 +89,53 @@ namespace Flex.Controls
 
         static void IconOrIconColorPropertyChanged(BindableObject bindable, object oldValue, object newValue)
         {
-            ((FlexButton)bindable).ColorIcon(((FlexButton)bindable).IconColor);
+            var flexButton = ((FlexButton)bindable);
+            flexButton.SetButtonMode();
+            flexButton.ColorIcon(flexButton.IconColor);
         }
 
-        public View ButtonContent
+        static void TextOrOrientationChanged(BindableObject bindable, object oldValue, object newValue)
         {
-            get { return ContainerContent.Content; }
-            set { ContainerContent.Content = value; }
+            var flexButton = ((FlexButton)bindable);
+            flexButton.SetButtonMode();
+        }
+
+        private void SetButtonMode()
+        {
+            if (Icon != null && Text.Length > 0)
+            {
+                mode = ButtonMode.IconWithText;
+            }
+            else if (Icon != null && Text.Length == 0)
+            {
+                mode = ButtonMode.IconOnly;
+            }
+            else if (Icon == null && Text.Length > 0)
+            {
+                mode = ButtonMode.TextOnly;
+            }
+
+            switch (mode)
+            {
+                case ButtonMode.IconOnly:
+                    ContainerContent.HorizontalOptions = LayoutOptions.Fill;
+                    Grid.SetColumnSpan(ButtonIcon, 2);
+                    Grid.SetColumn(ButtonText, 1);
+                    ButtonText.IsVisible = false;
+                    break;
+                case ButtonMode.IconWithText:
+                    ContainerContent.HorizontalOptions = LayoutOptions.Center;
+                    Grid.SetColumnSpan(ButtonIcon, 1);
+                    Grid.SetColumn(ButtonText, 1);
+                    ButtonText.IsVisible = true;
+                    break;
+                case ButtonMode.TextOnly:
+                    ContainerContent.HorizontalOptions = LayoutOptions.Center;
+                    Grid.SetColumnSpan(ButtonIcon, 1);
+                    Grid.SetColumn(ButtonText, 0);
+                    ButtonText.IsVisible = true;
+                    break;
+            }
         }
 
         public event EventHandler<EventArgs> TouchedDown;
@@ -115,7 +163,17 @@ namespace Flex.Controls
             // Set IconPadding to 30% of with / height by default if no specific padding is set
             if (IconPadding.Equals(new Thickness(-1)))
             {
-                IconPadding = new Thickness(WidthRequest * .3, HeightRequest * .3);
+                switch (mode)
+                {
+                    default:
+                    case ButtonMode.IconOnly:
+                        IconPadding = new Thickness(WidthRequest * .3, HeightRequest * .3);
+                        break;
+                    case ButtonMode.IconWithText:
+                    case ButtonMode.TextOnly:
+                        IconPadding = new Thickness(WidthRequest * .1, HeightRequest * .3);
+                        break;
+                }
             }
         }
 
@@ -124,12 +182,8 @@ namespace Flex.Controls
             TouchedDown?.Invoke(this, null);
 
             Container.BackgroundColor = HighlightBackgroundColor;
-
+            ButtonText.TextColor = HighlightIconColor;
             ColorIcon(HighlightIconColor);
-
-            //ButtonIcon.Effects.Remove(IconColorOverlayEffect);
-            //ButtonIcon.Effects.Add(HighlightIconColorOverlayEffect);
-
         }
 
         private void TouchUp()
@@ -137,11 +191,8 @@ namespace Flex.Controls
             TouchedUp?.Invoke(this, null);
 
             Container.BackgroundColor = BackgroundColor;
-
+            ButtonText.TextColor = IconColor;
             ColorIcon(IconColor);
-
-            //ButtonIcon.Effects.Remove(HighlightIconColorOverlayEffect);
-            //ButtonIcon.Effects.Add(IconColorOverlayEffect);
         }
 
         private void ColorIcon(Color color)

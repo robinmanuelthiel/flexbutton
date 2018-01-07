@@ -66,6 +66,18 @@
             HeightRequest="76"
             CornerRadius="20"
             Icon="lightbulb.png"
+            Text="Button with text"
+            IconColor="#ffffff"
+            HighlightIconColor="#49516F"
+            BackgroundColor="#6279B8"
+            HighlightBackgroundColor="#8EA4D2"/>
+
+        <!-- Wide Text -->
+        <flex:FlexButton
+            HorizontalOptions="Center"
+            Text="Button with text only"
+            Margin="20,0"
+            IconPadding="20"
             IconColor="#ffffff"
             HighlightIconColor="#49516F"
             BackgroundColor="#6279B8"

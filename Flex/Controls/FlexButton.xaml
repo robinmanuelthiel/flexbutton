@@ -22,14 +22,52 @@
         </Frame.GestureRecognizers>
 
         <ContentView
-            x:Name="ContainerContent"
+           
             HorizontalOptions="FillAndExpand"
             VerticalOptions="FillAndExpand">
 
-            <Image 
-                x:Name="ButtonIcon"
-                Source="{Binding Icon}"
-                Margin="{Binding IconPadding}"/>
+            <Grid 
+                x:Name="ContainerContent"
+                Margin="{Binding IconPadding}" 
+                RowSpacing="0"
+                ColumnSpacing="0">
+                
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+            
+                <Image 
+                    x:Name="ButtonIcon"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2"
+                    Grid.RowSpan="2"
+                    Source="{Binding Icon}"/>
+
+                <Label
+                    x:Name="ButtonText"
+                    Grid.Column="1"     
+                    Grid.RowSpan="2"
+                    Text="{Binding Text}"
+                    VerticalOptions="Fill"
+                    VerticalTextAlignment="Center"
+                    HorizontalTextAlignment="Center"
+                    Margin="10,0"
+                    TextColor="{Binding IconColor}" />
+            </Grid>
         </ContentView>
     </Frame>
+
+        <!--<Label
+            x:Name="ButtonSubText"
+            Text="Hallo Welt"
+            HorizontalOptions="Center"
+            HorizontalTextAlignment="Center"
+            Margin="0"
+            TextColor="{Binding IconColor}" />-->
 </ContentView>
