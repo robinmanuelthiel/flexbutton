@@ -17,6 +17,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Demo", "Demo", "{0DE97C93-9
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Flex.Demo", "Flex.Demo\Flex.Demo.csproj", "{1A52E52B-9644-4C1C-9E25-6C72FE33C25D}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Nuget", "Nuget", "{278A8BE1-4510-4E94-B5B9-E113816D8500}"
+	ProjectSection(SolutionItems) = preProject
+		Nuget\Forms.Controls.FlexButton.nuspec = Nuget\Forms.Controls.FlexButton.nuspec
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
