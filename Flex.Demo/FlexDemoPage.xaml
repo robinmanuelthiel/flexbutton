@@ -75,10 +75,10 @@
         <!-- Wide Text -->
         <flex:FlexButton
             HorizontalOptions="Center"
-            Text="Button with text only lorem ipsum dolor sit amet bla bla bla"
+            Text="Button with larger text only lorem ipsum dolor sit amet bla bla bla"
             Margin="20,0"
             Padding="20"
-            FontSize="20"
+            FontSize="24"
             ForegroundColor="#ffffff"
             HighlightForegroundColor="#49516F"
             BackgroundColor="#6279B8"

@@ -53,13 +53,12 @@ namespace Flex.Controls
 
         #endregion
 
-        public static readonly BindableProperty FontSizeProperty = BindableProperty.Create(nameof(FontSize), typeof(int), typeof(FlexButton), 0);
-        public int FontSize
+        public static readonly BindableProperty FontSizeProperty = BindableProperty.Create(nameof(FontSize), typeof(double), typeof(FlexButton), Device.GetNamedSize(NamedSize.Default, typeof(Label)));
+        public double FontSize
         {
-            get { return (int)GetValue(FontSizeProperty); }
+            get { return (double)GetValue(FontSizeProperty); }
             set { SetValue(FontSizeProperty, value); }
         }
-
 
         public static readonly BindableProperty TextProperty = BindableProperty.Create(nameof(Text), typeof(string), typeof(FlexButton), string.Empty, propertyChanged: TextOrOrientationChanged);
         public string Text
