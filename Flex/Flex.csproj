@@ -3,7 +3,7 @@
     <PropertyGroup>
         <TargetFramework>netstandard1.0</TargetFramework>
         <PackageId>Forms.Controls.FlexButton</PackageId>
-        <PackageVersion>0.2.0</PackageVersion>
+        <PackageVersion>0.3.0</PackageVersion>
         <Authors>Robin-Manuel Thiel</Authors>
         <PackageProjectUrl>https://github.com/robinmanuelthiel/flexbutton</PackageProjectUrl>
         <PackageIconUrl>https://raw.githubusercontent.com/robinmanuelthiel/flexbutton/master/Design/Logo-150.png</PackageIconUrl>
@@ -13,8 +13,8 @@
         <Description>A flexible button control for Xamarin.Forms</Description>
     </PropertyGroup>
     <ItemGroup>
-        <PackageReference Include="Xamarin.Forms" Version="2.5.0.121934" />
         <PackageReference Include="NuGet.Build.Packaging" Version="0.2.0" />
+        <PackageReference Include="Xamarin.Forms" Version="2.5.0.280555" />
     </ItemGroup>
     <ItemGroup>
         <Folder Include="Controls\" />
