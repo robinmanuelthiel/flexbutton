@@ -54,6 +54,7 @@ Take a look a the [Demo Project](/Flex.Demo) in this repository for a full sampl
 |------------------|---------|-------------|
 | `Icon` | `null` | Name of the icon file to use |
 | `Text` | `string.Empty` | Button text to be displayed |
+| `FontSize` | Default | Font size of the button text |
 | `ForegroundColor` | `White` | Foreground color overlay for icon and text |
 | `BackgroundColor` | `Transparent` | Background color of the button |
 | `HighlightForegroundColor` | `White` | Foreground color overlay for icon and text when pressed down |
