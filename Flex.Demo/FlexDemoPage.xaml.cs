@@ -9,6 +9,7 @@ namespace Flex.Demo
         public FlexDemoPage()
         {
             InitializeComponent();
+            BindingContext = new FlexDemoPageViewModel();
         }
 
         void DemoButton_TouchedDown(object sender, EventArgs e)

@@ -6,95 +6,100 @@
     x:Class="Flex.Demo.FlexDemoPage"
     xmlns:flex="clr-namespace:Flex.Controls;assembly=Flex">
 
-    <StackLayout Spacing="20" Margin="0,40,0,0">   
-       <!-- Standard Button -->    
-       <flex:FlexButton
-            x:Name="DemoButton"
-            HorizontalOptions="Center"
-            WidthRequest="76"
-            HeightRequest="76"
-            CornerRadius="38"
-            Icon="lightbulb.png"
-            ForegroundColor="#ffffff"
-            HighlightForegroundColor="#49516F"
-            BackgroundColor="#6279B8"
-            HighlightBackgroundColor="#8EA4D2"
-            TouchedDown="DemoButton_TouchedDown"
-            TouchedUp="DemoButton_TouchedUp"/>
-        
-        <Label x:Name="ButtonStatus" Text="Untouched" HorizontalTextAlignment="Center" HorizontalOptions="Center"/>
-
-        <BoxView BackgroundColor="#eee" HeightRequest="1" Margin="0,20"/>
-        
-        <!-- Small Button -->
-        <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
-            <flex:FlexButton                
-                WidthRequest="40"
-                HeightRequest="40"
-                CornerRadius="20"
+    <ScrollView>
+        <StackLayout Spacing="20" Margin="0,40,0,0"> 
+            
+           <!-- Standard Button -->    
+           <flex:FlexButton
+                x:Name="DemoButton"
+                HorizontalOptions="Center"
+                WidthRequest="76"
+                HeightRequest="76"
+                CornerRadius="38"
                 Icon="lightbulb.png"
                 ForegroundColor="#ffffff"
                 HighlightForegroundColor="#49516F"
                 BackgroundColor="#6279B8"
-                HighlightBackgroundColor="#8EA4D2"/>
+                HighlightBackgroundColor="#8EA4D2"
+                TouchedDown="DemoButton_TouchedDown"
+                TouchedUp="DemoButton_TouchedUp"/>
+            
+            <Label x:Name="ButtonStatus" Text="Untouched" HorizontalTextAlignment="Center" HorizontalOptions="Center"/>
 
+            <BoxView BackgroundColor="#eee" HeightRequest="1" Margin="0,20"/>
+            
+            <!-- Small Button -->
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                <flex:FlexButton                
+                    WidthRequest="40"
+                    HeightRequest="40"
+                    CornerRadius="20"
+                    Icon="lightbulb.png"
+                    ForegroundColor="#ffffff"
+                    HighlightForegroundColor="#49516F"
+                    BackgroundColor="#6279B8"
+                    HighlightBackgroundColor="#8EA4D2"/>
+
+                <flex:FlexButton
+                    WidthRequest="40"
+                    HeightRequest="40"
+                    CornerRadius="20"
+                    Icon="lightbulb.png"
+                    ForegroundColor="#ffffff"
+                    HighlightForegroundColor="#49516F"
+                    BackgroundColor="#6279B8"
+                    HighlightBackgroundColor="#8EA4D2"/>
+
+                <flex:FlexButton
+                    WidthRequest="40"
+                    HeightRequest="40"
+                    CornerRadius="20"
+                    Icon="lightbulb.png"
+                    ForegroundColor="#ffffff"
+                    HighlightForegroundColor="#49516F"
+                    BackgroundColor="#6279B8"
+                    HighlightBackgroundColor="#8EA4D2"/>
+            </StackLayout>
+
+            <!-- Wide Button -->
             <flex:FlexButton
-                WidthRequest="40"
-                HeightRequest="40"
+                x:Name="WideButton"
+                ClickedCommand="{Binding ButtonClickedCommand}"
+                HorizontalOptions="Center"
+                WidthRequest="300"
+                HeightRequest="76"
                 CornerRadius="20"
                 Icon="lightbulb.png"
+                Text="Icon and Text"
                 ForegroundColor="#ffffff"
                 HighlightForegroundColor="#49516F"
                 BackgroundColor="#6279B8"
                 HighlightBackgroundColor="#8EA4D2"/>
 
+            <!-- Wide Text -->
             <flex:FlexButton
-                WidthRequest="40"
-                HeightRequest="40"
-                CornerRadius="20"
-                Icon="lightbulb.png"
+                HorizontalOptions="Center"
+                Text="Button with larger text only lorem ipsum dolor sit amet bla bla bla"
+                Margin="20,0"
+                Padding="20"
+                FontSize="24"
                 ForegroundColor="#ffffff"
                 HighlightForegroundColor="#49516F"
                 BackgroundColor="#6279B8"
                 HighlightBackgroundColor="#8EA4D2"/>
+
+            
+            <!-- Button without background -->
+            <flex:FlexButton
+                HorizontalOptions="Center"
+                WidthRequest="76"
+                HeightRequest="76"
+                CornerRadius="38"
+                Icon="lightbulb.png"
+                ForegroundColor="#6279B8"
+                HighlightForegroundColor="#ffffff"
+                BackgroundColor="Transparent"
+                HighlightBackgroundColor="#6279B8"/>
         </StackLayout>
-
-        <!-- Wide Button -->
-        <flex:FlexButton
-            HorizontalOptions="Center"
-            WidthRequest="300"
-            HeightRequest="76"
-            CornerRadius="20"
-            Icon="lightbulb.png"
-            Text="Icon and Text"
-            ForegroundColor="#ffffff"
-            HighlightForegroundColor="#49516F"
-            BackgroundColor="#6279B8"
-            HighlightBackgroundColor="#8EA4D2"/>
-
-        <!-- Wide Text -->
-        <flex:FlexButton
-            HorizontalOptions="Center"
-            Text="Button with larger text only lorem ipsum dolor sit amet bla bla bla"
-            Margin="20,0"
-            Padding="20"
-            FontSize="24"
-            ForegroundColor="#ffffff"
-            HighlightForegroundColor="#49516F"
-            BackgroundColor="#6279B8"
-            HighlightBackgroundColor="#8EA4D2"/>
-
-        
-        <!-- Button without background -->
-        <flex:FlexButton
-            HorizontalOptions="Center"
-            WidthRequest="76"
-            HeightRequest="76"
-            CornerRadius="38"
-            Icon="lightbulb.png"
-            ForegroundColor="#6279B8"
-            HighlightForegroundColor="#ffffff"
-            BackgroundColor="Transparent"
-            HighlightBackgroundColor="#6279B8"/>
-    </StackLayout>
+    </ScrollView>
 </ContentPage>

@@ -1,21 +1,23 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <ContentView
+    x:Name="this"
     x:Class="Flex.Controls.FlexButton"
     xmlns="http://xamarin.com/schemas/2014/forms"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
     xmlns:extensions="clr-namespace:Flex.Extensions"
     BackgroundColor="Transparent"
     VerticalOptions="Center">
 
     <Frame
         x:Name="Container"
-        BackgroundColor="{Binding BackgroundColor}"
-        CornerRadius="{Binding CornerRadius}"
+        BackgroundColor="{Binding Source={x:Reference this}, Path=BackgroundColor}"
+        CornerRadius="{Binding Source={x:Reference this}, Path=CornerRadius}"
         HasShadow="false"
         Padding="0">
 
+
         <!-- BorderColor does not work on Android at the moment (Xamarin.Forms bug) -->
-        <!--OutlineColor="{Binding BorderColor}">-->
+        <!--OutlineColor="{Binding Source={x:Reference this}, Path=BorderColor}">-->
 
         <Frame.GestureRecognizers>
             <extensions:TouchGestureRecognizer x:Name="TouchRecognizer" />
@@ -28,7 +30,7 @@
 
             <Grid 
                 x:Name="ContainerContent"
-                Margin="{Binding Padding}" 
+                Margin="{Binding Source={x:Reference this}, Path=Padding}" 
                 RowSpacing="0"
                 ColumnSpacing="0">
                 
@@ -47,19 +49,19 @@
                     Grid.Column="0"
                     Grid.ColumnSpan="2"
                     Grid.RowSpan="2"
-                    Source="{Binding Icon}"/>
+                    Source="{Binding Source={x:Reference this}, Path=Icon}"/>
 
                 <Label
                     x:Name="ButtonText"
                     Grid.Column="1"     
                     Grid.RowSpan="2"
-                    Text="{Binding Text}"
-                    FontSize="{Binding FontSize}"
+                    Text="{Binding Source={x:Reference this}, Path=Text}"
+                    FontSize="{Binding Source={x:Reference this}, Path=FontSize}"
                     VerticalOptions="Fill"
                     VerticalTextAlignment="Center"
                     HorizontalTextAlignment="Center"
                     Margin="10,0"
-                    TextColor="{Binding ForegroundColor}" />
+                    TextColor="{Binding Source={x:Reference this}, Path=ForegroundColor}" />
             </Grid>
         </ContentView>
     </Frame>
@@ -70,5 +72,5 @@
             HorizontalOptions="Center"
             HorizontalTextAlignment="Center"
             Margin="0"
-            TextColor="{Binding ForegroundColor}" />-->
+            TextColor="{Binding Source={x:Reference this}, Path=ForegroundColor}" />-->
 </ContentView>

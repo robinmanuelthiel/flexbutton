@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Flex.Effects;
 using Xamarin.Forms;
 using Flex.Extensions;
+using System.Windows.Input;
 
 namespace Flex.Controls
 {
@@ -53,6 +54,8 @@ namespace Flex.Controls
 
         #endregion
 
+        #region Font Properties
+
         public static readonly BindableProperty FontSizeProperty = BindableProperty.Create(nameof(FontSize), typeof(double), typeof(FlexButton), Device.GetNamedSize(NamedSize.Default, typeof(Label)));
         public double FontSize
         {
@@ -66,6 +69,8 @@ namespace Flex.Controls
             get { return (string)GetValue(TextProperty); }
             set { SetValue(TextProperty, value); }
         }
+
+        #endregion
 
         public static readonly BindableProperty CornerRadiusProperty = BindableProperty.Create(nameof(CornerRadius), typeof(int), typeof(FlexButton), 0);
         public int CornerRadius
@@ -93,6 +98,31 @@ namespace Flex.Controls
             get { return (ImageSource)GetValue(IconProperty); }
             set { SetValue(IconProperty, value); }
         }
+
+        #region Commands
+
+        public static readonly BindableProperty ClickedCommandProperty = BindableProperty.Create(nameof(ClickedCommand), typeof(ICommand), typeof(FlexButton), null);
+        public ICommand ClickedCommand
+        {
+            get { return (ICommand)GetValue(ClickedCommandProperty); }
+            set { SetValue(ClickedCommandProperty, value); }
+        }
+
+        public static BindableProperty TouchedDownCommandProperty = BindableProperty.Create(nameof(TouchedDownCommand), typeof(ICommand), typeof(FlexButton), null);
+        public ICommand TouchedDownCommand
+        {
+            get { return (ICommand)GetValue(TouchedDownCommandProperty); }
+            set { SetValue(TouchedDownCommandProperty, value); }
+        }
+
+        public static BindableProperty TouchedUpCommandProperty = BindableProperty.Create(nameof(TouchedUpCommand), typeof(ICommand), typeof(FlexButton), null);
+        public ICommand TouchedUpCommand
+        {
+            get { return (ICommand)GetValue(TouchedUpCommandProperty); }
+            set { SetValue(TouchedUpCommandProperty, value); }
+        }
+
+        #endregion
 
         static void IconOrForegroundColorPropertyChanged(BindableObject bindable, object oldValue, object newValue)
         {
@@ -152,7 +182,7 @@ namespace Flex.Controls
         public FlexButton()
         {
             InitializeComponent();
-            BindingContext = this;
+            //BindingContext = this;
 
             TouchRecognizer.TouchDown += TouchDown;
             TouchRecognizer.TouchUp += TouchUp;
@@ -188,6 +218,7 @@ namespace Flex.Controls
         private void TouchDown()
         {
             TouchedDown?.Invoke(this, null);
+            TouchedDownCommand?.Execute(null);
 
             Container.BackgroundColor = HighlightBackgroundColor;
             ButtonText.TextColor = HighlightForegroundColor;
@@ -197,7 +228,9 @@ namespace Flex.Controls
         private void TouchUp()
         {
             TouchedUp?.Invoke(this, null);
+            TouchedUpCommand?.Execute(null);
             Clicked?.Invoke(this, null);
+            ClickedCommand?.Execute(null);
 
             Container.BackgroundColor = BackgroundColor;
             ButtonText.TextColor = ForegroundColor;
