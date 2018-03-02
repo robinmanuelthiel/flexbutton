@@ -37,11 +37,7 @@ namespace Flex.Android.CustomRenderers
                             {
                                 if (recognizer is TouchGestureRecognizer touchGestureRecognizer)
                                 {
-                                    if (touchGestureRecognizer.TouchDownCommand != null)
-                                        touchGestureRecognizer.TouchDownCommand.Execute(touchGestureRecognizer.TouchDownCommandParameter);
-
-                                    if (touchGestureRecognizer.TouchDown != null)
-                                        touchGestureRecognizer.TouchDown();
+                                    touchGestureRecognizer?.TouchDown();
                                 }
                             }
                             break;
@@ -50,11 +46,7 @@ namespace Flex.Android.CustomRenderers
                             {
                                 if (recognizer is TouchGestureRecognizer touchGestureRecognizer)
                                 {
-                                    if (touchGestureRecognizer.TouchUpCommand != null)
-                                        touchGestureRecognizer.TouchUpCommand.Execute(touchGestureRecognizer.TouchUpCommandParameter);
-
-                                    if (touchGestureRecognizer.TouchUp != null)
-                                        touchGestureRecognizer.TouchUp();
+                                    touchGestureRecognizer?.TouchUp();
                                 }
                             }
                             break;

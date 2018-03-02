@@ -41,11 +41,7 @@ namespace Flex.iOS.CustomRenderers
                             var touchGestureRecognizer = recognizer as TouchGestureRecognizer;
                             if (touchGestureRecognizer != null)
                             {
-                                if (touchGestureRecognizer.TouchDownCommand != null)
-                                    touchGestureRecognizer.TouchDownCommand.Execute(touchGestureRecognizer.TouchDownCommandParameter);
-
-                                if (touchGestureRecognizer.TouchDown != null)
-                                    touchGestureRecognizer.TouchDown();
+                                touchGestureRecognizer?.TouchDown();
                             }
                         }
                     }
@@ -56,11 +52,7 @@ namespace Flex.iOS.CustomRenderers
                             var touchGestureRecognizer = recognizer as TouchGestureRecognizer;
                             if (touchGestureRecognizer != null)
                             {
-                                if (touchGestureRecognizer.TouchUpCommand != null)
-                                    touchGestureRecognizer.TouchUpCommand.Execute(touchGestureRecognizer.TouchUpCommandParameter);
-
-                                if (touchGestureRecognizer.TouchUp != null)
-                                    touchGestureRecognizer.TouchUp();
+                                touchGestureRecognizer?.TouchUp();
                             }
                         }
                     }

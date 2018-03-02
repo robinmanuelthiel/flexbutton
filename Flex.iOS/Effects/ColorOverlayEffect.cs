@@ -1,14 +1,12 @@
 using System;
-using System.ComponentModel;
-using System.Diagnostics;
-using Xamarin.Forms;
-using Xamarin.Forms.Platform.iOS;
+using System.Drawing;
 using System.Linq;
-using UIKit;
+using CoreGraphics;
 using Flex.Effects;
 using Flex.iOS.Effects;
-using CoreGraphics;
-using System.Drawing;
+using UIKit;
+using Xamarin.Forms;
+using Xamarin.Forms.Platform.iOS;
 
 [assembly: ResolutionGroupName("Flex.Effects")]
 [assembly: ExportEffect(typeof(ColorOverlayEffectiOS), nameof(ColorOverlayEffect))]
@@ -46,8 +44,6 @@ namespace Flex.iOS.Effects
                 UIGraphics.BeginImageContextWithOptions(image.Size, false, 0.0f);
                 using (CGContext context = UIGraphics.GetCurrentContext())
                 {
-
-
                     context.TranslateCTM(0, image.Size.Height);
                     context.ScaleCTM(1.0f, -1.0f);
 
@@ -74,7 +70,5 @@ namespace Flex.iOS.Effects
                 return;
             }
         }
-
-
     }
 }

@@ -182,7 +182,6 @@ namespace Flex.Controls
         public FlexButton()
         {
             InitializeComponent();
-            //BindingContext = this;
 
             TouchRecognizer.TouchDown += TouchDown;
             TouchRecognizer.TouchUp += TouchUp;

@@ -15,7 +15,6 @@
         HasShadow="false"
         Padding="0">
 
-
         <!-- BorderColor does not work on Android at the moment (Xamarin.Forms bug) -->
         <!--OutlineColor="{Binding Source={x:Reference this}, Path=BorderColor}">-->
 
