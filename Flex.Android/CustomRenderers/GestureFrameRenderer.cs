@@ -13,7 +13,6 @@ namespace Flex.Android.CustomRenderers
     {
         public GestureFrameRenderer(Context context) : base(context)
         {
-
         }
 
         protected override void OnElementChanged(ElementChangedEventArgs<Frame> e)

@@ -1,5 +1,4 @@
 ﻿using Xamarin.Forms;
-using Flex.Controls;
 using System;
 
 namespace Flex.Demo

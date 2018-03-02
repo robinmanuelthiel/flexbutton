@@ -14,7 +14,6 @@ namespace Flex.iOS.CustomRenderers
 
         public static new void Init()
         {
-
         }
 
         protected override void OnElementChanged(ElementChangedEventArgs<Frame> e)
@@ -28,9 +27,6 @@ namespace Flex.iOS.CustomRenderers
 
                 if (!e.NewElement.GestureRecognizers.Any(x => x.GetType() == typeof(TouchGestureRecognizer)))
                     return;
-
-
-                //Control.UserInteractionEnabled = true;
 
                 pressGestureRecognizer = new UILongPressGestureRecognizer(() =>
                 {
@@ -59,7 +55,6 @@ namespace Flex.iOS.CustomRenderers
                 });
 
                 pressGestureRecognizer.MinimumPressDuration = 0.0;
-                //pressGestureRecognizer.Delegate = gestureDelegate;
 
                 AddGestureRecognizer(pressGestureRecognizer);
             }

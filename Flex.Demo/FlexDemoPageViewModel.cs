@@ -1,10 +1,10 @@
-﻿using System;
-using System.Windows.Input;
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
+
 namespace Flex.Demo
 {
     public class FlexDemoPageViewModel
     {
+        // Just demonstrates the use of Commands
         public Command ButtonClickedCommand
         {
             get
@@ -14,10 +14,6 @@ namespace Flex.Demo
                     //var test = "Do something";
                 });
             }
-        }
-
-        public FlexDemoPageViewModel()
-        {
         }
     }
 }

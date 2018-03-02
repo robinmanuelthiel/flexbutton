@@ -1,17 +1,13 @@
+using System;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
-using Android.Content.Res;
 using Android.Graphics;
-using Android.Graphics.Drawables;
 using Android.Widget;
+using Flex.Android.Effects;
+using Flex.Effects;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using Flex.Effects;
-using Flex.Android.Effects;
 
 [assembly: ResolutionGroupName("Flex.Effects")]
 [assembly: ExportEffect(typeof(ColorOverlayEffectAndroid), nameof(ColorOverlayEffect))]
@@ -19,8 +15,6 @@ namespace Flex.Android.Effects
 {
     public class ColorOverlayEffectAndroid : PlatformEffect
     {
-        //private Drawable originalImage;
-
         protected override void OnAttached()
         {
             var effect = (ColorOverlayEffect)Element.Effects.FirstOrDefault(e => e is ColorOverlayEffect);
@@ -30,8 +24,6 @@ namespace Flex.Android.Effects
             if (!(Control is ImageView))
                 return;
 
-            //originalImage = ((ImageView)Control).Drawable;
-
             SetOverlay(effect.Color);
         }
 
@@ -40,10 +32,6 @@ namespace Flex.Android.Effects
             if (!(Control is ImageView))
                 return;
 
-            Debug.WriteLine(args.PropertyName);
-            //if (!args.PropertyName.Equals("Source") || !args.PropertyName.Equals("Renderer"))
-            //    return;
-
             var effect = (ColorOverlayEffect)Element.Effects.FirstOrDefault(e => e is ColorOverlayEffect);
             if (effect == null)
                 return;
@@ -51,7 +39,7 @@ namespace Flex.Android.Effects
             SetOverlay(effect.Color);
         }
 
-        private void SetOverlay(Xamarin.Forms.Color color)
+        void SetOverlay(Xamarin.Forms.Color color)
         {
             var formsImage = (Xamarin.Forms.Image)Element;
             if (formsImage?.Source == null)

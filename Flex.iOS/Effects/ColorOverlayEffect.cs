@@ -31,7 +31,7 @@ namespace Flex.iOS.Effects
             //throw new NotImplementedException();
         }
 
-        private void SetOverlay(Xamarin.Forms.Color color)
+        void SetOverlay(Xamarin.Forms.Color color)
         {
             var formsImage = (Xamarin.Forms.Image)Element;
             if (formsImage?.Source == null)

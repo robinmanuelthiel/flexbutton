@@ -1,5 +1,4 @@
-﻿using System;
-using Flex.iOS.CustomRenderers;
+﻿using Flex.iOS.CustomRenderers;
 
 namespace Flex
 {

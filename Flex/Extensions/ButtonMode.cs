@@ -1,5 +1,4 @@
-﻿using System;
-namespace Flex.Extensions
+﻿namespace Flex.Extensions
 {
     public enum ButtonMode
     {

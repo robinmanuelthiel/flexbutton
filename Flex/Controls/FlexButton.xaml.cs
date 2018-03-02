@@ -1,20 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Flex.Effects;
-using Xamarin.Forms;
-using Flex.Extensions;
 using System.Windows.Input;
+using Flex.Effects;
+using Flex.Extensions;
+using Xamarin.Forms;
 
 namespace Flex.Controls
 {
     public partial class FlexButton : ContentView
     {
-        private ButtonMode mode;
+        ButtonMode mode;
 
-        #region Color Properties
+        #region Bindable Properties
 
         public static readonly new BindableProperty BackgroundColorProperty = BindableProperty.Create(nameof(BackgroundColor), typeof(Color), typeof(FlexButton), Color.Transparent);
         public new Color BackgroundColor
@@ -52,10 +48,6 @@ namespace Flex.Controls
             set { SetValue(HighlightForegroundColorProperty, value); }
         }
 
-        #endregion
-
-        #region Font Properties
-
         public static readonly BindableProperty FontSizeProperty = BindableProperty.Create(nameof(FontSize), typeof(double), typeof(FlexButton), Device.GetNamedSize(NamedSize.Default, typeof(Label)));
         public double FontSize
         {
@@ -69,8 +61,6 @@ namespace Flex.Controls
             get { return (string)GetValue(TextProperty); }
             set { SetValue(TextProperty, value); }
         }
-
-        #endregion
 
         public static readonly BindableProperty CornerRadiusProperty = BindableProperty.Create(nameof(CornerRadius), typeof(int), typeof(FlexButton), 0);
         public int CornerRadius
@@ -98,6 +88,8 @@ namespace Flex.Controls
             get { return (ImageSource)GetValue(IconProperty); }
             set { SetValue(IconProperty, value); }
         }
+
+        #endregion
 
         #region Commands
 
@@ -187,7 +179,7 @@ namespace Flex.Controls
             TouchRecognizer.TouchUp += TouchUp;
             SizeChanged += FlexButton_SizeChanged;
 
-            this.ButtonIcon.SizeChanged += ButtonIcon_SizeChanged;
+            ButtonIcon.SizeChanged += ButtonIcon_SizeChanged;
         }
 
         void ButtonIcon_SizeChanged(object sender, EventArgs e)
@@ -214,7 +206,7 @@ namespace Flex.Controls
             }
         }
 
-        private void TouchDown()
+        void TouchDown()
         {
             TouchedDown?.Invoke(this, null);
             TouchedDownCommand?.Execute(null);
@@ -224,7 +216,7 @@ namespace Flex.Controls
             ColorIcon(HighlightForegroundColor);
         }
 
-        private void TouchUp()
+        void TouchUp()
         {
             TouchedUp?.Invoke(this, null);
             TouchedUpCommand?.Execute(null);
@@ -236,7 +228,7 @@ namespace Flex.Controls
             ColorIcon(ForegroundColor);
         }
 
-        private void ColorIcon(Color color)
+        void ColorIcon(Color color)
         {
             ButtonIcon.Effects.Clear();
             ButtonIcon.Effects.Add(new ColorOverlayEffect() { Color = color });
