@@ -34,8 +34,7 @@ namespace Flex.iOS.CustomRenderers
                     {
                         foreach (var recognizer in Element.GestureRecognizers.Where(x => x.GetType() == typeof(TouchGestureRecognizer)))
                         {
-                            var touchGestureRecognizer = recognizer as TouchGestureRecognizer;
-                            if (touchGestureRecognizer != null)
+                            if (recognizer is TouchGestureRecognizer touchGestureRecognizer)
                             {
                                 touchGestureRecognizer?.TouchDown();
                             }
@@ -45,8 +44,7 @@ namespace Flex.iOS.CustomRenderers
                     {
                         foreach (var recognizer in Element.GestureRecognizers.Where(x => x.GetType() == typeof(TouchGestureRecognizer)))
                         {
-                            var touchGestureRecognizer = recognizer as TouchGestureRecognizer;
-                            if (touchGestureRecognizer != null)
+                            if (recognizer is TouchGestureRecognizer touchGestureRecognizer)
                             {
                                 touchGestureRecognizer?.TouchUp();
                             }
