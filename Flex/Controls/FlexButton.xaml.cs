@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.CompilerServices;
 using System.Windows.Input;
 using Flex.Effects;
 using Flex.Extensions;
@@ -9,6 +10,7 @@ namespace Flex.Controls
     public partial class FlexButton : ContentView
     {
         ButtonMode mode;
+        private bool isEnabled = true;
 
         #region Bindable Properties
 
@@ -93,7 +95,8 @@ namespace Flex.Controls
 
         #region Commands
 
-        public static readonly BindableProperty ClickedCommandProperty = BindableProperty.Create(nameof(ClickedCommand), typeof(ICommand), typeof(FlexButton), null);
+        public static readonly BindableProperty ClickedCommandProperty = BindableProperty.Create(nameof(ClickedCommand), typeof(ICommand), typeof(FlexButton), null, propertyChanged: (bo, o, n) => ((FlexButton)bo).OnClickCommandPropertyChanged());
+
         public ICommand ClickedCommand
         {
             get { return (ICommand)GetValue(ClickedCommandProperty); }
@@ -123,13 +126,47 @@ namespace Flex.Controls
             flexButton.ColorIcon(flexButton.ForegroundColor);
         }
 
+        private void OnClickCommandPropertyChanged()
+        {
+            if (ClickedCommand != null)
+            {
+                ClickedCommand.CanExecuteChanged += CommandCanExecuteChanged;
+                CommandCanExecuteChanged(this, EventArgs.Empty);
+            }
+            else
+            {
+                isEnabled = true;
+            }
+        }
+
+        private void CommandCanExecuteChanged(object sender, EventArgs e)
+        {
+            ICommand cmd = ClickedCommand;
+            if (cmd != null)
+            {
+                isEnabled = cmd.CanExecute(null);
+            }
+        }
+
         static void TextOrOrientationChanged(BindableObject bindable, object oldValue, object newValue)
         {
             var flexButton = ((FlexButton)bindable);
             flexButton.SetButtonMode();
         }
 
-        private void SetButtonMode()
+		protected override void OnPropertyChanging([CallerMemberName] string propertyName = null)
+		{
+            if (propertyName == ClickedCommandProperty.PropertyName)
+            {
+                ICommand cmd = ClickedCommand;
+                if (cmd != null)
+                    cmd.CanExecuteChanged -= CommandCanExecuteChanged;
+            }
+
+            base.OnPropertyChanging(propertyName);
+		}
+
+		private void SetButtonMode()
         {
             if (Icon != null && Text.Length > 0)
             {
@@ -208,24 +245,30 @@ namespace Flex.Controls
 
         void TouchDown()
         {
-            TouchedDown?.Invoke(this, null);
-            TouchedDownCommand?.Execute(null);
+            if (isEnabled)
+            {
+                TouchedDown?.Invoke(this, null);
+                TouchedDownCommand?.Execute(null);
 
-            Container.BackgroundColor = HighlightBackgroundColor;
-            ButtonText.TextColor = HighlightForegroundColor;
-            ColorIcon(HighlightForegroundColor);
+                Container.BackgroundColor = HighlightBackgroundColor;
+                ButtonText.TextColor = HighlightForegroundColor;
+                ColorIcon(HighlightForegroundColor);
+            }
         }
 
         void TouchUp()
         {
-            TouchedUp?.Invoke(this, null);
-            TouchedUpCommand?.Execute(null);
-            Clicked?.Invoke(this, null);
-            ClickedCommand?.Execute(null);
+            if (isEnabled)
+            {
+                TouchedUp?.Invoke(this, null);
+                TouchedUpCommand?.Execute(null);
+                Clicked?.Invoke(this, null);
+                ClickedCommand?.Execute(null);
 
-            Container.BackgroundColor = BackgroundColor;
-            ButtonText.TextColor = ForegroundColor;
-            ColorIcon(ForegroundColor);
+                Container.BackgroundColor = BackgroundColor;
+                ButtonText.TextColor = ForegroundColor;
+                ColorIcon(ForegroundColor);
+            }
         }
 
         void ColorIcon(Color color)
