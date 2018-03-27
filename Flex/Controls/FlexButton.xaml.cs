@@ -21,6 +21,13 @@ namespace Flex.Controls
             set { SetValue(BackgroundColorProperty, value); }
         }
 
+        public static readonly new BindableProperty OrientationProperty = BindableProperty.Create(nameof(Orientation), typeof(Model.Orientation), typeof(FlexButton), Model.Orientation.Left, propertyChanged: OnOrientationChanged);
+        public new Model.Orientation Orientation
+        {
+            get { return (Model.Orientation)GetValue(OrientationProperty); }
+            set { SetValue(OrientationProperty, value); }
+        }
+
         // TODO: Border Color does not wokr on Android at the moment due to a Xamarin.Forms bug
         //public static readonly BindableProperty BorderColorProperty = BindableProperty.Create(nameof(BorderColor), typeof(Color), typeof(FlexButton), Color.Red);
         //public Color BorderColor
@@ -126,6 +133,12 @@ namespace Flex.Controls
             flexButton.ColorIcon(flexButton.ForegroundColor);
         }
 
+        private static void OnOrientationChanged(BindableObject bindable, object oldValue, object newValue)
+        {
+            var flexButton = ((FlexButton)bindable);
+            flexButton.SetButtonMode();
+        }
+
         private void OnClickCommandPropertyChanged()
         {
             if (ClickedCommand != null)
@@ -191,8 +204,27 @@ namespace Flex.Controls
                     break;
                 case ButtonMode.IconWithText:
                     ContainerContent.HorizontalOptions = LayoutOptions.Center;
-                    Grid.SetColumnSpan(ButtonIcon, 1);
-                    Grid.SetColumn(ButtonText, 1);
+
+                    switch (Orientation)
+                    {
+                        case Model.Orientation.Left:
+                            FirstColumn.Width = new GridLength(1, GridUnitType.Star);
+                            SecondColumn.Width = GridLength.Auto;
+
+                            Grid.SetColumn(ButtonIcon, 0);
+                            Grid.SetColumnSpan(ButtonIcon, 1);
+                            Grid.SetColumn(ButtonText, 1);
+                            break;
+                        case Model.Orientation.Rigth:
+                            FirstColumn.Width = GridLength.Auto;
+                            SecondColumn.Width = new GridLength(1, GridUnitType.Star);
+
+                            Grid.SetColumn(ButtonIcon, 1);
+                            Grid.SetColumnSpan(ButtonIcon, 1);
+                            Grid.SetColumn(ButtonText, 0);
+                            break;
+                    }
+
                     ButtonText.IsVisible = true;
                     break;
                 case ButtonMode.TextOnly:

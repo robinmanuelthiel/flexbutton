@@ -61,7 +61,7 @@
                     HighlightBackgroundColor="#8EA4D2"/>
             </StackLayout>
 
-            <!-- Wide Button -->
+            <!-- Wide Button Icon Left -->
             <flex:FlexButton
                 x:Name="WideButton"
                 ClickedCommand="{Binding ButtonClickedCommand}"
@@ -75,6 +75,22 @@
                 HighlightForegroundColor="#49516F"
                 BackgroundColor="#6279B8"
                 HighlightBackgroundColor="#8EA4D2"/>
+
+            <!-- Wide Button Icon Right -->
+            <flex:FlexButton
+                x:Name="WideButton2"
+                Orientation="Rigth"
+                ClickedCommand="{Binding ButtonClickedCommand}"
+                HorizontalOptions="Center"
+                WidthRequest="300"
+                HeightRequest="76"
+                CornerRadius="20"
+                Icon="lightbulb.png"
+                Text="Icon and Text"
+                ForegroundColor="#ffffff"
+                HighlightForegroundColor="#49516F"
+                BackgroundColor="#6279B8"
+                HighlightBackgroundColor="#8EA4D2"/>            
 
             <!-- Wide Text -->
             <flex:FlexButton

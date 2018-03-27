@@ -20,5 +20,6 @@
         <Folder Include="Controls\" />
         <Folder Include="Effects\" />
         <Folder Include="Extensions\" />
+        <Folder Include="Model\" />
     </ItemGroup>
 </Project>
