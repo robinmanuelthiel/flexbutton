@@ -20,5 +20,16 @@ namespace Flex.Demo
         {
             ButtonStatus.Text = "Released";
         }
+
+        void ToggleIsEnabled_Clicked(object sender, EventArgs e)
+        {
+            ((FlexDemoPageViewModel)BindingContext).IsButtonEnabled = !((FlexDemoPageViewModel)BindingContext).IsButtonEnabled;
+            ((FlexDemoPageViewModel)BindingContext).ButtonClickedCommand.ChangeCanExecute();
+        }
+
+        void ButtonWithoutBackground_Clicked(object sender, EventArgs e)
+        {
+            DisplayAlert("Hello from Code Behind", "The Flex Button rocks!", "Yeah");
+        }
     }
 }

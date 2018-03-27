@@ -10,7 +10,6 @@ namespace Flex.Controls
     public partial class FlexButton : ContentView
     {
         ButtonMode mode;
-        private bool isEnabled = true;
 
         #region Bindable Properties
 
@@ -21,7 +20,7 @@ namespace Flex.Controls
             set { SetValue(BackgroundColorProperty, value); }
         }
 
-        // TODO: Border Color does not wokr on Android at the moment due to a Xamarin.Forms bug
+        // TODO: Border Color does not work on Android at the moment due to a Xamarin.Forms bug
         //public static readonly BindableProperty BorderColorProperty = BindableProperty.Create(nameof(BorderColor), typeof(Color), typeof(FlexButton), Color.Red);
         //public Color BorderColor
         //{
@@ -36,7 +35,7 @@ namespace Flex.Controls
             set { SetValue(HighlightBackgroundColorProperty, value); }
         }
 
-        public static readonly BindableProperty ForegroundColorProperty = BindableProperty.Create(nameof(ForegroundColor), typeof(Color), typeof(FlexButton), Color.White, propertyChanged: IconOrForegroundColorPropertyChanged);
+        public static readonly BindableProperty ForegroundColorProperty = BindableProperty.Create(nameof(ForegroundColor), typeof(Color), typeof(FlexButton), Color.White);
         public Color ForegroundColor
         {
             get { return (Color)GetValue(ForegroundColorProperty); }
@@ -57,7 +56,7 @@ namespace Flex.Controls
             set { SetValue(FontSizeProperty, value); }
         }
 
-        public static readonly BindableProperty TextProperty = BindableProperty.Create(nameof(Text), typeof(string), typeof(FlexButton), string.Empty, propertyChanged: TextOrOrientationChanged);
+        public static readonly BindableProperty TextProperty = BindableProperty.Create(nameof(Text), typeof(string), typeof(FlexButton), string.Empty);
         public string Text
         {
             get { return (string)GetValue(TextProperty); }
@@ -71,20 +70,14 @@ namespace Flex.Controls
             set { SetValue(CornerRadiusProperty, value); }
         }
 
-        public static readonly new BindableProperty PaddingProperty =
-            BindableProperty.Create(
-                nameof(Padding),
-                typeof(Thickness),
-                typeof(FlexButton),
-                new Thickness(-1));
-
+        public static readonly new BindableProperty PaddingProperty = BindableProperty.Create(nameof(Padding), typeof(Thickness), typeof(FlexButton), new Thickness(-1));
         public new Thickness Padding
         {
             get { return (Thickness)GetValue(PaddingProperty); }
             set { SetValue(PaddingProperty, value); }
         }
 
-        public static readonly BindableProperty IconProperty = BindableProperty.Create(nameof(Icon), typeof(ImageSource), typeof(FlexButton), null, propertyChanged: IconOrForegroundColorPropertyChanged);
+        public static readonly BindableProperty IconProperty = BindableProperty.Create(nameof(Icon), typeof(ImageSource), typeof(FlexButton), null);
         public ImageSource Icon
         {
             get { return (ImageSource)GetValue(IconProperty); }
@@ -95,8 +88,7 @@ namespace Flex.Controls
 
         #region Commands
 
-        public static readonly BindableProperty ClickedCommandProperty = BindableProperty.Create(nameof(ClickedCommand), typeof(ICommand), typeof(FlexButton), null, propertyChanged: (bo, o, n) => ((FlexButton)bo).OnClickCommandPropertyChanged());
-
+        public static readonly BindableProperty ClickedCommandProperty = BindableProperty.Create(nameof(ClickedCommand), typeof(ICommand), typeof(FlexButton), null, propertyChanged: (bindable, oldValue, newValue) => ((FlexButton)bindable).OnClickOrTouchedDownCommandPropertyChanged());
         public ICommand ClickedCommand
         {
             get { return (ICommand)GetValue(ClickedCommandProperty); }
@@ -119,54 +111,65 @@ namespace Flex.Controls
 
         #endregion
 
-        static void IconOrForegroundColorPropertyChanged(BindableObject bindable, object oldValue, object newValue)
+        #region Events
+
+        protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
-            var flexButton = ((FlexButton)bindable);
-            flexButton.SetButtonMode();
-            flexButton.ColorIcon(flexButton.ForegroundColor);
+            // Set Opacity based on IsEnabled
+            if (propertyName == IsEnabledProperty.PropertyName)
+            {
+                Opacity = IsEnabled ? 1 : 0.5;
+            }
+            else if (propertyName == IconProperty.PropertyName || propertyName == ForegroundColorProperty.PropertyName)
+            {
+                SetButtonMode();
+                ColorIcon(ForegroundColor);
+            }
+            else if (propertyName == TextProperty.PropertyName)
+            {
+                SetButtonMode();
+            }
+
+            base.OnPropertyChanged(propertyName);
         }
 
-        private void OnClickCommandPropertyChanged()
+        void OnClickOrTouchedDownCommandPropertyChanged()
         {
             if (ClickedCommand != null)
-            {
                 ClickedCommand.CanExecuteChanged += CommandCanExecuteChanged;
-                CommandCanExecuteChanged(this, EventArgs.Empty);
-            }
+
+            if (TouchedDownCommand != null)
+                TouchedDownCommand.CanExecuteChanged += CommandCanExecuteChanged;
+
+            CommandCanExecuteChanged(this, EventArgs.Empty);
+        }
+
+        void CommandCanExecuteChanged(object sender, EventArgs e)
+        {
+            // Define IsEnabled state
+            var canExecuteClick = ClickedCommand?.CanExecute(null);
+            var canExecuteTouchedDown = TouchedDownCommand?.CanExecute(null);
+
+            if (canExecuteClick != null && canExecuteTouchedDown != null)
+                IsEnabled = canExecuteClick == true && canExecuteTouchedDown == true;
             else
-            {
-                isEnabled = true;
-            }
+                IsEnabled = canExecuteClick == true || canExecuteTouchedDown == true;
         }
 
-        private void CommandCanExecuteChanged(object sender, EventArgs e)
+        protected override void OnPropertyChanging([CallerMemberName] string propertyName = null)
         {
-            ICommand cmd = ClickedCommand;
-            if (cmd != null)
-            {
-                isEnabled = cmd.CanExecute(null);
-            }
-        }
-
-        static void TextOrOrientationChanged(BindableObject bindable, object oldValue, object newValue)
-        {
-            var flexButton = ((FlexButton)bindable);
-            flexButton.SetButtonMode();
-        }
-
-		protected override void OnPropertyChanging([CallerMemberName] string propertyName = null)
-		{
-            if (propertyName == ClickedCommandProperty.PropertyName)
-            {
-                ICommand cmd = ClickedCommand;
-                if (cmd != null)
-                    cmd.CanExecuteChanged -= CommandCanExecuteChanged;
-            }
+            // Unsubscribe from command events when Command changes
+            if (propertyName == ClickedCommandProperty.PropertyName && ClickedCommand != null)
+                ClickedCommand.CanExecuteChanged -= CommandCanExecuteChanged;
+            if (propertyName == TouchedDownCommandProperty.PropertyName && TouchedDownCommandProperty != null)
+                TouchedDownCommand.CanExecuteChanged -= CommandCanExecuteChanged;
 
             base.OnPropertyChanging(propertyName);
-		}
+        }
 
-		private void SetButtonMode()
+        #endregion
+
+        void SetButtonMode()
         {
             if (Icon != null && Text.Length > 0)
             {
@@ -188,18 +191,24 @@ namespace Flex.Controls
                     Grid.SetColumnSpan(ButtonIcon, 2);
                     Grid.SetColumn(ButtonText, 1);
                     ButtonText.IsVisible = false;
+                    if (Padding.Equals(new Thickness(-1)))
+                        Padding = new Thickness(HeightRequest * .3, HeightRequest * .3);
                     break;
                 case ButtonMode.IconWithText:
                     ContainerContent.HorizontalOptions = LayoutOptions.Center;
                     Grid.SetColumnSpan(ButtonIcon, 1);
                     Grid.SetColumn(ButtonText, 1);
                     ButtonText.IsVisible = true;
+                    if (Padding.Equals(new Thickness(-1)))
+                        Padding = new Thickness(HeightRequest * .1, HeightRequest * .3);
                     break;
                 case ButtonMode.TextOnly:
                     ContainerContent.HorizontalOptions = LayoutOptions.Center;
                     Grid.SetColumnSpan(ButtonIcon, 1);
                     Grid.SetColumn(ButtonText, 0);
                     ButtonText.IsVisible = true;
+                    if (Padding.Equals(new Thickness(-1)))
+                        Padding = new Thickness(0);
                     break;
             }
         }
@@ -214,38 +223,11 @@ namespace Flex.Controls
 
             TouchRecognizer.TouchDown += TouchDown;
             TouchRecognizer.TouchUp += TouchUp;
-            SizeChanged += FlexButton_SizeChanged;
-
-            ButtonIcon.SizeChanged += ButtonIcon_SizeChanged;
-        }
-
-        void ButtonIcon_SizeChanged(object sender, EventArgs e)
-        {
-            ColorIcon((ForegroundColor));
-        }
-
-        void FlexButton_SizeChanged(object sender, EventArgs e)
-        {
-            // Set Padding to 30% of with / height by default if no specific padding is set
-            if (Padding.Equals(new Thickness(-1)))
-            {
-                switch (mode)
-                {
-                    default:
-                    case ButtonMode.IconOnly:
-                        Padding = new Thickness(WidthRequest * .3, HeightRequest * .3);
-                        break;
-                    case ButtonMode.IconWithText:
-                    case ButtonMode.TextOnly:
-                        Padding = new Thickness(WidthRequest * .1, HeightRequest * .3);
-                        break;
-                }
-            }
         }
 
         void TouchDown()
         {
-            if (isEnabled)
+            if (IsEnabled)
             {
                 TouchedDown?.Invoke(this, null);
                 TouchedDownCommand?.Execute(null);
@@ -258,7 +240,7 @@ namespace Flex.Controls
 
         void TouchUp()
         {
-            if (isEnabled)
+            if (IsEnabled)
             {
                 TouchedUp?.Invoke(this, null);
                 TouchedUpCommand?.Execute(null);
