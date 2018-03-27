@@ -79,7 +79,7 @@
             <!-- Wide Button Icon Right -->
             <flex:FlexButton
                 x:Name="WideButton2"
-                Orientation="Rigth"
+                IconOrientation="Rigth"
                 ClickedCommand="{Binding ButtonClickedCommand}"
                 HorizontalOptions="Center"
                 WidthRequest="300"

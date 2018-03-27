@@ -21,11 +21,11 @@ namespace Flex.Controls
             set { SetValue(BackgroundColorProperty, value); }
         }
 
-        public static readonly new BindableProperty OrientationProperty = BindableProperty.Create(nameof(Orientation), typeof(Model.Orientation), typeof(FlexButton), Model.Orientation.Left, propertyChanged: OnOrientationChanged);
-        public new Model.Orientation Orientation
+        public static readonly new BindableProperty IconOrientationProperty = BindableProperty.Create(nameof(IconOrientation), typeof(Model.IconOrientation), typeof(FlexButton), Model.IconOrientation.Left, propertyChanged: OnIconOrientationChanged);
+        public new Model.IconOrientation IconOrientation
         {
-            get { return (Model.Orientation)GetValue(OrientationProperty); }
-            set { SetValue(OrientationProperty, value); }
+            get { return (Model.IconOrientation)GetValue(IconOrientationProperty); }
+            set { SetValue(IconOrientationProperty, value); }
         }
 
         // TODO: Border Color does not wokr on Android at the moment due to a Xamarin.Forms bug
@@ -133,7 +133,7 @@ namespace Flex.Controls
             flexButton.ColorIcon(flexButton.ForegroundColor);
         }
 
-        private static void OnOrientationChanged(BindableObject bindable, object oldValue, object newValue)
+        private static void OnIconOrientationChanged(BindableObject bindable, object oldValue, object newValue)
         {
             var flexButton = ((FlexButton)bindable);
             flexButton.SetButtonMode();
@@ -205,9 +205,9 @@ namespace Flex.Controls
                 case ButtonMode.IconWithText:
                     ContainerContent.HorizontalOptions = LayoutOptions.Center;
 
-                    switch (Orientation)
+                    switch (IconOrientation)
                     {
-                        case Model.Orientation.Left:
+                        case Model.IconOrientation.Left:
                             FirstColumn.Width = new GridLength(1, GridUnitType.Star);
                             SecondColumn.Width = GridLength.Auto;
 
@@ -215,7 +215,7 @@ namespace Flex.Controls
                             Grid.SetColumnSpan(ButtonIcon, 1);
                             Grid.SetColumn(ButtonText, 1);
                             break;
-                        case Model.Orientation.Rigth:
+                        case Model.IconOrientation.Rigth:
                             FirstColumn.Width = GridLength.Auto;
                             SecondColumn.Width = new GridLength(1, GridUnitType.Star);
 

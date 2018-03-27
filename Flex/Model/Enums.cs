@@ -2,7 +2,7 @@
 
 namespace Flex.Model
 {
-    public enum Orientation
+    public enum IconOrientation
     {
         Left,
         Rigth
