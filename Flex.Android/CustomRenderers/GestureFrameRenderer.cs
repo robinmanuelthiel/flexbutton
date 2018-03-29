@@ -43,9 +43,13 @@ namespace Flex.Android.CustomRenderers
                 //Calculate the scaled radius and border size
                 var cornerRadius = ScaleToCanvasSize(Element.CornerRadius);
                 var strokeWidth = ScaleToCanvasSize(flexButton.BorderSize);
+                //We have to adjust the path because the stroke will get drawn in both directions from the path, 
+                //which would result in the stroke exceeding the view
+                var strokePadding = strokeWidth / 2;
+                cornerRadius -= strokePadding;
 
                 //Create the rect and paint
-                var rect = new RectF(0, 0, canvas.Width, canvas.Height);
+                var rect = new RectF(strokePadding, strokePadding, canvas.Width - strokePadding, canvas.Height - strokePadding);
                 var paint = new Paint(PaintFlags.AntiAlias)
                 {
                     Color = flexButton.BorderColor.ToAndroid(),
