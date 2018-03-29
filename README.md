@@ -75,4 +75,4 @@ Take a look a the [Demo Project](/Flex.Demo) in this repository for a full sampl
 |------------------|---------|
 | `TouchedDown` | Triggered, when button got pressed down |
 | `TouchedUp` | Triggered, when button got released |
-| `Clicked` | Same as `TouchedUP` |
+| `Clicked` | Same as `TouchedUp` |
