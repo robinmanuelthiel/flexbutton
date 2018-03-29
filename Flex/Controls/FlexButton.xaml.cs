@@ -26,14 +26,20 @@ namespace Flex.Controls
             get { return (IconOrientation)GetValue(IconOrientationProperty); }
             set { SetValue(IconOrientationProperty, value); }
         }
+         
+        public static readonly BindableProperty BorderColorProperty = BindableProperty.Create(nameof(BorderColor), typeof(Color), typeof(FlexButton), Color.Accent);
+        public Color BorderColor
+        {
+            get { return (Color)GetValue(BorderColorProperty); }
+            set { SetValue(BorderColorProperty, value); }
+        }
 
-        // TODO: Border Color does not wokr on Android at the moment due to a Xamarin.Forms bug
-        //public static readonly BindableProperty BorderColorProperty = BindableProperty.Create(nameof(BorderColor), typeof(Color), typeof(FlexButton), Color.Red);
-        //public Color BorderColor
-        //{
-        //    get { return (Color)GetValue(BorderColorProperty); }
-        //    set { SetValue(BorderColorProperty, value); }
-        //}
+        public static readonly BindableProperty BorderSizeProperty = BindableProperty.Create(nameof(BorderSize), typeof(double), typeof(FlexButton), 0.0);
+        public double BorderSize
+        {
+            get { return (double)GetValue(BorderSizeProperty); }
+            set { SetValue(BorderSizeProperty, value); }
+        }
 
         public static readonly BindableProperty HighlightBackgroundColorProperty = BindableProperty.Create(nameof(HighlightBackgroundColor), typeof(Color), typeof(FlexButton), Color.Transparent);
         public Color HighlightBackgroundColor

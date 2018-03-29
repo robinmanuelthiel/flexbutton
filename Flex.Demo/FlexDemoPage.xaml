@@ -37,7 +37,9 @@
             <!-- Small Buttons -->
             <Label Text="Small Buttons" HorizontalTextAlignment="Center" HorizontalOptions="Center"/>
             <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
-                <flex:FlexButton                    
+                <flex:FlexButton    
+                    BorderSize="1"
+                    BorderColor="Blue"
                     WidthRequest="40"
                     HeightRequest="40"
                     CornerRadius="20"
@@ -48,6 +50,7 @@
                     HighlightBackgroundColor="#8EA4D2"/>
 
                 <flex:FlexButton
+                    BorderSize="2"
                     WidthRequest="140"
                     HeightRequest="40"
                     CornerRadius="20"
@@ -58,6 +61,8 @@
                     HighlightBackgroundColor="#8EA4D2"/>
 
                 <flex:FlexButton
+                    BorderSize="3"
+                    BorderColor="White"
                     WidthRequest="40"
                     HeightRequest="40"
                     CornerRadius="20"
