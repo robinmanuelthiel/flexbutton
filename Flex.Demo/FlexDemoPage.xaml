@@ -7,7 +7,7 @@
     xmlns:flex="clr-namespace:Flex.Controls;assembly=Flex">
 
     <ScrollView>
-        <StackLayout Spacing="20" Margin="0,40,0,0"> 
+        <StackLayout Spacing="10" Margin="0,10,0,0"> 
             
            <!-- Standard Button -->    
            <flex:FlexButton
@@ -24,13 +24,14 @@
                 TouchedDown="DemoButton_TouchedDown"
                 TouchedUp="DemoButton_TouchedUp"/>
             
-            <Label x:Name="ButtonStatus" Text="Untouched" HorizontalTextAlignment="Center" HorizontalOptions="Center"/>
+            <Label x:Name="ButtonStatus" Text="Untouched" FontSize="Small" TextColor="Gray" HorizontalTextAlignment="Center" HorizontalOptions="Center"/>
 
             <BoxView BackgroundColor="#eee" HeightRequest="1" Margin="0,20"/>
             
-            <!-- Small Button -->
+            <!-- Small Buttons -->
+            <Label Text="Small Buttons" HorizontalTextAlignment="Center" HorizontalOptions="Center"/>
             <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
-                <flex:FlexButton                
+                <flex:FlexButton                    
                     WidthRequest="40"
                     HeightRequest="40"
                     CornerRadius="20"
@@ -41,10 +42,10 @@
                     HighlightBackgroundColor="#8EA4D2"/>
 
                 <flex:FlexButton
-                    WidthRequest="40"
+                    WidthRequest="140"
                     HeightRequest="40"
                     CornerRadius="20"
-                    Icon="lightbulb.png"
+                    Text="Pill Button"
                     ForegroundColor="#ffffff"
                     HighlightForegroundColor="#49516F"
                     BackgroundColor="#6279B8"
@@ -54,6 +55,7 @@
                     WidthRequest="40"
                     HeightRequest="40"
                     CornerRadius="20"
+                    IsEnabled="false"
                     Icon="lightbulb.png"
                     ForegroundColor="#ffffff"
                     HighlightForegroundColor="#49516F"
@@ -61,20 +63,29 @@
                     HighlightBackgroundColor="#8EA4D2"/>
             </StackLayout>
 
+
             <!-- Wide Button Icon Left -->
+
+            <BoxView BackgroundColor="#eee" HeightRequest="1" Margin="0,20"/>
+
+            <!-- Wide Button with Icon-->
+            <Label Text="Wide Button with Icon" HorizontalTextAlignment="Center" HorizontalOptions="Center"/>
+            <Button Text="Toggle IsEnabled" Clicked="ToggleIsEnabled_Clicked" FontSize="Micro" TextColor="Gray" HeightRequest="20" Margin="0,-10,0,0" />
+            
             <flex:FlexButton
                 x:Name="WideButton"
                 ClickedCommand="{Binding ButtonClickedCommand}"
                 HorizontalOptions="Center"
                 WidthRequest="300"
                 HeightRequest="76"
-                CornerRadius="20"
+                CornerRadius="22"
                 Icon="lightbulb.png"
                 Text="Icon and Text"
                 ForegroundColor="#ffffff"
                 HighlightForegroundColor="#49516F"
                 BackgroundColor="#6279B8"
                 HighlightBackgroundColor="#8EA4D2"/>
+
 
             <!-- Wide Button Icon Right -->
             <flex:FlexButton
@@ -104,9 +115,15 @@
                 BackgroundColor="#6279B8"
                 HighlightBackgroundColor="#8EA4D2"/>
 
+
             
+            <BoxView BackgroundColor="#eee" HeightRequest="1" Margin="0,10"/>
+
             <!-- Button without background -->
+            <Label Text="Round Button without Background" HorizontalTextAlignment="Center" HorizontalOptions="Center"/>
+            
             <flex:FlexButton
+                Clicked="ButtonWithoutBackground_Clicked"
                 HorizontalOptions="Center"
                 WidthRequest="76"
                 HeightRequest="76"
@@ -116,6 +133,22 @@
                 HighlightForegroundColor="#ffffff"
                 BackgroundColor="Transparent"
                 HighlightBackgroundColor="#6279B8"/>
+
+            <BoxView BackgroundColor="#eee" HeightRequest="1" Margin="0,10"/>
+            
+            <!-- Wide Text -->
+            <Label Text="Button with multi-line text" HorizontalTextAlignment="Center" HorizontalOptions="Center"/>
+            
+            <flex:FlexButton
+                HorizontalOptions="Center"
+                Text="Button with larger text only lorem ipsum dolor sit amet bla bla bla"
+                Margin="20,0"
+                Padding="20"
+                FontSize="24"
+                ForegroundColor="#ffffff"
+                HighlightForegroundColor="#49516F"
+                BackgroundColor="#6279B8"
+                HighlightBackgroundColor="#8EA4D2"/>
         </StackLayout>
     </ScrollView>
 </ContentPage>
