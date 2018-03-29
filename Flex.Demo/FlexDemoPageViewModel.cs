@@ -11,7 +11,7 @@ namespace Flex.Demo
         Command buttonClickedCommand;
         public Command ButtonClickedCommand => buttonClickedCommand ?? (buttonClickedCommand = new Command(() =>
         {
-            Application.Current.MainPage.DisplayAlert("Hello from the View Model", "The Flex Button rocks!", "Yeah");
+            //Application.Current.MainPage.DisplayAlert("Hello from the View Model", "The Flex Button rocks!", "Yeah");
         }, () => IsButtonEnabled));
     }
 }

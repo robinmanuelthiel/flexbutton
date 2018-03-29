@@ -20,10 +20,10 @@ namespace Flex.Controls
             set { SetValue(BackgroundColorProperty, value); }
         }
 
-        public static readonly new BindableProperty IconOrientationProperty = BindableProperty.Create(nameof(IconOrientation), typeof(Model.IconOrientation), typeof(FlexButton), Model.IconOrientation.Left, propertyChanged: OnIconOrientationChanged);
-        public new Model.IconOrientation IconOrientation
+        public static readonly BindableProperty IconOrientationProperty = BindableProperty.Create(nameof(IconOrientation), typeof(IconOrientation), typeof(FlexButton), IconOrientation.Left);
+        public IconOrientation IconOrientation
         {
-            get { return (Model.IconOrientation)GetValue(IconOrientationProperty); }
+            get { return (IconOrientation)GetValue(IconOrientationProperty); }
             set { SetValue(IconOrientationProperty, value); }
         }
 
@@ -120,12 +120,6 @@ namespace Flex.Controls
 
         #region Events
 
-        private static void OnIconOrientationChanged(BindableObject bindable, object oldValue, object newValue)
-        {
-            var flexButton = ((FlexButton)bindable);
-            flexButton.SetButtonMode();
-        }
-
         protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             // Set Opacity based on IsEnabled
@@ -138,7 +132,8 @@ namespace Flex.Controls
                 SetButtonMode();
                 ColorIcon(ForegroundColor);
             }
-            else if (propertyName == TextProperty.PropertyName)
+            else if (propertyName == TextProperty.PropertyName ||
+                     propertyName == IconOrientationProperty.PropertyName)
             {
                 SetButtonMode();
             }
@@ -207,12 +202,13 @@ namespace Flex.Controls
                     if (Padding.Equals(new Thickness(-1)))
                         Padding = new Thickness(HeightRequest * .3, HeightRequest * .3);
                     break;
+
                 case ButtonMode.IconWithText:
                     ContainerContent.HorizontalOptions = LayoutOptions.Center;
 
                     switch (IconOrientation)
                     {
-                        case Model.IconOrientation.Left:
+                        case IconOrientation.Left:
                             FirstColumn.Width = new GridLength(1, GridUnitType.Star);
                             SecondColumn.Width = GridLength.Auto;
 
@@ -220,7 +216,8 @@ namespace Flex.Controls
                             Grid.SetColumnSpan(ButtonIcon, 1);
                             Grid.SetColumn(ButtonText, 1);
                             break;
-                        case Model.IconOrientation.Rigth:
+
+                        case IconOrientation.Right:
                             FirstColumn.Width = GridLength.Auto;
                             SecondColumn.Width = new GridLength(1, GridUnitType.Star);
 
@@ -234,6 +231,7 @@ namespace Flex.Controls
                     if (Padding.Equals(new Thickness(-1)))
                         Padding = new Thickness(HeightRequest * .1, HeightRequest * .3);
                     break;
+
                 case ButtonMode.TextOnly:
                     ContainerContent.HorizontalOptions = LayoutOptions.Center;
                     Grid.SetColumnSpan(ButtonIcon, 1);

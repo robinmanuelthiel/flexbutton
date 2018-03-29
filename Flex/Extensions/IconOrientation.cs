@@ -1,10 +1,8 @@
-﻿using System;
-
-namespace Flex.Model
+﻿namespace Flex.Extensions
 {
     public enum IconOrientation
     {
         Left,
-        Rigth
+        Right
     }
 }
