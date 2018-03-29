@@ -63,6 +63,9 @@
                     HighlightBackgroundColor="#8EA4D2"/>
             </StackLayout>
 
+
+            <!-- Wide Button Icon Left -->
+
             <BoxView BackgroundColor="#eee" HeightRequest="1" Margin="0,20"/>
 
             <!-- Wide Button with Icon-->
@@ -82,6 +85,37 @@
                 HighlightForegroundColor="#49516F"
                 BackgroundColor="#6279B8"
                 HighlightBackgroundColor="#8EA4D2"/>
+
+
+            <!-- Wide Button Icon Right -->
+            <flex:FlexButton
+                x:Name="WideButton2"
+                IconOrientation="Rigth"
+                ClickedCommand="{Binding ButtonClickedCommand}"
+                HorizontalOptions="Center"
+                WidthRequest="300"
+                HeightRequest="76"
+                CornerRadius="20"
+                Icon="lightbulb.png"
+                Text="Icon and Text"
+                ForegroundColor="#ffffff"
+                HighlightForegroundColor="#49516F"
+                BackgroundColor="#6279B8"
+                HighlightBackgroundColor="#8EA4D2"/>            
+
+            <!-- Wide Text -->
+            <flex:FlexButton
+                HorizontalOptions="Center"
+                Text="Button with larger text only lorem ipsum dolor sit amet bla bla bla"
+                Margin="20,0"
+                Padding="20"
+                FontSize="24"
+                ForegroundColor="#ffffff"
+                HighlightForegroundColor="#49516F"
+                BackgroundColor="#6279B8"
+                HighlightBackgroundColor="#8EA4D2"/>
+
+
             
             <BoxView BackgroundColor="#eee" HeightRequest="1" Margin="0,10"/>
 

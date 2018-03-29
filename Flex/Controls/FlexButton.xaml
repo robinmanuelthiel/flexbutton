@@ -38,8 +38,8 @@
                 </Grid.RowDefinitions>
 
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition x:Name="FirstColumn" Width="*" />
+                    <ColumnDefinition x:Name="SecondColumn" Width="Auto" />
                 </Grid.ColumnDefinitions>
             
                 <Image 

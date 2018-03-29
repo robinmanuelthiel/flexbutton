@@ -20,7 +20,14 @@ namespace Flex.Controls
             set { SetValue(BackgroundColorProperty, value); }
         }
 
-        // TODO: Border Color does not work on Android at the moment due to a Xamarin.Forms bug
+        public static readonly new BindableProperty IconOrientationProperty = BindableProperty.Create(nameof(IconOrientation), typeof(Model.IconOrientation), typeof(FlexButton), Model.IconOrientation.Left, propertyChanged: OnIconOrientationChanged);
+        public new Model.IconOrientation IconOrientation
+        {
+            get { return (Model.IconOrientation)GetValue(IconOrientationProperty); }
+            set { SetValue(IconOrientationProperty, value); }
+        }
+
+        // TODO: Border Color does not wokr on Android at the moment due to a Xamarin.Forms bug
         //public static readonly BindableProperty BorderColorProperty = BindableProperty.Create(nameof(BorderColor), typeof(Color), typeof(FlexButton), Color.Red);
         //public Color BorderColor
         //{
@@ -113,6 +120,12 @@ namespace Flex.Controls
 
         #region Events
 
+        private static void OnIconOrientationChanged(BindableObject bindable, object oldValue, object newValue)
+        {
+            var flexButton = ((FlexButton)bindable);
+            flexButton.SetButtonMode();
+        }
+
         protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             // Set Opacity based on IsEnabled
@@ -196,8 +209,27 @@ namespace Flex.Controls
                     break;
                 case ButtonMode.IconWithText:
                     ContainerContent.HorizontalOptions = LayoutOptions.Center;
-                    Grid.SetColumnSpan(ButtonIcon, 1);
-                    Grid.SetColumn(ButtonText, 1);
+
+                    switch (IconOrientation)
+                    {
+                        case Model.IconOrientation.Left:
+                            FirstColumn.Width = new GridLength(1, GridUnitType.Star);
+                            SecondColumn.Width = GridLength.Auto;
+
+                            Grid.SetColumn(ButtonIcon, 0);
+                            Grid.SetColumnSpan(ButtonIcon, 1);
+                            Grid.SetColumn(ButtonText, 1);
+                            break;
+                        case Model.IconOrientation.Rigth:
+                            FirstColumn.Width = GridLength.Auto;
+                            SecondColumn.Width = new GridLength(1, GridUnitType.Star);
+
+                            Grid.SetColumn(ButtonIcon, 1);
+                            Grid.SetColumnSpan(ButtonIcon, 1);
+                            Grid.SetColumn(ButtonText, 0);
+                            break;
+                    }
+
                     ButtonText.IsVisible = true;
                     if (Padding.Equals(new Thickness(-1)))
                         Padding = new Thickness(HeightRequest * .1, HeightRequest * .3);
