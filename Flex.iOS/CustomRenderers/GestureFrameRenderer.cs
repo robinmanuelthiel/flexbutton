@@ -4,6 +4,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
 using Flex.Extensions;
 using Flex.iOS.CustomRenderers;
+using System.ComponentModel;
 
 [assembly: ExportRenderer(typeof(Frame), typeof(GestureFrameRenderer))]
 namespace Flex.iOS.CustomRenderers
@@ -16,12 +17,24 @@ namespace Flex.iOS.CustomRenderers
         {
         }
 
+        protected override void OnElementPropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            base.OnElementPropertyChanged(sender, e);
+
+            // Fix Xamarin.Forms Frame BackgroundColor Bug (https://github.com/xamarin/Xamarin.Forms/issues/2218)
+            if (e.PropertyName == nameof(Element.BackgroundColor))
+                this.Layer.BackgroundColor = Element.BackgroundColor.ToUIColor().CGColor;
+        }
+
         protected override void OnElementChanged(ElementChangedEventArgs<Frame> e)
         {
             base.OnElementChanged(e);
 
             if (e.OldElement == null)
             {
+                // Fix Xamarin.Forms Frame BackgroundColor Bug (https://github.com/xamarin/Xamarin.Forms/issues/2218)
+                this.Layer.BackgroundColor = e.NewElement.BackgroundColor.ToUIColor().CGColor;
+
                 if (!e.NewElement.GestureRecognizers.Any())
                     return;
 
