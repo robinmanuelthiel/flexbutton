@@ -10,7 +10,8 @@ Flexible button control for Xamarin.Forms with events for different states, colo
 - Icons with adjustable size
 - Color overlays for background and icon (normal and pressed state)
 - Events for button press and release
-- Round button (corner radius)
+- Round button and Pill butto (using corner radius)
+- Icon only, text only or mixed mode
 
 ## How to use
 
