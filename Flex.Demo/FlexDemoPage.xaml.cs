@@ -30,12 +30,12 @@ namespace Flex.Demo
 
         void ToggleIconOrientation_Clicked(object sender, EventArgs e)
         {
-            //WideButton.IconOrientation = WideButton.IconOrientation == IconOrientation.Left ? IconOrientation.Right : IconOrientation.Left;
+            WideButton.IconOrientation = WideButton.IconOrientation == IconOrientation.Left ? IconOrientation.Right : IconOrientation.Left;
         }
 
         void ButtonWithoutBackground_Clicked(object sender, EventArgs e)
         {
-            //DisplayAlert("Hello from Code Behind", "The Flex Button rocks!", "Yeah");
+            DisplayAlert("Hello from Code Behind", "The Flex Button rocks!", "Yeah");
         }
     }
 }
