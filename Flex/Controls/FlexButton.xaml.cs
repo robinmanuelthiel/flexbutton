@@ -10,6 +10,7 @@ namespace Flex.Controls
     public partial class FlexButton : ContentView
     {
         ButtonMode mode;
+        bool userChangedPadding;
 
         #region Bindable Properties
 
@@ -122,9 +123,13 @@ namespace Flex.Controls
 
         protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
-            // Set Opacity based on IsEnabled
-            if (propertyName == IsEnabledProperty.PropertyName)
+            if (propertyName == PaddingProperty.PropertyName)
             {
+                userChangedPadding = true;
+            }
+            else if (propertyName == IsEnabledProperty.PropertyName)
+            {
+                // Set Opacity based on IsEnabled
                 Opacity = IsEnabled ? 1 : 0.5;
             }
             else if (propertyName == IconProperty.PropertyName || propertyName == ForegroundColorProperty.PropertyName)
@@ -195,23 +200,33 @@ namespace Flex.Controls
             switch (mode)
             {
                 case ButtonMode.IconOnly:
+
+                    // Configure Container
                     ContainerContent.HorizontalOptions = LayoutOptions.Fill;
                     Grid.SetColumnSpan(ButtonIcon, 2);
                     Grid.SetColumn(ButtonText, 1);
+
+                    // Set Visibilities
                     ButtonText.IsVisible = false;
-                    if (Padding.Equals(new Thickness(-1)))
+
+                    // Adjust Default Padding
+                    if (!userChangedPadding)
+                    {
                         Padding = new Thickness(HeightRequest * .3, HeightRequest * .3);
+                        userChangedPadding = false; // Set this back to false, as the above line triggers OnPropertyChanged 
+                    }
+
                     break;
 
                 case ButtonMode.IconWithText:
-                    ContainerContent.HorizontalOptions = LayoutOptions.Center;
 
+                    // Configure Container
+                    ContainerContent.HorizontalOptions = LayoutOptions.Center;
                     switch (IconOrientation)
                     {
                         case IconOrientation.Left:
                             FirstColumn.Width = new GridLength(1, GridUnitType.Star);
                             SecondColumn.Width = GridLength.Auto;
-
                             Grid.SetColumn(ButtonIcon, 0);
                             Grid.SetColumnSpan(ButtonIcon, 1);
                             Grid.SetColumn(ButtonText, 1);
@@ -220,25 +235,41 @@ namespace Flex.Controls
                         case IconOrientation.Right:
                             FirstColumn.Width = GridLength.Auto;
                             SecondColumn.Width = new GridLength(1, GridUnitType.Star);
-
                             Grid.SetColumn(ButtonIcon, 1);
                             Grid.SetColumnSpan(ButtonIcon, 1);
                             Grid.SetColumn(ButtonText, 0);
                             break;
                     }
 
+                    // Set Visibilities
                     ButtonText.IsVisible = true;
-                    if (Padding.Equals(new Thickness(-1)))
+
+                    // Adjust Default Padding
+                    if (!userChangedPadding)
+                    {
                         Padding = new Thickness(HeightRequest * .1, HeightRequest * .3);
+                        userChangedPadding = false; // Set this back to false, as the above line triggers OnPropertyChanged 
+                    }
+
                     break;
 
                 case ButtonMode.TextOnly:
+
+                    // Configure Container
                     ContainerContent.HorizontalOptions = LayoutOptions.Center;
                     Grid.SetColumnSpan(ButtonIcon, 1);
                     Grid.SetColumn(ButtonText, 0);
+
+                    // Set Visibilities
                     ButtonText.IsVisible = true;
-                    if (Padding.Equals(new Thickness(-1)))
+
+                    // Adjust Default Padding
+                    if (!userChangedPadding)
+                    {
                         Padding = new Thickness(0);
+                        userChangedPadding = false; // Set this back to false, as the above line triggers OnPropertyChanged 
+                    }
+
                     break;
             }
         }
