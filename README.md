@@ -6,12 +6,14 @@ Flexible button control for Xamarin.Forms with events for different states, colo
 
 **Features:**
 
-- Adjustable button size
+- Adjustable button size and shape
 - Icons with adjustable size
 - Color overlays for background and icon (normal and pressed state)
-- Events for button press and release
-- Round button and Pill butto (using corner radius)
+- Events for button hold and release
+- Round button and Pill button (using corner radius)
 - Icon only, text only or mixed mode
+- Customizable Borders
+- Toggle Mode
 
 ## How to use
 
@@ -64,11 +66,16 @@ Take a look a the [Demo Project](/Flex.Demo) in this repository for a full sampl
 | `FontSize` | Default | Font size of the button text |
 | `ForegroundColor` | `White` | Foreground color overlay for icon and text |
 | `BackgroundColor` | `Transparent` | Background color of the button |
+| `BorderColor` | `Transparent` | Border color of the button |
 | `HighlightForegroundColor` | `White` | Foreground color overlay for icon and text when pressed down |
 | `HighlightBackgroundColor` | `Transparent` | Background color of the button when pressed down |
+| `HighlightBorderColor` | `Transparent` | Background color of the border when pressed down |
 | `CornerRadius` | `0` | Button borner radius |
 | `Padding` | 30% of height, 10-30% of width  | Inside distance from icon to button borders |
 | `IconOrientation` | `IconOrientation.Left` | Positions the icon on a button that has icon and text |
+| `BorderThickness` | `0` | Width of the boarder in each direction |
+| `ToggleMode` | `false` | Sets the button in Toggle Mode |
+| `IsToggled` | `false` | Represents the Toggle state, when Toggle Mode is enabled |
 
 | Event | Description |
 |------------------|---------|
