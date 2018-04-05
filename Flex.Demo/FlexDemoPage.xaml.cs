@@ -1,6 +1,7 @@
 ﻿using Xamarin.Forms;
 using System;
 using Flex.Extensions;
+using Flex.Controls;
 
 namespace Flex.Demo
 {
@@ -36,6 +37,11 @@ namespace Flex.Demo
         void ButtonWithoutBackground_Clicked(object sender, EventArgs e)
         {
             DisplayAlert("Hello from Code Behind", "The Flex Button rocks!", "Yeah");
+        }
+
+        public void Handle_Toggled(object sender, ToggledEventArgs e)
+        {
+            ((FlexButton)sender).Text = e.Value.ToString();
         }
     }
 }

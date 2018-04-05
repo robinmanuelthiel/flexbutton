@@ -56,7 +56,7 @@ namespace Flex.iOS.Effects
 
                     // draw the color using the sourcein blend mode so its only draw on the non-transparent pixels
                     context.SetBlendMode(CGBlendMode.SourceIn);
-                    context.SetFillColor(color.ToCGColor());
+                    context.SetFillColor(color.ToUIColor().CGColor);
                     context.FillRect(rect);
 
                     coloredImage = UIGraphics.GetImageFromCurrentImageContext();

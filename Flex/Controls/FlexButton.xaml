@@ -39,12 +39,7 @@
                     Margin="{Binding Source={x:Reference this}, Path=Padding}" 
                     RowSpacing="0"
                     ColumnSpacing="0">
-                    
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*" />
-                        <RowDefinition Height="Auto" />
-                    </Grid.RowDefinitions>
-
+    
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition x:Name="FirstColumn" Width="*" />
                         <ColumnDefinition x:Name="SecondColumn" Width="Auto" />
@@ -54,17 +49,16 @@
                         x:Name="ButtonIcon"
                         Grid.Column="0"
                         Grid.ColumnSpan="2"
-                        Grid.RowSpan="2"
                         Source="{Binding Source={x:Reference this}, Path=Icon}"/>
 
                     <Label
                         x:Name="ButtonText"
-                        Grid.Column="1"     
-                        Grid.RowSpan="2"
+                        Grid.Column="1"
                         Text="{Binding Source={x:Reference this}, Path=Text}"
                         FontSize="{Binding Source={x:Reference this}, Path=FontSize}"
                         VerticalOptions="Fill"
                         VerticalTextAlignment="Center"
+                        HorizontalOptions="FillAndExpand"
                         HorizontalTextAlignment="Center"
                         Margin="10,0"
                         TextColor="{Binding Source={x:Reference this}, Path=ForegroundColor}" />

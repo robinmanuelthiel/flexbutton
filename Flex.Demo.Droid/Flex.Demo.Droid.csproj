@@ -142,6 +142,21 @@
         <AndroidResource Include="Resources\drawable-xhdpi\lightbulb.png" />
         <AndroidResource Include="Resources\drawable-xxhdpi\lightbulb.png" />
         <AndroidResource Include="Resources\drawable-xxxhdpi\lightbulb.png" />
+        <AndroidResource Include="Resources\drawable-hdpi\right.png" />
+        <AndroidResource Include="Resources\drawable-mdpi\right.png" />
+        <AndroidResource Include="Resources\drawable-xhdpi\right.png" />
+        <AndroidResource Include="Resources\drawable-xxhdpi\right.png" />
+        <AndroidResource Include="Resources\drawable-xxxhdpi\right.png" />
+        <AndroidResource Include="Resources\drawable-hdpi\left.png" />
+        <AndroidResource Include="Resources\drawable-mdpi\left.png" />
+        <AndroidResource Include="Resources\drawable-xhdpi\left.png" />
+        <AndroidResource Include="Resources\drawable-xxhdpi\left.png" />
+        <AndroidResource Include="Resources\drawable-xxxhdpi\left.png" />
+        <AndroidResource Include="Resources\drawable-hdpi\check.png" />
+        <AndroidResource Include="Resources\drawable-mdpi\check.png" />
+        <AndroidResource Include="Resources\drawable-xhdpi\check.png" />
+        <AndroidResource Include="Resources\drawable-xxhdpi\check.png" />
+        <AndroidResource Include="Resources\drawable-xxxhdpi\check.png" />
     </ItemGroup>
     <ItemGroup>
         <ProjectReference Include="..\Flex.Demo\Flex.Demo.csproj">
