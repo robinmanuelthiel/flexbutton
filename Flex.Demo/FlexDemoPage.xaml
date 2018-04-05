@@ -4,7 +4,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:Flex.Demo"
     x:Class="Flex.Demo.FlexDemoPage"
-    xmlns:flex="clr-namespace:Flex.Controls;assembly=Flex">
+    xmlns:flex="clr-namespace:Flex.Controls;assembly=Flex"
+    BackgroundColor="White">
 
     <ScrollView>
         <StackLayout 
@@ -12,7 +13,7 @@
             Margin="0,10,0,0" 
             WidthRequest="380" 
             HorizontalOptions="Center"> 
-            
+
             <!-- Standard Button -->    
             <flex:FlexButton
                 x:Name="DemoButton"
@@ -26,6 +27,9 @@
                 HighlightForegroundColor="#49516F"
                 BackgroundColor="#6279B8"
                 HighlightBackgroundColor="#8EA4D2"
+                BorderColor="#8EA4D2"
+                HighlightBorderColor="#8EA4D2"
+                BorderThickness="3"
                 TouchedDown="DemoButton_TouchedDown"
                 TouchedUp="DemoButton_TouchedUp"/>
 
@@ -101,6 +105,9 @@
                 CornerRadius="22"
                 Icon="lightbulb.png"
                 Text="Icon and Text"
+                BorderThickness="0,0,0,4"
+                BorderColor="#49516F"
+                HighlightBorderColor="#6279B8"
                 ForegroundColor="#ffffff"
                 HighlightForegroundColor="#49516F"
                 BackgroundColor="#6279B8"
@@ -110,23 +117,40 @@
 
             <!-- Button without background -->
             <Label Text="Round Button without Background" HorizontalTextAlignment="Center" HorizontalOptions="Center"/>
+
+            <StackLayout Orientation="Horizontal" Spacing="10" HorizontalOptions="Center">
             
-            <flex:FlexButton
-                Clicked="ButtonWithoutBackground_Clicked"
-                HorizontalOptions="Center"
-                WidthRequest="76"
-                HeightRequest="76"
-                CornerRadius="38"
-                Icon="lightbulb.png"
-                ForegroundColor="#6279B8"
-                HighlightForegroundColor="#ffffff"
-                BackgroundColor="Transparent"
-                HighlightBackgroundColor="#6279B8"/>
+                <flex:FlexButton
+                    Clicked="ButtonWithoutBackground_Clicked"
+                    HorizontalOptions="Center"
+                    WidthRequest="76"
+                    HeightRequest="76"
+                    CornerRadius="38"
+                    Icon="lightbulb.png"
+                    ForegroundColor="#6279B8"
+                    HighlightForegroundColor="#ffffff"
+                    BackgroundColor="Transparent"
+                    HighlightBackgroundColor="#6279B8"/>
+
+                <flex:FlexButton
+                    HorizontalOptions="Center"
+                    WidthRequest="76"
+                    HeightRequest="76"
+                    CornerRadius="38"
+                    Icon="lightbulb.png"
+                    ForegroundColor="#6279B8"
+                    HighlightForegroundColor="#ffffff"
+                    BackgroundColor="White"
+                    HighlightBackgroundColor="#6279B8"
+                    BorderColor="#6279B8"
+                    HighlightBorderColor="#49516F"
+                    BorderThickness="3"/>
+            </StackLayout>
 
             <BoxView BackgroundColor="#eee" HeightRequest="1" Margin="0,10"/>
             
             <!-- Wide Text -->
-            <Label Text="Button with multi-line text" HorizontalTextAlignment="Center" HorizontalOptions="Center"/>
+            <Label Text="Button with multi-line text and border" HorizontalTextAlignment="Center" HorizontalOptions="Center"/>
             
             <flex:FlexButton
                 HorizontalOptions="Center"
@@ -137,7 +161,10 @@
                 ForegroundColor="#ffffff"
                 HighlightForegroundColor="#49516F"
                 BackgroundColor="#6279B8"
-                HighlightBackgroundColor="#8EA4D2"/>
+                HighlightBackgroundColor="#8EA4D2"
+                BorderThickness="4"
+                BorderColor="#49516F"
+                HighlightBorderColor="#6279B8"/>
         </StackLayout>
     </ScrollView>
 </ContentPage>

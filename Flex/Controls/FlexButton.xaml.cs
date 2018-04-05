@@ -28,13 +28,26 @@ namespace Flex.Controls
             set { SetValue(IconOrientationProperty, value); }
         }
 
-        // TODO: Border Color does not wokr on Android at the moment due to a Xamarin.Forms bug
-        //public static readonly BindableProperty BorderColorProperty = BindableProperty.Create(nameof(BorderColor), typeof(Color), typeof(FlexButton), Color.Red);
-        //public Color BorderColor
-        //{
-        //    get { return (Color)GetValue(BorderColorProperty); }
-        //    set { SetValue(BorderColorProperty, value); }
-        //}
+        public static readonly BindableProperty BorderColorProperty = BindableProperty.Create(nameof(BorderColor), typeof(Color), typeof(FlexButton), Color.Transparent);
+        public Color BorderColor
+        {
+            get { return (Color)GetValue(BorderColorProperty); }
+            set { SetValue(BorderColorProperty, value); }
+        }
+
+        public static readonly BindableProperty HighlightBorderColorProperty = BindableProperty.Create(nameof(HighlightBorderColor), typeof(Color), typeof(FlexButton), Color.Transparent);
+        public Color HighlightBorderColor
+        {
+            get { return (Color)GetValue(HighlightBorderColorProperty); }
+            set { SetValue(HighlightBorderColorProperty, value); }
+        }
+
+        public static readonly BindableProperty BorderThicknessProperty = BindableProperty.Create(nameof(BorderThickness), typeof(Thickness), typeof(FlexButton), new Thickness(0));
+        public Thickness BorderThickness
+        {
+            get { return (Thickness)GetValue(BorderThicknessProperty); }
+            set { SetValue(BorderThicknessProperty, value); }
+        }
 
         public static readonly BindableProperty HighlightBackgroundColorProperty = BindableProperty.Create(nameof(HighlightBackgroundColor), typeof(Color), typeof(FlexButton), Color.Transparent);
         public Color HighlightBackgroundColor
@@ -77,6 +90,8 @@ namespace Flex.Controls
             get { return (int)GetValue(CornerRadiusProperty); }
             set { SetValue(CornerRadiusProperty, value); }
         }
+        public int InnerCornerRadius { get; private set; }
+
 
         public static readonly new BindableProperty PaddingProperty = BindableProperty.Create(nameof(Padding), typeof(Thickness), typeof(FlexButton), new Thickness(-1));
         public new Thickness Padding
@@ -139,6 +154,10 @@ namespace Flex.Controls
             }
             else if (propertyName == TextProperty.PropertyName ||
                      propertyName == IconOrientationProperty.PropertyName)
+            {
+                SetButtonMode();
+            }
+            else if (propertyName == BorderThicknessProperty.PropertyName)
             {
                 SetButtonMode();
             }
@@ -272,6 +291,10 @@ namespace Flex.Controls
 
                     break;
             }
+
+            // Calculate inner corner radius
+            // Use the outer radius minus the max thickness of a single direction
+            InnerCornerRadius = Math.Max(0, CornerRadius - (int)Math.Max(Math.Max(BorderThickness.Left, BorderThickness.Top), Math.Max(BorderThickness.Right, BorderThickness.Bottom)));
         }
 
         public event EventHandler<EventArgs> TouchedDown;
@@ -293,6 +316,7 @@ namespace Flex.Controls
                 TouchedDown?.Invoke(this, null);
                 TouchedDownCommand?.Execute(null);
 
+                Border.BackgroundColor = HighlightBorderColor;
                 Container.BackgroundColor = HighlightBackgroundColor;
                 ButtonText.TextColor = HighlightForegroundColor;
                 ColorIcon(HighlightForegroundColor);
@@ -308,6 +332,7 @@ namespace Flex.Controls
                 Clicked?.Invoke(this, null);
                 ClickedCommand?.Execute(null);
 
+                Border.BackgroundColor = BorderColor;
                 Container.BackgroundColor = BackgroundColor;
                 ButtonText.TextColor = ForegroundColor;
                 ColorIcon(ForegroundColor);

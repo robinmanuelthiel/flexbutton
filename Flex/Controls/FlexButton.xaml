@@ -9,61 +9,69 @@
     VerticalOptions="Center">
 
     <Frame
-        x:Name="Container"
-        BackgroundColor="{Binding Source={x:Reference this}, Path=BackgroundColor}"
+        x:Name="Border"
+        BackgroundColor="{Binding Source={x:Reference this}, Path=BorderColor}"
         CornerRadius="{Binding Source={x:Reference this}, Path=CornerRadius}"
-        HasShadow="false"
-        Padding="0">
+        Padding="{Binding Source={x:Reference this}, Path=BorderThickness}"
+        HasShadow="false">
 
-        <!-- BorderColor does not work on Android at the moment (Xamarin.Forms bug) -->
-        <!--OutlineColor="{Binding Source={x:Reference this}, Path=BorderColor}">-->
+        <Frame
+            x:Name="Container"
+            BackgroundColor="{Binding Source={x:Reference this}, Path=BackgroundColor}"
+            CornerRadius="{Binding Source={x:Reference this}, Path=InnerCornerRadius}"
+            HasShadow="false"
+            Padding="0"
+            Margin="0">
 
-        <Frame.GestureRecognizers>
-            <extensions:TouchGestureRecognizer x:Name="TouchRecognizer" />
-        </Frame.GestureRecognizers>
+            <!-- BorderColor does not work on Android at the moment (Xamarin.Forms bug) -->
+            <!--OutlineColor="{Binding Source={x:Reference this}, Path=BorderColor}">-->
 
-        <ContentView
-            HorizontalOptions="FillAndExpand"
-            VerticalOptions="FillAndExpand">
+            <Frame.GestureRecognizers>
+                <extensions:TouchGestureRecognizer x:Name="TouchRecognizer" />
+            </Frame.GestureRecognizers>
 
-            <Grid 
-                x:Name="ContainerContent"
-                Margin="{Binding Source={x:Reference this}, Path=Padding}" 
-                RowSpacing="0"
-                ColumnSpacing="0">
+            <ContentView
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="FillAndExpand">
+
+                <Grid 
+                    x:Name="ContainerContent"
+                    Margin="{Binding Source={x:Reference this}, Path=Padding}" 
+                    RowSpacing="0"
+                    ColumnSpacing="0">
+                    
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition x:Name="FirstColumn" Width="*" />
+                        <ColumnDefinition x:Name="SecondColumn" Width="Auto" />
+                    </Grid.ColumnDefinitions>
                 
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="Auto" />
-                </Grid.RowDefinitions>
+                    <Image 
+                        x:Name="ButtonIcon"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        Grid.RowSpan="2"
+                        Source="{Binding Source={x:Reference this}, Path=Icon}"/>
 
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition x:Name="FirstColumn" Width="*" />
-                    <ColumnDefinition x:Name="SecondColumn" Width="Auto" />
-                </Grid.ColumnDefinitions>
-            
-                <Image 
-                    x:Name="ButtonIcon"
-                    Grid.Column="0"
-                    Grid.ColumnSpan="2"
-                    Grid.RowSpan="2"
-                    Source="{Binding Source={x:Reference this}, Path=Icon}"/>
-
-                <Label
-                    x:Name="ButtonText"
-                    Grid.Column="1"     
-                    Grid.RowSpan="2"
-                    Text="{Binding Source={x:Reference this}, Path=Text}"
-                    FontSize="{Binding Source={x:Reference this}, Path=FontSize}"
-                    VerticalOptions="Fill"
-                    VerticalTextAlignment="Center"
-                    HorizontalTextAlignment="Center"
-                    Margin="10,0"
-                    TextColor="{Binding Source={x:Reference this}, Path=ForegroundColor}" />
-            </Grid>
-        </ContentView>
+                    <Label
+                        x:Name="ButtonText"
+                        Grid.Column="1"     
+                        Grid.RowSpan="2"
+                        Text="{Binding Source={x:Reference this}, Path=Text}"
+                        FontSize="{Binding Source={x:Reference this}, Path=FontSize}"
+                        VerticalOptions="Fill"
+                        VerticalTextAlignment="Center"
+                        HorizontalTextAlignment="Center"
+                        Margin="10,0"
+                        TextColor="{Binding Source={x:Reference this}, Path=ForegroundColor}" />
+                </Grid>
+            </ContentView>
+        </Frame>
     </Frame>
-
         <!--<Label
             x:Name="ButtonSubText"
             Text="Hallo Welt"
