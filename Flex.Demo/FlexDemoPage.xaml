@@ -37,7 +37,7 @@
             <!-- Small Buttons -->
             <Label Text="Small Buttons" HorizontalTextAlignment="Center" HorizontalOptions="Center"/>
             <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
-                <flex:FlexButton                    
+                <flex:FlexButton
                     WidthRequest="40"
                     HeightRequest="40"
                     CornerRadius="20"
@@ -138,6 +138,63 @@
                 HighlightForegroundColor="#49516F"
                 BackgroundColor="#6279B8"
                 HighlightBackgroundColor="#8EA4D2"/>
+
+            <BoxView BackgroundColor="#eee" HeightRequest="1" Margin="0,10"/>
+
+            <!--Border -->
+            <Label Text="Button with border" HorizontalTextAlignment="Center" HorizontalOptions="Center"/>
+
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                <flex:FlexButton    
+                    BorderSize="10"
+                    BorderColor="CadetBlue"
+                    WidthRequest="60"
+                    HeightRequest="60"
+                    CornerRadius="30"
+                    Icon="lightbulb.png"
+                    ForegroundColor="#ffffff"
+                    HighlightForegroundColor="#49516F"
+                    BackgroundColor="#6279B8"
+                    HighlightBackgroundColor="#8EA4D2"/>
+
+                <Grid BackgroundColor="DarkGray">
+                    <ContentView VerticalOptions="Start"  WidthRequest="80" HorizontalOptions="Start"  HeightRequest="20"  BackgroundColor="Gray">
+                        <Label VerticalOptions="Center" HorizontalOptions="Center" Text="Height = 20" FontSize="12"></Label>
+                    </ContentView> 
+                    <flex:FlexButton 
+                        Margin="20"
+                        BorderColor="DarkBlue"
+                        BorderSize="20"
+                        CornerRadius="12" 
+                        HeightRequest="120" 
+                        WidthRequest="160"
+                        Text="Margin/Border = 20"
+                        FontSize="12"
+                        ForegroundColor="#ffffff"
+                        HighlightForegroundColor="#49516F"
+                        BackgroundColor="#6279B8"
+                        HighlightBackgroundColor="#8EA4D2"/>
+                    <ContentView VerticalOptions="End" WidthRequest="80" HorizontalOptions="End" HeightRequest="20" BackgroundColor="Gray">
+                        <Label VerticalOptions="Center" HorizontalOptions="Center" Text="Height = 20" FontSize="12"></Label>
+                    </ContentView> 
+                </Grid>
+
+                <flex:FlexButton    
+                    BorderSize="1"
+                    BorderColor="Black"
+                    WidthRequest="60"
+                    HeightRequest="60"
+                    CornerRadius="30"
+                    Text="Border 1"
+                    FontSize="10"
+                    ForegroundColor="#ffffff"
+                    HighlightForegroundColor="#49516F"
+                    BackgroundColor="#6279B8"
+                    HighlightBackgroundColor="#8EA4D2"/> 
+            </StackLayout>
+
+            <!--Bottom spacing ...-->
+            <BoxView HeightRequest="10"></BoxView>
         </StackLayout>
     </ScrollView>
 </ContentPage>
