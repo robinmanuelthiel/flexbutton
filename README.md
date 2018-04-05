@@ -46,9 +46,7 @@ xmlns:flex="clr-namespace:Flex.Controls;assembly=Flex"
     ForegroundColor="#ffffff"
     HighlightForegroundColor="#49516F"
     BackgroundColor="#6279B8"
-    HighlightBackgroundColor="#8EA4D2"
-    TouchedDown="DemoButton_TouchedDown"
-    TouchedUp="DemoButton_TouchedUp"/>
+    HighlightBackgroundColor="#8EA4D2" />
 ```
 
 ## Preview
