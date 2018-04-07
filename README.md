@@ -73,7 +73,7 @@ Take a look a the [Demo Project](/Flex.Demo) in this repository for a full sampl
 | `CornerRadius` | `0` | Button borner radius |
 | `Padding` | 30% of height, 10-30% of width  | Inside distance from icon to button borders |
 | `IconOrientation` | `IconOrientation.Left` | Positions the icon on a button that has icon and text |
-| `BorderThickness` | `0` | Width of the boarder in each direction |
+| `BorderThickness` | `0` | Width of the border in each direction |
 | `ToggleMode` | `false` | Sets the button in Toggle Mode |
 | `IsToggled` | `false` | Represents the Toggle state, when Toggle Mode is enabled |
 
