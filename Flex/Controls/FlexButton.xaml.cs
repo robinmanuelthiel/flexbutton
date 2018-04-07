@@ -128,13 +128,30 @@ namespace Flex.Controls
             set { SetValue(IsToggledProperty, value); }
         }
 
-        // Font Attributes
+        // FontAttributes Property.
 
-        public static readonly BindableProperty FontAttributesProperty = BindableProperty.Create(nameof(FontAttributes), typeof(FontAttributes), typeof(FlexButton), FontAttributes.None);
+        public static readonly BindableProperty FontAttributesProperty = BindableProperty.Create(nameof(FontAttributes), typeof(FontAttributes), typeof(FlexButton), (FontAttributes)Label.FontAttributesProperty.DefaultValue,
+            propertyChanged: (b, o, n) =>
+            {
+                (b as FlexButton).ButtonText.FontAttributes = (FontAttributes)n;
+            });
         public FontAttributes FontAttributes
         {
             get { return (FontAttributes)GetValue(FontAttributesProperty); }
             set { SetValue(FontAttributesProperty, value); }
+        }
+
+        // FontFamily Property
+
+        public static readonly BindableProperty FontFamilyProperty = BindableProperty.Create(nameof(FontFamily), typeof(string), typeof(FlexButton), (string)Label.FontFamilyProperty.DefaultValue,
+            propertyChanged: (b, o, n) =>
+            {
+                (b as FlexButton).ButtonText.FontFamily = (string)n;
+            });
+        public string FontFamily
+        {
+            get { return (string)GetValue(FontFamilyProperty); }
+            set { SetValue(FontFamilyProperty, value); }
         }
 
         #endregion
@@ -189,10 +206,6 @@ namespace Flex.Controls
                      propertyName == IsToggledProperty.PropertyName)
             {
                 SetButtonMode();
-            }
-            else if(propertyName == FontAttributesProperty.PropertyName)
-            {
-                ButtonText.FontAttributes = FontAttributes;
             }
 
             base.OnPropertyChanged(propertyName);
