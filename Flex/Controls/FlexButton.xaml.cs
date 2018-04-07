@@ -130,11 +130,7 @@ namespace Flex.Controls
 
         // FontAttributes Property.
 
-        public static readonly BindableProperty FontAttributesProperty = BindableProperty.Create(nameof(FontAttributes), typeof(FontAttributes), typeof(FlexButton), (FontAttributes)Label.FontAttributesProperty.DefaultValue,
-            propertyChanged: (b, o, n) =>
-            {
-                (b as FlexButton).ButtonText.FontAttributes = (FontAttributes)n;
-            });
+        public static readonly BindableProperty FontAttributesProperty = BindableProperty.Create(nameof(FontAttributes), typeof(FontAttributes), typeof(FlexButton), (FontAttributes)Label.FontAttributesProperty.DefaultValue);
         public FontAttributes FontAttributes
         {
             get { return (FontAttributes)GetValue(FontAttributesProperty); }
@@ -143,11 +139,7 @@ namespace Flex.Controls
 
         // FontFamily Property
 
-        public static readonly BindableProperty FontFamilyProperty = BindableProperty.Create(nameof(FontFamily), typeof(string), typeof(FlexButton), (string)Label.FontFamilyProperty.DefaultValue,
-            propertyChanged: (b, o, n) =>
-            {
-                (b as FlexButton).ButtonText.FontFamily = (string)n;
-            });
+        public static readonly BindableProperty FontFamilyProperty = BindableProperty.Create(nameof(FontFamily), typeof(string), typeof(FlexButton), (string)Label.FontFamilyProperty.DefaultValue);
         public string FontFamily
         {
             get { return (string)GetValue(FontFamilyProperty); }
