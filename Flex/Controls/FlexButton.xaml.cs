@@ -128,6 +128,15 @@ namespace Flex.Controls
             set { SetValue(IsToggledProperty, value); }
         }
 
+        // Font Attributes
+
+        public static readonly BindableProperty FontAttributesProperty = BindableProperty.Create(nameof(FontAttributes), typeof(FontAttributes), typeof(FlexButton), FontAttributes.None);
+        public FontAttributes FontAttributes
+        {
+            get { return (FontAttributes)GetValue(FontAttributesProperty); }
+            set { SetValue(FontAttributesProperty, value); }
+        }
+
         #endregion
 
         #region Commands
@@ -180,6 +189,10 @@ namespace Flex.Controls
                      propertyName == IsToggledProperty.PropertyName)
             {
                 SetButtonMode();
+            }
+            else if(propertyName == FontAttributesProperty.PropertyName)
+            {
+                ButtonText.FontAttributes = FontAttributes;
             }
 
             base.OnPropertyChanged(propertyName);
