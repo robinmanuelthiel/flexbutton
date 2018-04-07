@@ -133,8 +133,8 @@ namespace Flex.Controls
         public static readonly BindableProperty FontAttributesProperty = BindableProperty.Create(nameof(FontAttributes), typeof(FontAttributes), typeof(FlexButton), (FontAttributes)Label.FontAttributesProperty.DefaultValue);
         public FontAttributes FontAttributes
         {
-            get { return (FontAttributes)GetValue(FontAttributesProperty); }
-            set { SetValue(FontAttributesProperty, value); }
+            get => (FontAttributes)GetValue(FontAttributesProperty);
+            set => SetValue(FontAttributesProperty, value);
         }
 
         // FontFamily Property
@@ -142,8 +142,8 @@ namespace Flex.Controls
         public static readonly BindableProperty FontFamilyProperty = BindableProperty.Create(nameof(FontFamily), typeof(string), typeof(FlexButton), (string)Label.FontFamilyProperty.DefaultValue);
         public string FontFamily
         {
-            get { return (string)GetValue(FontFamilyProperty); }
-            set { SetValue(FontFamilyProperty, value); }
+            get => (string)GetValue(FontFamilyProperty);
+            set => SetValue(FontFamilyProperty, value);
         }
 
         #endregion
@@ -157,6 +157,13 @@ namespace Flex.Controls
             set { SetValue(ClickedCommandProperty, value); }
         }
 
+        public static readonly BindableProperty ClickedCommandParameterProperty = BindableProperty.Create(nameof(ClickedCommandParameter), typeof(object), typeof(FlexButton), null, propertyChanged: (bindable, oldValue, newValie) => ((FlexButton)bindable).CommandCanExecuteChanged(bindable, EventArgs.Empty));
+        public object ClickedCommandParameter
+        {
+            get => GetValue(ClickedCommandParameterProperty);
+            set => SetValue(ClickedCommandParameterProperty, value);
+        }
+
         public static BindableProperty TouchedDownCommandProperty = BindableProperty.Create(nameof(TouchedDownCommand), typeof(ICommand), typeof(FlexButton), null);
         public ICommand TouchedDownCommand
         {
@@ -164,11 +171,25 @@ namespace Flex.Controls
             set { SetValue(TouchedDownCommandProperty, value); }
         }
 
+        public static readonly BindableProperty TouchedDownCommandParameterProperty = BindableProperty.Create(nameof(TouchedDownCommandParameter), typeof(object), typeof(FlexButton), null, propertyChanged: (bindable, oldValue, newValie) => ((FlexButton)bindable).CommandCanExecuteChanged(bindable, EventArgs.Empty));
+        public object TouchedDownCommandParameter
+        {
+            get => GetValue(TouchedDownCommandParameterProperty);
+            set => SetValue(TouchedDownCommandParameterProperty, value);
+        }
+
         public static BindableProperty TouchedUpCommandProperty = BindableProperty.Create(nameof(TouchedUpCommand), typeof(ICommand), typeof(FlexButton), null);
         public ICommand TouchedUpCommand
         {
             get { return (ICommand)GetValue(TouchedUpCommandProperty); }
             set { SetValue(TouchedUpCommandProperty, value); }
+        }
+
+        public static readonly BindableProperty TouchedUpCommandParameterProperty = BindableProperty.Create(nameof(TouchedUpCommandParameter), typeof(object), typeof(FlexButton), null, propertyChanged: (bindable, oldValue, newValie) => ((FlexButton)bindable).CommandCanExecuteChanged(bindable, EventArgs.Empty));
+        public object TouchedUpCommandParameter
+        {
+            get => GetValue(TouchedUpCommandParameterProperty);
+            set => SetValue(TouchedUpCommandParameterProperty, value);
         }
 
         #endregion
@@ -217,8 +238,8 @@ namespace Flex.Controls
         void CommandCanExecuteChanged(object sender, EventArgs e)
         {
             // Define IsEnabled state
-            var canExecuteClick = ClickedCommand?.CanExecute(null);
-            var canExecuteTouchedDown = TouchedDownCommand?.CanExecute(null);
+            var canExecuteClick = ClickedCommand?.CanExecute(ClickedCommandParameter);
+            var canExecuteTouchedDown = TouchedDownCommand?.CanExecute(TouchedDownCommandParameter);
 
             if (canExecuteClick != null && canExecuteTouchedDown != null)
                 IsEnabled = canExecuteClick == true && canExecuteTouchedDown == true;
@@ -369,7 +390,7 @@ namespace Flex.Controls
             if (IsEnabled)
             {
                 TouchedDown?.Invoke(this, null);
-                TouchedDownCommand?.Execute(null);
+                TouchedDownCommand?.Execute(TouchedDownCommandParameter);
 
                 Border.BackgroundColor = HighlightBorderColor;
                 Container.BackgroundColor = HighlightBackgroundColor;
@@ -383,9 +404,9 @@ namespace Flex.Controls
             if (IsEnabled)
             {
                 TouchedUp?.Invoke(this, null);
-                TouchedUpCommand?.Execute(null);
+                TouchedUpCommand?.Execute(TouchedUpCommandParameter);
                 Clicked?.Invoke(this, null);
-                ClickedCommand?.Execute(null);
+                ClickedCommand?.Execute(ClickedCommandParameter);
 
                 if (ToggleMode)
                 {
