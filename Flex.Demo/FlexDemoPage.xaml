@@ -163,7 +163,9 @@
             
             <flex:FlexButton
                 HorizontalOptions="Center"
-                Text="Button with larger text only lorem ipsum dolor sit amet bla bla bla"
+                Text="Button with larger text only and different font family and attributes"
+                FontAttributes="Bold,Italic"
+                FontFamily="Arial"
                 Margin="20,0"
                 Padding="20"
                 FontSize="24"
