@@ -62,8 +62,13 @@
                         VerticalTextAlignment="Center"
                         HorizontalOptions="FillAndExpand"
                         HorizontalTextAlignment="Center"
-                        Margin="10,0"
-                        TextColor="{Binding Source={x:Reference this}, Path=ForegroundColor}" />
+                        TextColor="{Binding Source={x:Reference this}, Path=ForegroundColor}" >
+                        <Label.Margin>
+                            <OnPlatform x:TypeArguments="Thickness" Default="10,0">
+                                <On Platform="WinPhone" Value="0,0" />
+                            </OnPlatform>
+                        </Label.Margin>
+                    </Label>
                 </Grid>
             </ContentView>
         </Frame>

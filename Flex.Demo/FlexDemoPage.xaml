@@ -10,7 +10,7 @@
     <ScrollView>
         <StackLayout 
             Spacing="10" 
-            Margin="0,10,0,0" 
+            Padding="0,10,0,10" 
             WidthRequest="380" 
             HorizontalOptions="Center"> 
 
