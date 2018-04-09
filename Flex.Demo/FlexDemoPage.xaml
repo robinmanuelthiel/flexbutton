@@ -10,7 +10,7 @@
     <ScrollView>
         <StackLayout 
             Spacing="10" 
-            Margin="0,10,0,0" 
+            Padding="0,10,0,10" 
             WidthRequest="380" 
             HorizontalOptions="Center"> 
 
@@ -163,7 +163,9 @@
             
             <flex:FlexButton
                 HorizontalOptions="Center"
-                Text="Button with larger text only lorem ipsum dolor sit amet bla bla bla"
+                Text="Button with text only and different font family, attributes and size"
+                FontAttributes="Bold"
+                FontFamily="TimesNewRomanPSMT"
                 Margin="20,0"
                 Padding="20"
                 FontSize="24"

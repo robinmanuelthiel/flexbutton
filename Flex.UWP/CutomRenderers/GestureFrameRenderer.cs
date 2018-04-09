@@ -24,8 +24,10 @@ namespace Flex.UWP.CustomRenderers
             base.OnElementPropertyChanged(sender, e);
 
             // Fix Xamarin.Forms Frame Bugs on UWP
-            if (e.PropertyName.Equals("BackgroundColor"))
-                FixFormsBackgroundColor((Xamarin.Forms.Frame)sender);            
+            FixFormsBackgroundColor((Xamarin.Forms.Frame)sender);        
+
+                Control.CornerRadius = new Windows.UI.Xaml.CornerRadius(Element.CornerRadius);
+            
         }
 
         protected override void OnElementChanged(ElementChangedEventArgs<Xamarin.Forms.Frame> e)
@@ -50,6 +52,7 @@ namespace Flex.UWP.CustomRenderers
 
                 // Fix Xamarin.Forms Frame Bugs on UWP
                 Control.SizeChanged += (s, a) => FixFormsBackgroundColor(Element);
+                Control.CornerRadius = new Windows.UI.Xaml.CornerRadius(Element.CornerRadius);
             }
         }
 

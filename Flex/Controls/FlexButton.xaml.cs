@@ -19,29 +19,29 @@ namespace Flex.Controls
         public static readonly new BindableProperty BackgroundColorProperty = BindableProperty.Create(nameof(BackgroundColor), typeof(Color), typeof(FlexButton), Color.Transparent);
         public new Color BackgroundColor
         {
-            get { return (Color)GetValue(BackgroundColorProperty); }
-            set { SetValue(BackgroundColorProperty, value); }
+            get => (Color)GetValue(BackgroundColorProperty);
+            set => SetValue(BackgroundColorProperty, value);
         }
 
         public static readonly BindableProperty HighlightBackgroundColorProperty = BindableProperty.Create(nameof(HighlightBackgroundColor), typeof(Color), typeof(FlexButton), Color.Transparent);
         public Color HighlightBackgroundColor
         {
-            get { return (Color)GetValue(HighlightBackgroundColorProperty); }
-            set { SetValue(HighlightBackgroundColorProperty, value); }
+            get => (Color)GetValue(HighlightBackgroundColorProperty);
+            set => SetValue(HighlightBackgroundColorProperty, value);
         }
 
         public static readonly BindableProperty ForegroundColorProperty = BindableProperty.Create(nameof(ForegroundColor), typeof(Color), typeof(FlexButton), Color.White);
         public Color ForegroundColor
         {
-            get { return (Color)GetValue(ForegroundColorProperty); }
-            set { SetValue(ForegroundColorProperty, value); }
+            get => (Color)GetValue(ForegroundColorProperty);
+            set => SetValue(ForegroundColorProperty, value);
         }
 
         public static readonly BindableProperty HighlightForegroundColorProperty = BindableProperty.Create(nameof(HighlightForegroundColor), typeof(Color), typeof(FlexButton), Color.White);
         public Color HighlightForegroundColor
         {
-            get { return (Color)GetValue(HighlightForegroundColorProperty); }
-            set { SetValue(HighlightForegroundColorProperty, value); }
+            get => (Color)GetValue(HighlightForegroundColorProperty);
+            set => SetValue(HighlightForegroundColorProperty, value);
         }
 
         // Border Properties
@@ -49,86 +49,63 @@ namespace Flex.Controls
         public static readonly BindableProperty BorderColorProperty = BindableProperty.Create(nameof(BorderColor), typeof(Color), typeof(FlexButton), Color.Transparent);
         public Color BorderColor
         {
-            get { return (Color)GetValue(BorderColorProperty); }
-            set { SetValue(BorderColorProperty, value); }
+            get => (Color)GetValue(BorderColorProperty);
+            set => SetValue(BorderColorProperty, value);
         }
 
         public static readonly BindableProperty HighlightBorderColorProperty = BindableProperty.Create(nameof(HighlightBorderColor), typeof(Color), typeof(FlexButton), Color.Transparent);
         public Color HighlightBorderColor
         {
-            get { return (Color)GetValue(HighlightBorderColorProperty); }
-            set { SetValue(HighlightBorderColorProperty, value); }
+            get => (Color)GetValue(HighlightBorderColorProperty);
+            set => SetValue(HighlightBorderColorProperty, value);
         }
 
         public static readonly BindableProperty BorderThicknessProperty = BindableProperty.Create(nameof(BorderThickness), typeof(Thickness), typeof(FlexButton), new Thickness(0));
         public Thickness BorderThickness
         {
-            get { return (Thickness)GetValue(BorderThicknessProperty); }
-            set { SetValue(BorderThicknessProperty, value); }
+            get => (Thickness)GetValue(BorderThicknessProperty);
+            set => SetValue(BorderThicknessProperty, value);
         }
 
         public static readonly BindableProperty CornerRadiusProperty = BindableProperty.Create(nameof(CornerRadius), typeof(int), typeof(FlexButton), 0);
         public int CornerRadius
         {
-            get { return (int)GetValue(CornerRadiusProperty); }
-            set { SetValue(CornerRadiusProperty, value); }
+            get => (int)GetValue(CornerRadiusProperty);
+            set => SetValue(CornerRadiusProperty, value);
         }
         public int InnerCornerRadius { get; private set; }
 
-        // Icon and Text Properties
+        // Icon Properties
 
         public static readonly BindableProperty IconProperty = BindableProperty.Create(nameof(Icon), typeof(ImageSource), typeof(FlexButton), null);
         public ImageSource Icon
         {
-            get { return (ImageSource)GetValue(IconProperty); }
-            set { SetValue(IconProperty, value); }
+            get => (ImageSource)GetValue(IconProperty);
+            set => SetValue(IconProperty, value);
         }
 
         public static readonly BindableProperty IconOrientationProperty = BindableProperty.Create(nameof(IconOrientation), typeof(IconOrientation), typeof(FlexButton), IconOrientation.Left);
         public IconOrientation IconOrientation
         {
-            get { return (IconOrientation)GetValue(IconOrientationProperty); }
-            set { SetValue(IconOrientationProperty, value); }
+            get => (IconOrientation)GetValue(IconOrientationProperty);
+            set => SetValue(IconOrientationProperty, value);
+        }
+
+        // Text Properties
+
+        public static readonly BindableProperty TextProperty = BindableProperty.Create(nameof(Text), typeof(string), typeof(FlexButton), string.Empty);
+        public string Text
+        {
+            get => (string)GetValue(TextProperty);
+            set => SetValue(TextProperty, value);
         }
 
         public static readonly BindableProperty FontSizeProperty = BindableProperty.Create(nameof(FontSize), typeof(double), typeof(FlexButton), Device.GetNamedSize(NamedSize.Default, typeof(Label)));
         public double FontSize
         {
-            get { return (double)GetValue(FontSizeProperty); }
-            set { SetValue(FontSizeProperty, value); }
+            get => (double)GetValue(FontSizeProperty);
+            set => SetValue(FontSizeProperty, value);
         }
-
-        public static readonly BindableProperty TextProperty = BindableProperty.Create(nameof(Text), typeof(string), typeof(FlexButton), string.Empty);
-        public string Text
-        {
-            get { return (string)GetValue(TextProperty); }
-            set { SetValue(TextProperty, value); }
-        }
-
-        public static readonly new BindableProperty PaddingProperty = BindableProperty.Create(nameof(Padding), typeof(Thickness), typeof(FlexButton), new Thickness(-1));
-        public new Thickness Padding
-        {
-            get { return (Thickness)GetValue(PaddingProperty); }
-            set { SetValue(PaddingProperty, value); }
-        }
-
-        // Toggle Properties
-
-        public static readonly BindableProperty ToggleModeProperty = BindableProperty.Create(nameof(ToggleMode), typeof(bool), typeof(FlexButton), false);
-        public bool ToggleMode
-        {
-            get { return (bool)GetValue(ToggleModeProperty); }
-            set { SetValue(ToggleModeProperty, value); }
-        }
-
-        public static readonly BindableProperty IsToggledProperty = BindableProperty.Create(nameof(IsToggled), typeof(bool), typeof(FlexButton), false);
-        public bool IsToggled
-        {
-            get { return (bool)GetValue(IsToggledProperty); }
-            set { SetValue(IsToggledProperty, value); }
-        }
-
-        // FontAttributes Property.
 
         public static readonly BindableProperty FontAttributesProperty = BindableProperty.Create(nameof(FontAttributes), typeof(FontAttributes), typeof(FlexButton), (FontAttributes)Label.FontAttributesProperty.DefaultValue);
         public FontAttributes FontAttributes
@@ -137,13 +114,36 @@ namespace Flex.Controls
             set => SetValue(FontAttributesProperty, value);
         }
 
-        // FontFamily Property
-
         public static readonly BindableProperty FontFamilyProperty = BindableProperty.Create(nameof(FontFamily), typeof(string), typeof(FlexButton), (string)Label.FontFamilyProperty.DefaultValue);
         public string FontFamily
         {
             get => (string)GetValue(FontFamilyProperty);
             set => SetValue(FontFamilyProperty, value);
+        }
+
+        // Toggle Properties
+
+        public static readonly BindableProperty ToggleModeProperty = BindableProperty.Create(nameof(ToggleMode), typeof(bool), typeof(FlexButton), false);
+        public bool ToggleMode
+        {
+            get => (bool)GetValue(ToggleModeProperty);
+            set => SetValue(ToggleModeProperty, value);
+        }
+
+        public static readonly BindableProperty IsToggledProperty = BindableProperty.Create(nameof(IsToggled), typeof(bool), typeof(FlexButton), false);
+        public bool IsToggled
+        {
+            get => (bool)GetValue(IsToggledProperty);
+            set => SetValue(IsToggledProperty, value);
+        }
+
+        // Other Properties
+
+        public static readonly new BindableProperty PaddingProperty = BindableProperty.Create(nameof(Padding), typeof(Thickness), typeof(FlexButton), new Thickness(-1));
+        public new Thickness Padding
+        {
+            get => (Thickness)GetValue(PaddingProperty);
+            set => SetValue(PaddingProperty, value);
         }
 
         #endregion
@@ -153,8 +153,8 @@ namespace Flex.Controls
         public static readonly BindableProperty ClickedCommandProperty = BindableProperty.Create(nameof(ClickedCommand), typeof(ICommand), typeof(FlexButton), null, propertyChanged: (bindable, oldValue, newValue) => ((FlexButton)bindable).OnClickOrTouchedDownCommandPropertyChanged());
         public ICommand ClickedCommand
         {
-            get { return (ICommand)GetValue(ClickedCommandProperty); }
-            set { SetValue(ClickedCommandProperty, value); }
+            get => (ICommand)GetValue(ClickedCommandProperty);
+            set => SetValue(ClickedCommandProperty, value);
         }
 
         public static readonly BindableProperty ClickedCommandParameterProperty = BindableProperty.Create(nameof(ClickedCommandParameter), typeof(object), typeof(FlexButton), null, propertyChanged: (bindable, oldValue, newValie) => ((FlexButton)bindable).CommandCanExecuteChanged(bindable, EventArgs.Empty));
@@ -181,8 +181,8 @@ namespace Flex.Controls
         public static BindableProperty TouchedUpCommandProperty = BindableProperty.Create(nameof(TouchedUpCommand), typeof(ICommand), typeof(FlexButton), null);
         public ICommand TouchedUpCommand
         {
-            get { return (ICommand)GetValue(TouchedUpCommandProperty); }
-            set { SetValue(TouchedUpCommandProperty, value); }
+            get => (ICommand)GetValue(TouchedUpCommandProperty);
+            set => SetValue(TouchedUpCommandProperty, value);
         }
 
         public static readonly BindableProperty TouchedUpCommandParameterProperty = BindableProperty.Create(nameof(TouchedUpCommandParameter), typeof(object), typeof(FlexButton), null, propertyChanged: (bindable, oldValue, newValie) => ((FlexButton)bindable).CommandCanExecuteChanged(bindable, EventArgs.Empty));
@@ -381,7 +381,7 @@ namespace Flex.Controls
 
         void FlexButton_SizeChanged(object sender, EventArgs e)
         {
-            // Needs to be called to not make the or
+            // HACK: Needs to be called to not make the Designer do stupid things
             SetButtonMode();
         }
 
