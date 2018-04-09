@@ -352,12 +352,9 @@ namespace Flex.Controls
                     break;
             }
 
-            if (ToggleMode && IsToggled)
+            if (ToggleMode)
             {
-                Border.BackgroundColor = HighlightBorderColor;
-                Container.BackgroundColor = HighlightBackgroundColor;
-                ButtonText.TextColor = HighlightForegroundColor;
-                ColorIcon(HighlightForegroundColor);
+                HighLight(IsToggled);
             }
 
             // Calculate inner corner radius
@@ -392,10 +389,7 @@ namespace Flex.Controls
                 TouchedDown?.Invoke(this, null);
                 TouchedDownCommand?.Execute(TouchedDownCommandParameter);
 
-                Border.BackgroundColor = HighlightBorderColor;
-                Container.BackgroundColor = HighlightBackgroundColor;
-                ButtonText.TextColor = HighlightForegroundColor;
-                ColorIcon(HighlightForegroundColor);
+                HighLight(true);
             }
         }
 
@@ -412,14 +406,12 @@ namespace Flex.Controls
                 {
                     IsToggled = !IsToggled;
                     Toggled?.Invoke(this, new ToggledEventArgs(IsToggled));
-                }
 
-                if (!ToggleMode || IsToggled == false)
+                    HighLight(IsToggled);
+                }
+                else
                 {
-                    Border.BackgroundColor = BorderColor;
-                    Container.BackgroundColor = BackgroundColor;
-                    ButtonText.TextColor = ForegroundColor;
-                    ColorIcon(ForegroundColor);
+                    HighLight(false);
                 }
             }
         }
@@ -428,6 +420,24 @@ namespace Flex.Controls
         {
             ButtonIcon.Effects.Clear();
             ButtonIcon.Effects.Add(new ColorOverlayEffect { Color = color });
+        }
+
+        void HighLight(bool isHighLighted)
+        {
+            if (isHighLighted)
+            {
+                Border.BackgroundColor = HighlightBorderColor;
+                Container.BackgroundColor = HighlightBackgroundColor;
+                ButtonText.TextColor = HighlightForegroundColor;
+                ColorIcon(HighlightForegroundColor);
+            }
+            else
+            {
+                Border.BackgroundColor = BorderColor;
+                Container.BackgroundColor = BackgroundColor;
+                ButtonText.TextColor = ForegroundColor;
+                ColorIcon(ForegroundColor);
+            }
         }
     }
 }
