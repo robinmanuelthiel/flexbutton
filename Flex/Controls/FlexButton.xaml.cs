@@ -131,7 +131,7 @@ namespace Flex.Controls
             set => SetValue(ToggleModeProperty, value);
         }
 
-        public static readonly BindableProperty IsToggledProperty = BindableProperty.Create(nameof(IsToggled), typeof(bool), typeof(FlexButton), false);
+        public static readonly BindableProperty IsToggledProperty = BindableProperty.Create(nameof(IsToggled), typeof(bool), typeof(FlexButton), false, BindingMode.TwoWay);
         public bool IsToggled
         {
             get => (bool)GetValue(IsToggledProperty);
