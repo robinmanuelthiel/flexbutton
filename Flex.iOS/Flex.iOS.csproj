@@ -16,7 +16,7 @@
         <NuGetPackageImportStamp>
         </NuGetPackageImportStamp>
         <PackageId>Forms.Controls.FlexButton</PackageId>
-        <PackageVersion>0.6.0</PackageVersion>
+        <PackageVersion>0.7.0-pre</PackageVersion>
         <Authors>Robin-Manuel Thiel</Authors>
         <Description>A flexible button control for Xamarin.Forms</Description>
     </PropertyGroup>

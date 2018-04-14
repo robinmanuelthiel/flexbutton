@@ -4,6 +4,7 @@ using System.Windows.Input;
 using Flex.Effects;
 using Flex.Extensions;
 using Xamarin.Forms;
+using System.ComponentModel;
 
 namespace Flex.Controls
 {
@@ -210,6 +211,9 @@ namespace Flex.Controls
             else if (propertyName == IconProperty.PropertyName || propertyName == ForegroundColorProperty.PropertyName)
             {
                 SetButtonMode();
+
+                // Make sure, that Icon Source is set manually, as Binding is too slow sometimes
+                ButtonIcon.Source = Icon;
                 ColorIcon(ForegroundColor);
             }
             else if (propertyName == TextProperty.PropertyName ||
@@ -363,6 +367,9 @@ namespace Flex.Controls
             // Calculate inner corner radius
             // Use the outer radius minus the max thickness of a single direction
             InnerCornerRadius = Math.Max(0, CornerRadius - (int)Math.Max(Math.Max(BorderThickness.Left, BorderThickness.Top), Math.Max(BorderThickness.Right, BorderThickness.Bottom)));
+            Container.CornerRadius = InnerCornerRadius;
+
+            ColorIcon(ForegroundColor);
         }
 
         public event EventHandler<EventArgs> TouchedDown;
@@ -383,6 +390,7 @@ namespace Flex.Controls
         {
             // HACK: Needs to be called to not make the Designer do stupid things
             SetButtonMode();
+            ColorIcon(ForegroundColor);
         }
 
         void TouchDown()
@@ -426,6 +434,7 @@ namespace Flex.Controls
 
         void ColorIcon(Color color)
         {
+            // Attach Color Overlay Effect
             ButtonIcon.Effects.Clear();
             ButtonIcon.Effects.Add(new ColorOverlayEffect { Color = color });
         }
