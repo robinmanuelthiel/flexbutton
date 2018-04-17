@@ -286,5 +286,5 @@ __pycache__/
 *.btm.cs
 *.odx.cs
 *.xsd.cs
-.mfractor/.flexbutton.db
 Flex.Demo.Droid/Resources/Resource.designer.cs
+.mfractor/
