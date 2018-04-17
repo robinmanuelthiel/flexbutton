@@ -27,18 +27,6 @@ namespace Flex.Android.Effects
             SetOverlay(effect.Color);
         }
 
-        protected override void OnElementPropertyChanged(PropertyChangedEventArgs args)
-        {
-            if (!(Control is ImageView))
-                return;
-
-            var effect = (ColorOverlayEffect)Element.Effects.FirstOrDefault(e => e is ColorOverlayEffect);
-            if (effect == null)
-                return;
-
-            SetOverlay(effect.Color);
-        }
-
         void SetOverlay(Xamarin.Forms.Color color)
         {
             var formsImage = (Xamarin.Forms.Image)Element;

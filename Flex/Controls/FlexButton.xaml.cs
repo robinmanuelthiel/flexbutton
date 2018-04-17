@@ -369,7 +369,7 @@ namespace Flex.Controls
             InnerCornerRadius = Math.Max(0, CornerRadius - (int)Math.Max(Math.Max(BorderThickness.Left, BorderThickness.Top), Math.Max(BorderThickness.Right, BorderThickness.Bottom)));
             Container.CornerRadius = InnerCornerRadius;
 
-            ColorIcon(ForegroundColor);
+            //ColorIcon(ForegroundColor);
         }
 
         public event EventHandler<EventArgs> TouchedDown;

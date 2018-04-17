@@ -69,10 +69,6 @@ namespace Flex.iOS.Effects
             {
                 return;
             }
-            catch
-            {
-                return;
-            }
         }
     }
 }
