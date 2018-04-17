@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata minClientVersion="">
     <id>Forms.Controls.FlexButton</id>
-    <version>0.7.0-pre</version>
+    <version>0.7.0-pre2</version>
     <title>FlexButton for Xamarin.Forms</title>
     <authors>Robin-Manuel Thiel</authors>
     <owners>Robin-Manuel Thiel</owners>
@@ -23,7 +23,7 @@
         <dependency id="Xamarin.Forms" version="2.5.0.280555" />
       </group>
 
-      <group targetFramework="MonoAndroid8.0">
+      <group targetFramework="MonoAndroid10">
         <dependency id="Xamarin.Forms" version="2.5.0.280555" />
       </group>
     </dependencies>
@@ -32,12 +32,15 @@
     <!-- .NET Standard -->
     <file src="../Flex/bin/Release/netstandard1.0/Flex.dll" target="lib/netstandard1.0" />
 
+    <!-- Core PCL -->
+    <file src="../Flex/bin/Release/netstandard1.0/Flex.dll" target="lib/portable-win+net45+wp80+win81+wpa81" />
+
     <!-- Xamarin.iOS -->
-    <file src="../Flex/bin/Release/netstandard1.0/Flex.dll" target="lib/xamarinios10" />
+    <file src="../Flex.iOS/bin/Release/Flex.dll" target="lib/xamarinios10" />
     <file src="../Flex.iOS/bin/Release/Flex.iOS.dll" target="lib/xamarinios10" />    
 
     <!-- Xamarin.Android -->
-    <file src="../Flex/bin/Release/netstandard1.0/Flex.dll" target="lib/monoandroid10" />
+    <file src="../Flex.Android/bin/Release/Flex.dll" target="lib/monoandroid10" />
     <file src="../Flex.Android/bin/Release/Flex.Android.dll" target="lib/monoandroid10" />
   </files>
 </package>
