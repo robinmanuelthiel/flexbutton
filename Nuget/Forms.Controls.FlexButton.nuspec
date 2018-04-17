@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata minClientVersion="">
     <id>Forms.Controls.FlexButton</id>
-    <version>0.7.0-pre2</version>
+    <version>0.6.1</version>
     <title>FlexButton for Xamarin.Forms</title>
     <authors>Robin-Manuel Thiel</authors>
     <owners>Robin-Manuel Thiel</owners>
@@ -10,10 +10,10 @@
     <projectUrl>https://github.com/robinmanuelthiel/flexbutton</projectUrl>
     <description>Flexible button control for Xamarin.Forms</description>
     <summary>Flexible button control for Xamarin.Forms</summary>
-    <releaseNotes>This release adds Font adjustments and Command Parameters</releaseNotes>
+    <releaseNotes>This release fixes Xamarin.Forms 2.5.1 support</releaseNotes>
     <copyright></copyright>
     <language></language>
-    <tags>flex xamarin.forms control button flexbutton</tags>
+    <tags>flex xamarin.forms control button flexbutton xamarin flexible</tags>
     <dependencies>
       <group targetFramework=".NETStandard1.0">
         <dependency id="Xamarin.Forms" version="2.5.0.280555" />

@@ -216,11 +216,12 @@ namespace Flex.Controls
                 ButtonIcon.Source = Icon;
                 ColorIcon(ForegroundColor);
             }
-            else if (propertyName == TextProperty.PropertyName ||
-                     propertyName == IconOrientationProperty.PropertyName ||
-                     propertyName == BorderThicknessProperty.PropertyName ||
-                     propertyName == ToggleModeProperty.PropertyName ||
-                     propertyName == IsToggledProperty.PropertyName)
+            else if (
+                propertyName == TextProperty.PropertyName ||
+                propertyName == IconOrientationProperty.PropertyName ||
+                propertyName == BorderThicknessProperty.PropertyName ||
+                propertyName == ToggleModeProperty.PropertyName ||
+                propertyName == IsToggledProperty.PropertyName)
             {
                 SetButtonMode();
             }
