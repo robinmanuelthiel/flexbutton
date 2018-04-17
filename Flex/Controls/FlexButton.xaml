@@ -15,6 +15,10 @@
         Padding="{Binding Source={x:Reference this}, Path=BorderThickness}"
         HasShadow="false">
 
+        <Frame.GestureRecognizers>
+                <extensions:TouchGestureRecognizer x:Name="TouchRecognizer" />
+            </Frame.GestureRecognizers>
+        
         <Frame
             x:Name="Container"
             BackgroundColor="{Binding Source={x:Reference this}, Path=BackgroundColor}"
@@ -22,13 +26,6 @@
             HasShadow="false"
             Padding="0"
             Margin="0">
-
-            <!-- BorderColor does not work on Android at the moment (Xamarin.Forms bug) -->
-            <!--OutlineColor="{Binding Source={x:Reference this}, Path=BorderColor}">-->
-
-            <Frame.GestureRecognizers>
-                <extensions:TouchGestureRecognizer x:Name="TouchRecognizer" />
-            </Frame.GestureRecognizers>
 
             <ContentView
                 HorizontalOptions="FillAndExpand"

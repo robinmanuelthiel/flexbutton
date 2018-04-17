@@ -5,7 +5,9 @@ using Flex.Effects;
 using Flex.Extensions;
 using Xamarin.Forms;
 using System.ComponentModel;
+using Xamarin.Forms.Xaml;
 
+[assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace Flex.Controls
 {
     public partial class FlexButton : ContentView
@@ -224,6 +226,27 @@ namespace Flex.Controls
                 propertyName == IsToggledProperty.PropertyName)
             {
                 SetButtonMode();
+            }
+
+            // HACK: Horrible Hack, that makes the Xamarin.Forms Previewer work, who seems to give up some Binding support
+            // since Xamarin.Forms 2.5.1
+            try
+            {
+                Border.BackgroundColor = BorderColor;
+                Border.CornerRadius = CornerRadius;
+                Border.Padding = BorderThickness;
+                Container.BackgroundColor = BackgroundColor;
+                Container.CornerRadius = InnerCornerRadius;
+                ContainerContent.Margin = Padding;
+                ButtonText.Text = Text;
+                ButtonText.FontSize = FontSize;
+                ButtonText.FontAttributes = FontAttributes;
+                ButtonText.FontFamily = FontFamily;
+                ButtonText.TextColor = ForegroundColor;
+            }
+            catch (NullReferenceException)
+            {
+
             }
 
             base.OnPropertyChanged(propertyName);
