@@ -43,5 +43,10 @@ namespace Flex.Demo
         {
             ((FlexButton)sender).Text = e.Value.ToString();
         }
+
+        public void ToggleIsToggled_Clicked(object sender, EventArgs e)
+        {
+            ToggleButton.IsToggled = !ToggleButton.IsToggled;
+        }
     }
 }
