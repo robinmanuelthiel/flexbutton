@@ -40,7 +40,9 @@ namespace Flex.Android.CustomRenderers
                                 }
                             }
                             break;
+
                         case MotionEventActions.Up:
+                        case MotionEventActions.Cancel:
                             foreach (var recognizer in Element.GestureRecognizers.Where(x => x.GetType() == typeof(TouchGestureRecognizer)))
                             {
                                 if (recognizer is TouchGestureRecognizer touchGestureRecognizer)
