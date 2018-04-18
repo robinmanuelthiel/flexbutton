@@ -152,6 +152,7 @@
                     HighlightBackgroundColor="#6279B8"
                     BorderColor="#6279B8"
                     HighlightBorderColor="#49516F"
+                    Clicked="ButtonWithoutBackground_Clicked"
                     BorderThickness="2"/>
 
                 <flex:FlexButton

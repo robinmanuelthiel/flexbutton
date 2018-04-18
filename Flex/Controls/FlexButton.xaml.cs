@@ -219,36 +219,23 @@ namespace Flex.Controls
                 ButtonIcon.Source = Icon;
                 ColorIcon(ForegroundColor);
             }
+            if (propertyName == IsToggledProperty.PropertyName)
+            {
+                if (ToggleMode)
+                {
+                    Highlight(IsToggled);
+                }
+            }
             else if (
                 propertyName == TextProperty.PropertyName ||
                 propertyName == IconOrientationProperty.PropertyName ||
                 propertyName == BorderThicknessProperty.PropertyName ||
-                propertyName == ToggleModeProperty.PropertyName ||
-                propertyName == IsToggledProperty.PropertyName)
+                propertyName == ToggleModeProperty.PropertyName)
             {
                 SetButtonMode();
             }
 
-            // HACK: Horrible Hack, that makes the Xamarin.Forms Previewer work, who seems to give up some Binding support
-            // since Xamarin.Forms 2.5.1
-            try
-            {
-                Border.BackgroundColor = BorderColor;
-                Border.CornerRadius = CornerRadius;
-                Border.Padding = BorderThickness;
-                Container.BackgroundColor = BackgroundColor;
-                Container.CornerRadius = InnerCornerRadius;
-                ContainerContent.Margin = Padding;
-                ButtonText.Text = Text;
-                ButtonText.FontSize = FontSize;
-                ButtonText.FontAttributes = FontAttributes;
-                ButtonText.FontFamily = FontFamily;
-                ButtonText.TextColor = ForegroundColor;
-            }
-            catch (NullReferenceException)
-            {
 
-            }
 
             base.OnPropertyChanged(propertyName);
         }
@@ -381,9 +368,33 @@ namespace Flex.Controls
                     break;
             }
 
+            // HACK: Horrible Hack, that makes the Xamarin.Forms Previewer work, who seems to give up some Binding support
+            // since Xamarin.Forms 2.5.1
+            try
+            {
+
+                Border.BackgroundColor = Color.Red;
+                Border.BackgroundColor = BorderColor;
+                Border.CornerRadius = CornerRadius;
+                Border.Padding = BorderThickness;
+                Container.BackgroundColor = BackgroundColor;
+                Container.CornerRadius = InnerCornerRadius;
+                ContainerContent.Margin = Padding;
+                ButtonText.Text = Text;
+                ButtonText.FontSize = FontSize;
+                ButtonText.FontAttributes = FontAttributes;
+                ButtonText.FontFamily = FontFamily;
+                ButtonText.TextColor = ForegroundColor;
+
+            }
+            catch (NullReferenceException)
+            {
+
+            }
+
             if (ToggleMode)
             {
-                HighLight(IsToggled);
+                Highlight(IsToggled);
             }
 
             // Calculate inner corner radius
@@ -422,7 +433,7 @@ namespace Flex.Controls
                 TouchedDown?.Invoke(this, null);
                 TouchedDownCommand?.Execute(TouchedDownCommandParameter);
 
-                HighLight(true);
+                Highlight(true);
             }
         }
 
@@ -440,11 +451,11 @@ namespace Flex.Controls
                     IsToggled = !IsToggled;
                     Toggled?.Invoke(this, new ToggledEventArgs(IsToggled));
 
-                    HighLight(IsToggled);
+                    Highlight(IsToggled);
                 }
                 else
                 {
-                    HighLight(false);
+                    Highlight(false);
                 }
             }
         }
@@ -456,9 +467,9 @@ namespace Flex.Controls
             ButtonIcon.Effects.Add(new ColorOverlayEffect { Color = color });
         }
 
-        void HighLight(bool isHighLighted)
+        void Highlight(bool isHighlighted)
         {
-            if (isHighLighted)
+            if (isHighlighted)
             {
                 Border.BackgroundColor = HighlightBorderColor;
                 Container.BackgroundColor = HighlightBackgroundColor;
