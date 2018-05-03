@@ -5,8 +5,9 @@ using Xamarin.Forms.Platform.iOS;
 using Flex.Extensions;
 using Flex.iOS.CustomRenderers;
 using System.ComponentModel;
+using Flex.Controls;
 
-[assembly: ExportRenderer(typeof(Frame), typeof(GestureFrameRenderer))]
+[assembly: ExportRenderer(typeof(GestureFrame), typeof(GestureFrameRenderer))]
 namespace Flex.iOS.CustomRenderers
 {
     public class GestureFrameRenderer : FrameRenderer
