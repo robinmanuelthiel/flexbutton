@@ -15,6 +15,12 @@
         CornerRadius="{Binding Source={x:Reference this}, Path=CornerRadius}"
         Padding="{Binding Source={x:Reference this}, Path=BorderThickness}"
         HasShadow="false">
+        <controls:GestureFrame.BorderColor>
+            <!--- HACK: Temporary Bugfix for Xamarin.Forms 3.0 bug https://github.com/xamarin/Xamarin.Forms/issues/2634 -->
+            <OnPlatform x:TypeArguments="Color" Default="Transparent">
+                <!--<On Platform="Android" Value="{Binding Source={x:Reference this}, Path=BorderColor}" />-->
+            </OnPlatform>
+        </controls:GestureFrame.BorderColor>
 
         <controls:GestureFrame.GestureRecognizers>
             <extensions:TouchGestureRecognizer x:Name="TouchRecognizer" />
@@ -27,6 +33,12 @@
             HasShadow="false"
             Padding="0"
             Margin="0">
+            <controls:GestureFrame.BorderColor>
+                <!--- HACK: Temporary Bugfix for Xamarin.Forms 3.0 bug https://github.com/xamarin/Xamarin.Forms/issues/2634 -->
+                <OnPlatform x:TypeArguments="Color" Default="Transparent">
+                    <!--<On Platform="Android" Value="{Binding Source={x:Reference this}, Path=BackgroundColor}" />-->
+                </OnPlatform>
+            </controls:GestureFrame.BorderColor>
 
             <ContentView
                 HorizontalOptions="FillAndExpand"
