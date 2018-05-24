@@ -2,38 +2,43 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata minClientVersion="">
     <id>Forms.Controls.FlexButton</id>
-    <version>0.6.1</version>
+    <version>0.7.0</version>
     <title>FlexButton for Xamarin.Forms</title>
     <authors>Robin-Manuel Thiel</authors>
     <owners>Robin-Manuel Thiel</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <projectUrl>https://github.com/robinmanuelthiel/flexbutton</projectUrl>
+    <iconUrl>https://raw.githubusercontent.com/robinmanuelthiel/flexbutton/master/Design/Logo-150.png</iconUrl>
     <description>Flexible button control for Xamarin.Forms</description>
     <summary>Flexible button control for Xamarin.Forms</summary>
-    <releaseNotes>This release fixes Xamarin.Forms 2.5.1 support</releaseNotes>
+    <releaseNotes>Support Xamarin.Forms 3.0 and .NET Standard 2.0. Please make sure, to upgrade your .NET Standard projects to 2.0 as well.</releaseNotes>
     <copyright></copyright>
     <language></language>
     <tags>flex xamarin.forms control button flexbutton xamarin flexible</tags>
     <dependencies>
-      <group targetFramework=".NETStandard1.0">
-        <dependency id="Xamarin.Forms" version="2.5.0.280555" />
+      <!--<group targetFramework=".NETStandard1.0">
+        <dependency id="Xamarin.Forms" version="3.0.0.482510" />
       </group>
 
       <group targetFramework="Xamarin.iOS1.0">
-        <dependency id="Xamarin.Forms" version="2.5.0.280555" />
+        <dependency id="Xamarin.Forms" version="3.0.0.482510" />
       </group>
 
       <group targetFramework="MonoAndroid10">
-        <dependency id="Xamarin.Forms" version="2.5.0.280555" />
+        <dependency id="Xamarin.Forms" version="3.0.0.482510" />
+      </group>-->
+
+      <group>
+        <dependency id="Xamarin.Forms" version="3.0.0.482510" />
       </group>
     </dependencies>
   </metadata>
   <files>
     <!-- .NET Standard -->
-    <file src="../Flex/bin/Release/netstandard1.0/Flex.dll" target="lib/netstandard1.0" />
+    <file src="../Flex/bin/Release/netstandard2.0/Flex.dll" target="lib/netstandard1.0" />
 
     <!-- Core PCL -->
-    <file src="../Flex/bin/Release/netstandard1.0/Flex.dll" target="lib/portable-win+net45+wp80+win81+wpa81" />
+    <file src="../Flex/bin/Release/netstandard2.0/Flex.dll" target="lib/portable-win+net45+wp80+win81+wpa81" />
 
     <!-- Xamarin.iOS -->
     <file src="../Flex.iOS/bin/Release/Flex.dll" target="lib/xamarinios10" />
