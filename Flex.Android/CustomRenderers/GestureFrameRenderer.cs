@@ -5,8 +5,9 @@ using Flex.Android.CustomRenderers;
 using Flex.Extensions;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
+using Flex.Controls;
 
-[assembly: ExportRenderer(typeof(Frame), typeof(GestureFrameRenderer))]
+[assembly: ExportRenderer(typeof(GestureFrame), typeof(GestureFrameRenderer))]
 namespace Flex.Android.CustomRenderers
 {
     public class GestureFrameRenderer : Xamarin.Forms.Platform.Android.AppCompat.FrameRenderer

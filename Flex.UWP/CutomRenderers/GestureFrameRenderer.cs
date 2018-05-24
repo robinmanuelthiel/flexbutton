@@ -11,8 +11,9 @@ using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.UWP;
+using Flex.Controls;
 
-[assembly: ExportRenderer(typeof(Xamarin.Forms.Frame), typeof(GestureFrameRenderer))]
+[assembly: ExportRenderer(typeof(GestureFrame), typeof(GestureFrameRenderer))]
 namespace Flex.UWP.CustomRenderers
 {
     public class GestureFrameRenderer : FrameRenderer

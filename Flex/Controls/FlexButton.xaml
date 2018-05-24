@@ -5,21 +5,22 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
     xmlns:extensions="clr-namespace:Flex.Extensions"
+    xmlns:controls="clr-namespace:Flex.Controls"
     BackgroundColor="Transparent"
     VerticalOptions="Center">
 
-    <Frame
+    <controls:GestureFrame
         x:Name="Border"
         BackgroundColor="{Binding Source={x:Reference this}, Path=BorderColor}"
         CornerRadius="{Binding Source={x:Reference this}, Path=CornerRadius}"
         Padding="{Binding Source={x:Reference this}, Path=BorderThickness}"
         HasShadow="false">
 
-        <Frame.GestureRecognizers>
-                <extensions:TouchGestureRecognizer x:Name="TouchRecognizer" />
-            </Frame.GestureRecognizers>
+        <controls:GestureFrame.GestureRecognizers>
+            <extensions:TouchGestureRecognizer x:Name="TouchRecognizer" />
+        </controls:GestureFrame.GestureRecognizers>
         
-        <Frame
+        <controls:GestureFrame
             x:Name="Container"
             BackgroundColor="{Binding Source={x:Reference this}, Path=BackgroundColor}"
             CornerRadius="{Binding Source={x:Reference this}, Path=InnerCornerRadius}"
@@ -68,8 +69,8 @@
                     </Label>
                 </Grid>
             </ContentView>
-        </Frame>
-    </Frame>
+        </controls:GestureFrame>
+    </controls:GestureFrame>
         <!--<Label
             x:Name="ButtonSubText"
             Text="Hallo Welt"
