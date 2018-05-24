@@ -36,7 +36,7 @@ namespace Flex.Demo
 
         void ButtonWithoutBackground_Clicked(object sender, EventArgs e)
         {
-            DisplayAlert("Hello from Code Behind", "The Flex Button rocks!", "Yeah");
+            DisplayAlert("Hello from Code Behind", "The Flex Button rocks! " + ((FlexDemoPageViewModel)BindingContext).IsToggled.ToString(), "Yeah");
         }
 
         public void Handle_Toggled(object sender, ToggledEventArgs e)
@@ -46,7 +46,7 @@ namespace Flex.Demo
 
         public void ToggleIsToggled_Clicked(object sender, EventArgs e)
         {
-            ToggleButton.IsToggled = !ToggleButton.IsToggled;
+            ((FlexDemoPageViewModel)BindingContext).IsToggled = !((FlexDemoPageViewModel)BindingContext).IsToggled;
         }
     }
 }

@@ -224,14 +224,13 @@
                     HighlightBackgroundColor="#49516F"/>
 
                 <flex:FlexButton
-                    x:Name="ToggleButton"
                     HorizontalOptions="Center"
                     WidthRequest="40"
                     HeightRequest="40"
                     CornerRadius="20"
                     Icon="check.png"
                     ToggleMode="true"
-                    IsToggled="true"
+                    IsToggled="{Binding IsToggled}"
                     ForegroundColor="#ffffff"
                     HighlightForegroundColor="#ffffff"
                     BackgroundColor="#6279B8"
