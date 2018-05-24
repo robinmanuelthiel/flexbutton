@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
-        <TargetFramework>netstandard1.0</TargetFramework>
+        <TargetFramework>netstandard2.0</TargetFramework>
         <PackageId>Forms.Controls.FlexButton</PackageId>
         <Authors>Robin-Manuel Thiel</Authors>
         <PackageProjectUrl>https://github.com/robinmanuelthiel/flexbutton</PackageProjectUrl>
@@ -16,7 +16,7 @@
     </PropertyGroup>
     <ItemGroup>
         <PackageReference Include="NuGet.Build.Packaging" Version="0.2.2" />
-        <PackageReference Include="Xamarin.Forms" Version="2.5.1.444934" />
+        <PackageReference Include="Xamarin.Forms" Version="3.0.0.482510" />
     </ItemGroup>
     <ItemGroup>
         <Folder Include="Controls\" />

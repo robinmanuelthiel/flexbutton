@@ -4,7 +4,6 @@ using System.Windows.Input;
 using Flex.Effects;
 using Flex.Extensions;
 using Xamarin.Forms;
-using System.ComponentModel;
 using Xamarin.Forms.Xaml;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]

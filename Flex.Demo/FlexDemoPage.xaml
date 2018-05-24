@@ -55,6 +55,7 @@
                     HeightRequest="40"
                     CornerRadius="20"
                     Text="Pill Button"
+                    FontSize="Small"
                     ForegroundColor="#ffffff"
                     HighlightForegroundColor="#49516F"
                     BackgroundColor="#6279B8"
