@@ -140,6 +140,23 @@ namespace Flex.Controls
             set => SetValue(IsToggledProperty, value);
         }
 
+        // loader Properties
+
+        public static readonly BindableProperty IsLoadingProperty = BindableProperty.Create(nameof(IsLoading), typeof(bool), typeof(FlexButton), false, BindingMode.TwoWay, propertyChanged: IsLoadingPropertyChanged);
+        public bool IsLoading
+        {
+            get => (bool)GetValue(IsLoadingProperty);
+            set => SetValue(IsLoadingProperty, value);
+        }
+
+        public static readonly BindableProperty LoaderColorProperty = BindableProperty.Create(nameof(LoaderColor), typeof(Color), typeof(FlexButton), Color.White, BindingMode.TwoWay, propertyChanged: (bindable, oldValue, newValue) => ((FlexButton)bindable).ButtonLoader.Color = (Color)newValue);
+        public Color LoaderColor
+        {
+            get => (Color)GetValue(LoaderColorProperty);
+            set => SetValue(LoaderColorProperty, value);
+        }
+
+
         // Other Properties
 
         public static readonly new BindableProperty PaddingProperty = BindableProperty.Create(nameof(Padding), typeof(Thickness), typeof(FlexButton), new Thickness(-1));
@@ -148,7 +165,6 @@ namespace Flex.Controls
             get => (Thickness)GetValue(PaddingProperty);
             set => SetValue(PaddingProperty, value);
         }
-
         #endregion
 
         #region Commands
@@ -271,6 +287,16 @@ namespace Flex.Controls
                 TouchedDownCommand.CanExecuteChanged -= CommandCanExecuteChanged;
 
             base.OnPropertyChanging(propertyName);
+        }
+
+        private static void IsLoadingPropertyChanged(BindableObject bindable, object oldValue, object newValue)
+        {
+            if (bindable is FlexButton flexButton)
+            {
+                flexButton.ButtonIcon.IsVisible = !(bool)newValue;
+                flexButton.ButtonText.IsVisible = !(bool)newValue;
+                flexButton.ButtonLoader.IsVisible = (bool)newValue;
+            }
         }
 
         #endregion
