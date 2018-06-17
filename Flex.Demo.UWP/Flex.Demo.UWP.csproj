@@ -107,6 +107,7 @@
     <None Include="Flex.Demo.UWP_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="flag.png" />
     <Content Include="left.png" />
     <Content Include="check.png" />
     <Content Include="lightbulb.png" />
