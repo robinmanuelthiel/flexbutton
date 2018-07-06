@@ -1,10 +1,7 @@
 ﻿using Flex.Effects;
 using Flex.UWP.Effects;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Windows.Storage.Streams;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Imaging;
@@ -31,7 +28,7 @@ namespace Flex.UWP.Effects
             SetOverlay(effect.Color);
         }
 
-        private void SetOverlay(Color color)
+        private async void SetOverlay(Color color)
         {
             var formsImage = (Xamarin.Forms.Image)Element;
             if (formsImage?.Source == null)
@@ -43,6 +40,25 @@ namespace Flex.UWP.Effects
             var icon = new BitmapIcon();
             icon.UriSource = ((BitmapImage)image.Source).UriSource;
             icon.Foreground = new SolidColorBrush(Windows.UI.Colors.Red);
+
+
+            var imageSource = (BitmapImage)image.Source;
+
+            using (var stream = await (RandomAccessStreamReference.CreateFromUri(imageSource.UriSource)).OpenReadAsync())
+            {
+
+            }
+
+
+
+                var bitmap = new WriteableBitmap(imageSource.PixelWidth, imageSource.PixelHeight);
+            for (var x = 0; x < imageSource.PixelWidth; x++)
+            {
+                for (var y = 0; x < imageSource.PixelHeight; y++)
+                {
+                    
+                }
+            }
 
             //WriteableBitmap bitmap = new WriteableBitmap(100, 100);
             //bitmap.
@@ -58,6 +74,29 @@ namespace Flex.UWP.Effects
             //    }
             //}
 
+        }
+
+        public static Bitmap ChangeColor(Bitmap scrBitmap)
+        {
+            //You can change your new color here. Red,Green,LawnGreen any..
+            Color newColor = Color.Red;
+            Color actualColor;
+            //make an empty bitmap the same size as scrBitmap
+            Bitmap newBitmap = new Bitmap(scrBitmap.Width, scrBitmap.Height);
+            for (int i = 0; i < scrBitmap.Width; i++)
+            {
+                for (int j = 0; j < scrBitmap.Height; j++)
+                {
+                    //get the pixel from the scrBitmap image
+                    actualColor = scrBitmap.GetPixel(i, j);
+                    // > 150 because.. Images edges can be of low pixel colr. if we set all pixel color to new then there will be no smoothness left.
+                    if (actualColor.A > 150)
+                        newBitmap.SetPixel(i, j, newColor);
+                    else
+                        newBitmap.SetPixel(i, j, actualColor);
+                }
+            }
+            return newBitmap;
         }
 
         protected override void OnDetached()
