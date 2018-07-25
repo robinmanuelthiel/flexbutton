@@ -54,7 +54,15 @@
                         <ColumnDefinition x:Name="FirstColumn" Width="*" />
                         <ColumnDefinition x:Name="SecondColumn" Width="Auto" />
                     </Grid.ColumnDefinitions>
-                
+                    
+                    <ActivityIndicator 
+                        x:Name="ButtonLoader"
+                        IsVisible="false"
+                        IsRunning="{Binding Source={x:Reference this}, Path=IsLoading}"
+                        Color="White"
+                        VerticalOptions="FillAndExpand"
+                        HorizontalOptions="FillAndExpand"/>
+                    
                     <Image 
                         x:Name="ButtonIcon"
                         Grid.Column="0"
