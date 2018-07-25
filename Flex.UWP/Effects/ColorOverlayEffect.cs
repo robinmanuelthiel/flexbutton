@@ -1,8 +1,5 @@
-﻿using CompositionProToolkit;
-using Flex.Effects;
+﻿using Flex.Effects;
 using Flex.UWP.Effects;
-using Microsoft.Graphics.Canvas;
-using Microsoft.Graphics.Canvas.Effects;
 using System.IO;
 using System.Linq;
 using System.Numerics;
