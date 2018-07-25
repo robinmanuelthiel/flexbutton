@@ -429,7 +429,7 @@ namespace Flex.Controls
         {
             if (IsEnabled)
             {
-                TouchedDown?.Invoke(this, null);
+                TouchedDown?.Invoke(this, EventArgs.Empty);
                 TouchedDownCommand?.Execute(TouchedDownCommandParameter);
 
                 Highlight(true);
@@ -440,9 +440,9 @@ namespace Flex.Controls
         {
             if (IsEnabled)
             {
-                TouchedUp?.Invoke(this, null);
+                TouchedUp?.Invoke(this, EventArgs.Empty);
                 TouchedUpCommand?.Execute(TouchedUpCommandParameter);
-                Clicked?.Invoke(this, null);
+                Clicked?.Invoke(this, EventArgs.Empty);
                 ClickedCommand?.Execute(ClickedCommandParameter);
 
                 if (ToggleMode)
