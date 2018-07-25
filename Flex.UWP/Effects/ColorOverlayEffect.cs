@@ -1,12 +1,24 @@
-﻿using Flex.Effects;
+﻿using CompositionProToolkit;
+using Flex.Effects;
 using Flex.UWP.Effects;
+using Microsoft.Graphics.Canvas;
+using Microsoft.Graphics.Canvas.Effects;
+using System.IO;
 using System.Linq;
+using System.Numerics;
+using Windows.Graphics.Effects;
+using Windows.Graphics.Imaging;
+using Windows.Storage;
 using Windows.Storage.Streams;
+using Windows.UI.Composition;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Hosting;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Imaging;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.UWP;
+using System;
+using System.Runtime.InteropServices.WindowsRuntime;
 
 [assembly: ResolutionGroupName("Flex.Effects")]
 [assembly: ExportEffect(typeof(ColorOverlayEffectUWP), nameof(ColorOverlayEffect))]
@@ -34,69 +46,37 @@ namespace Flex.UWP.Effects
             if (formsImage?.Source == null)
                 return;
 
-            var image = (Windows.UI.Xaml.Controls.Image)Control;
-            //image.Color
+            if (formsImage.Width < 0 || formsImage.Height < 0)
+                return;
 
-            var icon = new BitmapIcon();
-            icon.UriSource = ((BitmapImage)image.Source).UriSource;
-            icon.Foreground = new SolidColorBrush(Windows.UI.Colors.Red);
+            var nativeColor = Windows.UI.Color.FromArgb((byte)(color.A * 255), (byte)(color.R * 255), (byte)(color.G * 255), (byte)(color.B * 255));
 
-
-            var imageSource = (BitmapImage)image.Source;
-
-            using (var stream = await (RandomAccessStreamReference.CreateFromUri(imageSource.UriSource)).OpenReadAsync())
+            var uri = new Uri($"ms-appx:///{((FileImageSource)formsImage.Source).File}");        
+            var file = await StorageFile.GetFileFromApplicationUriAsync(uri);
+            using (IRandomAccessStream ras = await file.OpenAsync(FileAccessMode.Read))
             {
-
-            }
-
-
-
-                var bitmap = new WriteableBitmap(imageSource.PixelWidth, imageSource.PixelHeight);
-            for (var x = 0; x < imageSource.PixelWidth; x++)
-            {
-                for (var y = 0; x < imageSource.PixelHeight; y++)
+                var decoder = await BitmapDecoder.CreateAsync(ras);
+                var provider = await decoder.GetPixelDataAsync(decoder.BitmapPixelFormat, decoder.BitmapAlphaMode, new BitmapTransform(), ExifOrientationMode.RespectExifOrientation, ColorManagementMode.DoNotColorManage);
+                byte[] pixels = provider.DetachPixelData();
+                for (int i = 0; i < pixels.Length; i += 4)
                 {
-                    
+                    // Writable Bitmap wants colros in BGRA format
+                    if (pixels[i + 3] != 0) // Check if color needs to be overwritten when Alpha is set
+                    {
+                        pixels[i] = nativeColor.B;
+                        pixels[i + 1] = nativeColor.G;
+                        pixels[i + 2] = nativeColor.R;
+                    }                       
                 }
-            }
-
-            //WriteableBitmap bitmap = new WriteableBitmap(100, 100);
-            //bitmap.
-
-            //BitmapImage img = ((BitmapImage)image.Source);
-            //for (int x = 0; x < img.PixelWidth; x++)
-            //{
-            //    for (int y = 0; y < img.PixelHeight; y++)
-            //    {
-            //        Color bitColor = img.GetPixel(x, y);
-            //        //Sets all the pixels to white but with the original alpha value
-            //        bitmap.SetPixel(x, y, Color.FromArgb(bitColor.A, 255, 255, 255));
-            //    }
-            //}
-
-        }
-
-        public static Bitmap ChangeColor(Bitmap scrBitmap)
-        {
-            //You can change your new color here. Red,Green,LawnGreen any..
-            Color newColor = Color.Red;
-            Color actualColor;
-            //make an empty bitmap the same size as scrBitmap
-            Bitmap newBitmap = new Bitmap(scrBitmap.Width, scrBitmap.Height);
-            for (int i = 0; i < scrBitmap.Width; i++)
-            {
-                for (int j = 0; j < scrBitmap.Height; j++)
+                var bitmap = new WriteableBitmap((int)decoder.OrientedPixelWidth, (int)decoder.OrientedPixelHeight);
+                using (var stream = bitmap.PixelBuffer.AsStream())
                 {
-                    //get the pixel from the scrBitmap image
-                    actualColor = scrBitmap.GetPixel(i, j);
-                    // > 150 because.. Images edges can be of low pixel colr. if we set all pixel color to new then there will be no smoothness left.
-                    if (actualColor.A > 150)
-                        newBitmap.SetPixel(i, j, newColor);
-                    else
-                        newBitmap.SetPixel(i, j, actualColor);
+                    await stream.WriteAsync(pixels, 0, pixels.Length);
                 }
+
+                if ((Control as Windows.UI.Xaml.Controls.Image) != null)                
+                    (Control as Windows.UI.Xaml.Controls.Image).Source = bitmap;                    
             }
-            return newBitmap;
         }
 
         protected override void OnDetached()
