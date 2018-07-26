@@ -15,7 +15,7 @@
     <releaseNotes>Add UWP support and update to Xamarin.Forms 3.1</releaseNotes>
     <copyright></copyright>
     <language></language>
-    <tags>flex xamarin.forms control button flexbutton xamarin flexible</tags>
+    <tags>flex xamarin.forms control button flexbutton xamarin flexible pill</tags>
     <dependencies>
       <!--<group targetFramework=".NETStandard1.0">
         <dependency id="Xamarin.Forms" version="3.0.0.482510" />
