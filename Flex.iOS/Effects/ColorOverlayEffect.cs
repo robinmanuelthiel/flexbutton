@@ -36,7 +36,10 @@ namespace Flex.iOS.Effects
             var formsImage = (Xamarin.Forms.Image)Element;
             if (formsImage?.Source == null)
                 return;
-
+                
+            if (formsImage?.IsLoading == true)            
+                return;          
+            
             try
             {
                 UIImage image = ((UIImageView)Control).Image;
