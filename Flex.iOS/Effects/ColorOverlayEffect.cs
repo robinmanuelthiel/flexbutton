@@ -37,6 +37,10 @@ namespace Flex.iOS.Effects
 
         void SetOverlay(Color color)
         {
+            var formsImage = (Xamarin.Forms.Image)Element;
+            if (formsImage?.Source == null || formsImage?.IsLoading == true)
+                return;
+                
             if (Control is UIImageView imageView && imageView.Image != null)
             {
                 originalRenderingMode = imageView.Image.RenderingMode;

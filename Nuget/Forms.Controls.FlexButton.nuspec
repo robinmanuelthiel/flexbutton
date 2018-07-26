@@ -2,19 +2,20 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata minClientVersion="">
     <id>Forms.Controls.FlexButton</id>
-    <version>0.7.0</version>
+    <version>0.8.0</version>
     <title>FlexButton for Xamarin.Forms</title>
     <authors>Robin-Manuel Thiel</authors>
     <owners>Robin-Manuel Thiel</owners>
+    <licenseUrl>https://github.com/robinmanuelthiel/flexbutton/blob/master/LICENSE</licenseUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <projectUrl>https://github.com/robinmanuelthiel/flexbutton</projectUrl>
     <iconUrl>https://raw.githubusercontent.com/robinmanuelthiel/flexbutton/master/Design/Logo-150.png</iconUrl>
     <description>Flexible button control for Xamarin.Forms</description>
     <summary>Flexible button control for Xamarin.Forms</summary>
-    <releaseNotes>Support Xamarin.Forms 3.0 and .NET Standard 2.0. Please make sure, to upgrade your .NET Standard projects to 2.0 as well.</releaseNotes>
+    <releaseNotes>Add UWP support and update to Xamarin.Forms 3.1</releaseNotes>
     <copyright></copyright>
     <language></language>
-    <tags>flex xamarin.forms control button flexbutton xamarin flexible</tags>
+    <tags>flex xamarin.forms control button flexbutton xamarin flexible pill</tags>
     <dependencies>
       <!--<group targetFramework=".NETStandard1.0">
         <dependency id="Xamarin.Forms" version="3.0.0.482510" />
@@ -29,7 +30,7 @@
       </group>-->
 
       <group>
-        <dependency id="Xamarin.Forms" version="3.0.0.482510" />
+        <dependency id="Xamarin.Forms" version="3.1.0.637273" />
       </group>
     </dependencies>
   </metadata>
@@ -42,10 +43,14 @@
 
     <!-- Xamarin.iOS -->
     <file src="../Flex.iOS/bin/Release/Flex.dll" target="lib/xamarinios10" />
-    <file src="../Flex.iOS/bin/Release/Flex.iOS.dll" target="lib/xamarinios10" />    
+    <file src="../Flex.iOS/bin/Release/Flex.iOS.dll" target="lib/xamarinios10" />
 
     <!-- Xamarin.Android -->
     <file src="../Flex.Android/bin/Release/Flex.dll" target="lib/monoandroid10" />
     <file src="../Flex.Android/bin/Release/Flex.Android.dll" target="lib/monoandroid10" />
+
+    <!-- Xamarin.UWP -->
+    <file src="../Flex.UWP/bin/Release/Flex.dll" target="lib/uap10.0" />
+    <file src="../Flex.UWP/bin/Release/Flex.UWP.dll" target="lib/uap10.0" />
   </files>
 </package>

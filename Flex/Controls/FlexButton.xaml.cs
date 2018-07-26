@@ -93,6 +93,13 @@ namespace Flex.Controls
             set => SetValue(IconOrientationProperty, value);
         }
 
+        public static readonly BindableProperty IconTintEnabledProperty = BindableProperty.Create(nameof(IconTintEnabled), typeof(bool), typeof(FlexButton), true);
+        public bool IconTintEnabled
+        {
+            get => (bool)GetValue(IconTintEnabledProperty);
+            set => SetValue(IconTintEnabledProperty, value);
+        }
+
         // Text Properties
 
         public static readonly BindableProperty TextProperty = BindableProperty.Create(nameof(Text), typeof(string), typeof(FlexButton), string.Empty);
@@ -210,6 +217,10 @@ namespace Flex.Controls
                 // Set Opacity based on IsEnabled
                 Opacity = IsEnabled ? 1 : 0.5;
             }
+            else if (propertyName == IconTintEnabledProperty.PropertyName)
+            {
+                Highlight(ToggleMode && IsToggled);
+            }
             else if (propertyName == IconProperty.PropertyName || propertyName == ForegroundColorProperty.PropertyName)
             {
                 SetButtonMode();
@@ -233,8 +244,6 @@ namespace Flex.Controls
             {
                 SetButtonMode();
             }
-
-
 
             base.OnPropertyChanged(propertyName);
         }
@@ -429,7 +438,7 @@ namespace Flex.Controls
         {
             if (IsEnabled)
             {
-                TouchedDown?.Invoke(this, null);
+                TouchedDown?.Invoke(this, EventArgs.Empty);
                 TouchedDownCommand?.Execute(TouchedDownCommandParameter);
 
                 Highlight(true);
@@ -440,9 +449,9 @@ namespace Flex.Controls
         {
             if (IsEnabled)
             {
-                TouchedUp?.Invoke(this, null);
+                TouchedUp?.Invoke(this, EventArgs.Empty);
                 TouchedUpCommand?.Execute(TouchedUpCommandParameter);
-                Clicked?.Invoke(this, null);
+                Clicked?.Invoke(this, EventArgs.Empty);
                 ClickedCommand?.Execute(ClickedCommandParameter);
 
                 if (ToggleMode)
@@ -463,7 +472,11 @@ namespace Flex.Controls
         {
             // Attach Color Overlay Effect
             ButtonIcon.Effects.Clear();
-            ButtonIcon.Effects.Add(new ColorOverlayEffect { Color = color });
+
+            if (IconTintEnabled)
+            {
+                ButtonIcon.Effects.Add(new ColorOverlayEffect { Color = color });
+            }
         }
 
         void Highlight(bool isHighlighted)

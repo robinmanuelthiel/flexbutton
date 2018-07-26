@@ -48,5 +48,10 @@ namespace Flex.Demo
         {
             ((FlexDemoPageViewModel)BindingContext).IsToggled = !((FlexDemoPageViewModel)BindingContext).IsToggled;
         }
+
+        private void ToggleIconTintEnabled(object sender, EventArgs e)
+        {
+            ColorIconButton.IconTintEnabled = !ColorIconButton.IconTintEnabled;
+        }
     }
 }
