@@ -76,6 +76,7 @@ Take a look a the [Demo Project](/Flex.Demo) in this repository for a full sampl
 | `BorderThickness` | `0` | Width of the border in each direction |
 | `ToggleMode` | `false` | Sets the button in Toggle Mode |
 | `IsToggled` | `false` | Represents the Toggle state, when Toggle Mode is enabled |
+| `IconTintEnabled` | `true` | Enables tinting of the icon (Set to false, if your icon is colorized) |
 
 | Event | Description |
 |------------------|---------|

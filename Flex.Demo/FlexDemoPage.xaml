@@ -6,6 +6,28 @@
     x:Class="Flex.Demo.FlexDemoPage"
     xmlns:flex="clr-namespace:Flex.Controls;assembly=Flex"
     BackgroundColor="White">
+    
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="SmallButton" TargetType="Button">
+                <Setter Property="FontSize" Value="Micro" />
+                <Setter Property="HeightRequest">
+                    <Setter.Value>
+                        <OnPlatform x:TypeArguments="x:Double" Default="-1">
+                            <On Platform="iOS" Value="20" />
+                        </OnPlatform>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="TextColor">
+                    <Setter.Value>
+                        <OnPlatform x:TypeArguments="Color">
+                            <On Platform="iOS" Value="Gray" />
+                        </OnPlatform>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
 
     <ScrollView>
         <StackLayout 
@@ -78,31 +100,9 @@
             <!-- Wide Button with Icon-->
             <Label Text="Wide Button with Icon" HorizontalTextAlignment="Center" HorizontalOptions="Center"/>
             <StackLayout HorizontalOptions="Center" Orientation="Horizontal" Margin="0,-10,0,0">
-                <Button Text="Toggle IsEnabled" Clicked="ToggleIsEnabled_Clicked" FontSize="Micro">
-                    <Button.HeightRequest>
-                        <OnPlatform x:TypeArguments="x:Double" Default="-1">
-                            <On Platform="iOS" Value="20" />
-                        </OnPlatform>
-                    </Button.HeightRequest>
-                    <Button.TextColor>
-                        <OnPlatform x:TypeArguments="Color">
-                            <On Platform="iOS" Value="Gray" />
-                        </OnPlatform>
-                    </Button.TextColor>
-                </Button>
+                <Button Text="Toggle IsEnabled" Clicked="ToggleIsEnabled_Clicked" Style="{StaticResource SmallButton}" />
                 <Label Text="|" TextColor="Gray" VerticalOptions="Center"/>
-                <Button Text="Toggle IconOrientation" Clicked="ToggleIconOrientation_Clicked" FontSize="Micro">
-                    <Button.HeightRequest>
-                        <OnPlatform x:TypeArguments="x:Double" Default="-1">
-                            <On Platform="iOS" Value="20" />
-                        </OnPlatform>                        
-                    </Button.HeightRequest>
-                    <Button.TextColor>
-                        <OnPlatform x:TypeArguments="Color">
-                            <On Platform="iOS" Value="Gray" />
-                        </OnPlatform>
-                    </Button.TextColor>
-                </Button>
+                <Button Text="Toggle IconOrientation" Clicked="ToggleIconOrientation_Clicked" Style="{StaticResource SmallButton}" />
             </StackLayout>
             
             <flex:FlexButton
@@ -194,18 +194,7 @@
             <!-- Wide Text -->
             <Label Text="Toggle Button" HorizontalTextAlignment="Center" HorizontalOptions="Center"/>
 
-            <Button Text="Toggle IsToggled" Clicked="ToggleIsToggled_Clicked" FontSize="Micro" Margin="0,-10,0,0" HorizontalOptions="Center">
-                    <Button.HeightRequest>
-                        <OnPlatform x:TypeArguments="x:Double" Default="-1">
-                            <On Platform="iOS" Value="20" />
-                        </OnPlatform>                        
-                    </Button.HeightRequest>
-                    <Button.TextColor>
-                        <OnPlatform x:TypeArguments="Color">
-                            <On Platform="iOS" Value="Gray" />
-                        </OnPlatform>
-                    </Button.TextColor>
-                </Button>
+            <Button Text="Toggle IsToggled" Clicked="ToggleIsToggled_Clicked" Margin="0,-10,0,0" HorizontalOptions="Center" Style="{StaticResource SmallButton}" />
             
             <StackLayout Orientation="Horizontal" Spacing="10" HorizontalOptions="Center">
             
@@ -250,6 +239,30 @@
                     BackgroundColor="#6279B8"
                     HighlightBackgroundColor="#49516F"/>
             </StackLayout>
+
+            <BoxView BackgroundColor="#eee" HeightRequest="1" Margin="0,10"/>
+
+            <!-- Color Icons -->
+            <Label Text="Colorized Icon" HorizontalTextAlignment="Center" HorizontalOptions="Center"/>
+            <Button Text="Toggle IconTintEnabled" Clicked="ToggleIconTintEnabled" Style="{StaticResource SmallButton}" />
+
+            <flex:FlexButton
+                x:Name="ColorIconButton"
+                HorizontalOptions="Center"
+                IconOrientation="Left"
+                WidthRequest="76"
+                HeightRequest="76"
+                CornerRadius="38"
+                Padding="15"
+                Icon="flag.png"
+                ForegroundColor="#ffffff"
+                HighlightForegroundColor="#49516F"
+                BackgroundColor="#6279B8"
+                HighlightBackgroundColor="#8EA4D2"
+                BorderColor="#8EA4D2"
+                HighlightBorderColor="#8EA4D2"
+                BorderThickness="3"
+                IconTintEnabled="False"/>
         </StackLayout>
     </ScrollView>
 </ContentPage>
