@@ -14,13 +14,13 @@ namespace Flex.iOS.Effects
 {
     public class ColorOverlayEffectiOS : PlatformEffect
     {
+        private UIImageRenderingMode originalRenderingMode = UIImageRenderingMode.Automatic;
+        private UIColor originalTintColor = UIColor.Black;
+
         protected override void OnAttached()
         {
             var effect = (ColorOverlayEffect)Element.Effects.FirstOrDefault(e => e is ColorOverlayEffect);
             if (effect == null)
-                return;
-
-            if (!(Control is UIImageView))
                 return;
 
             SetOverlay(effect.Color);
@@ -28,49 +28,25 @@ namespace Flex.iOS.Effects
 
         protected override void OnDetached()
         {
-            //throw new NotImplementedException();
+            if (Control is UIImageView imageView && imageView.Image != null)
+            {
+                imageView.TintColor = originalTintColor;
+                imageView.Image = imageView.Image.ImageWithRenderingMode(originalRenderingMode);
+            }
         }
 
-        void SetOverlay(Xamarin.Forms.Color color)
+        void SetOverlay(Color color)
         {
             var formsImage = (Xamarin.Forms.Image)Element;
-            if (formsImage?.Source == null)
+            if (formsImage?.Source == null || formsImage?.IsLoading == true)
                 return;
                 
-            if (formsImage?.IsLoading == true)            
-                return;          
-            
-            try
+            if (Control is UIImageView imageView && imageView.Image != null)
             {
-                UIImage image = ((UIImageView)Control).Image;
-                UIImage coloredImage = null;
-                UIGraphics.BeginImageContextWithOptions(image.Size, false, 0.0f);
-                using (CGContext context = UIGraphics.GetCurrentContext())
-                {
-                    context.TranslateCTM(0, image.Size.Height);
-                    context.ScaleCTM(1.0f, -1.0f);
-
-                    //var rect = new RectangleF(0, 0, (float)(image.Size.Width * image.CurrentScale), (float)(image.Size.Height * image.CurrentScale));
-                    var rect = new RectangleF(0, 0, (float)(image.Size.Width), (float)(image.Size.Height));
-
-                    // draw image, (to get transparancy mask)
-                    context.SetBlendMode(CGBlendMode.Normal);
-                    context.DrawImage(rect, image.CGImage);
-
-                    // draw the color using the sourcein blend mode so its only draw on the non-transparent pixels
-                    context.SetBlendMode(CGBlendMode.SourceIn);
-                    context.SetFillColor(color.ToUIColor().CGColor);
-                    context.FillRect(rect);
-
-                    coloredImage = UIGraphics.GetImageFromCurrentImageContext();
-                    UIGraphics.EndImageContext();
-                }
-
-                ((UIImageView)Control).Image = coloredImage;
-            }
-            catch (ObjectDisposedException)
-            {
-                return;
+                originalRenderingMode = imageView.Image.RenderingMode;
+                originalTintColor = imageView.TintColor;
+                imageView.Image = imageView.Image.ImageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate);
+                imageView.TintColor = color.ToUIColor();
             }
         }
     }
