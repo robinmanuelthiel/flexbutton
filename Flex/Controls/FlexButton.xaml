@@ -7,7 +7,7 @@
     xmlns:extensions="clr-namespace:Flex.Extensions"
     xmlns:controls="clr-namespace:Flex.Controls"
     BackgroundColor="Transparent"
-    VerticalOptions="Center">
+    VerticalOptions="Start">
 
     <controls:GestureFrame
         x:Name="Border"
@@ -59,6 +59,7 @@
                         x:Name="ButtonIcon"
                         Grid.Column="0"
                         Grid.ColumnSpan="2"
+                        Margin="{Binding Source={x:Reference this}, Path=IconPadding}"
                         Source="{Binding Source={x:Reference this}, Path=Icon}"/>
 
                     <Label
@@ -72,13 +73,7 @@
                         VerticalTextAlignment="Center"
                         HorizontalOptions="FillAndExpand"
                         HorizontalTextAlignment="Center"
-                        TextColor="{Binding Source={x:Reference this}, Path=ForegroundColor}" >
-                        <Label.Margin>
-                            <OnPlatform x:TypeArguments="Thickness" Default="10,0">
-                                <On Platform="WinPhone" Value="0,0" />
-                            </OnPlatform>
-                        </Label.Margin>
-                    </Label>
+                        TextColor="{Binding Source={x:Reference this}, Path=ForegroundColor}" />
                 </Grid>
             </ContentView>
         </controls:GestureFrame>

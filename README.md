@@ -72,6 +72,7 @@ Take a look a the [Demo Project](/Flex.Demo) in this repository for a full sampl
 | `HighlightBorderColor` | `Transparent` | Background color of the border when pressed down |
 | `CornerRadius` | `0` | Button borner radius |
 | `Padding` | 30% of height, 10-30% of width  | Inside distance from icon to button borders |
+| `IconPadding` | 0 | Additional Padding around the icon to control distance to text |
 | `IconOrientation` | `IconOrientation.Left` | Positions the icon on a button that has icon and text |
 | `BorderThickness` | `0` | Width of the border in each direction |
 | `ToggleMode` | `false` | Sets the button in Toggle Mode |

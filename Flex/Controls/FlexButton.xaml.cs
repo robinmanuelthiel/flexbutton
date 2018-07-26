@@ -13,6 +13,7 @@ namespace Flex.Controls
     {
         ButtonMode mode;
         bool userChangedPadding;
+        bool userChangedIconPadding;
 
         #region Bindable Properties
 
@@ -156,6 +157,13 @@ namespace Flex.Controls
             set => SetValue(PaddingProperty, value);
         }
 
+        public static readonly BindableProperty IconPaddingProperty = BindableProperty.Create(nameof(IconPadding), typeof(Thickness), typeof(FlexButton), new Thickness(-1));
+        public Thickness IconPadding
+        {
+            get => (Thickness)GetValue(IconPaddingProperty);
+            set => SetValue(IconPaddingProperty, value);
+        }
+
         #endregion
 
         #region Commands
@@ -211,6 +219,12 @@ namespace Flex.Controls
             if (propertyName == PaddingProperty.PropertyName)
             {
                 userChangedPadding = true;
+                SetButtonMode();
+            }
+            else if (propertyName == IconPaddingProperty.PropertyName)
+            {
+                userChangedIconPadding = true;
+                SetButtonMode();
             }
             else if (propertyName == IsEnabledProperty.PropertyName)
             {
@@ -240,6 +254,7 @@ namespace Flex.Controls
                 propertyName == TextProperty.PropertyName ||
                 propertyName == IconOrientationProperty.PropertyName ||
                 propertyName == BorderThicknessProperty.PropertyName ||
+                propertyName == FontSizeProperty.PropertyName ||
                 propertyName == ToggleModeProperty.PropertyName)
             {
                 SetButtonMode();
@@ -352,6 +367,11 @@ namespace Flex.Controls
                         Padding = new Thickness(HeightRequest * .1, HeightRequest * .3);
                         userChangedPadding = false; // Set this back to false, as the above line triggers OnPropertyChanged 
                     }
+                    if (!userChangedIconPadding)
+                    {
+                        IconPadding = IconOrientation == IconOrientation.Left ? new Thickness(0, 0, 6, 0) : new Thickness(6, 0, 0, 0);
+                        userChangedIconPadding = false; // Set this back to false, as the above line triggers OnPropertyChanged 
+                    }
 
                     break;
 
@@ -369,7 +389,7 @@ namespace Flex.Controls
                     // Adjust Default Padding
                     if (!userChangedPadding)
                     {
-                        Padding = new Thickness(0);
+                        Padding = new Thickness(20, 0);
                         userChangedPadding = false; // Set this back to false, as the above line triggers OnPropertyChanged 
                     }
 
@@ -380,7 +400,6 @@ namespace Flex.Controls
             // since Xamarin.Forms 2.5.1
             try
             {
-
                 Border.BackgroundColor = Color.Red;
                 Border.BackgroundColor = BorderColor;
                 Border.CornerRadius = CornerRadius;
@@ -393,7 +412,7 @@ namespace Flex.Controls
                 ButtonText.FontAttributes = FontAttributes;
                 ButtonText.FontFamily = FontFamily;
                 ButtonText.TextColor = ForegroundColor;
-
+                ButtonIcon.Margin = IconPadding;
             }
             catch (NullReferenceException)
             {

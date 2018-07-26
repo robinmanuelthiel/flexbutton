@@ -61,23 +61,24 @@
             
             <!-- Small Buttons -->
             <Label Text="Small Buttons" HorizontalTextAlignment="Center" HorizontalOptions="Center"/>
-            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Start">
                 <flex:FlexButton                    
                     WidthRequest="40"
                     HeightRequest="40"
                     CornerRadius="20"
                     Icon="lightbulb.png"
+                    VerticalOptions="Start"
                     ForegroundColor="#ffffff"
                     HighlightForegroundColor="#49516F"
                     BackgroundColor="#6279B8"
                     HighlightBackgroundColor="#8EA4D2"/>
 
                 <flex:FlexButton
-                    WidthRequest="140"
                     HeightRequest="40"
                     CornerRadius="20"
                     Text="Pill Button"
                     FontSize="Small"
+                    VerticalOptions="Start"
                     ForegroundColor="#ffffff"
                     HighlightForegroundColor="#49516F"
                     BackgroundColor="#6279B8"
@@ -132,6 +133,7 @@
             
                 <flex:FlexButton
                     HorizontalOptions="Center"
+                    VerticalOptions="Center"
                     WidthRequest="50"
                     HeightRequest="50"
                     CornerRadius="25"
@@ -158,6 +160,7 @@
 
                 <flex:FlexButton
                     HorizontalOptions="Center"
+                    VerticalOptions="Center"
                     WidthRequest="50"
                     HeightRequest="50"
                     CornerRadius="25"
