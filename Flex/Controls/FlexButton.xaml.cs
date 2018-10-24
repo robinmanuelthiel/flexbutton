@@ -132,6 +132,14 @@ namespace Flex.Controls
             set => SetValue(FontFamilyProperty, value);
         }
 
+        public static readonly BindableProperty MaxLinesProperty = BindableProperty.Create(nameof(MaxLines), typeof(int), typeof(FlexButton), 1);
+        public int MaxLines
+        {
+            get => (int)GetValue(MaxLinesProperty);
+            set => SetValue(MaxLinesProperty, value);
+        }
+
+
         // Toggle Properties
 
         public static readonly BindableProperty ToggleModeProperty = BindableProperty.Create(nameof(ToggleMode), typeof(bool), typeof(FlexButton), false);
@@ -213,6 +221,11 @@ namespace Flex.Controls
         #endregion
 
         #region Events
+
+        protected override void OnBindingContextChanged()
+        {
+            base.OnBindingContextChanged();
+        }
 
         protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
@@ -319,12 +332,13 @@ namespace Flex.Controls
                 case ButtonMode.IconOnly:
 
                     // Configure Container
-                    ContainerContent.HorizontalOptions = LayoutOptions.Fill;
+                    //ContainerContent.HorizontalOptions = LayoutOptions.Fill;
                     Grid.SetColumnSpan(ButtonIcon, 2);
                     Grid.SetColumn(ButtonText, 1);
 
                     // Set Visibilities
                     ButtonText.IsVisible = false;
+                    ButtonIcon.IsVisible = true;
 
                     // Adjust Default Padding
                     if (!userChangedPadding)
@@ -338,28 +352,20 @@ namespace Flex.Controls
                 case ButtonMode.IconWithText:
 
                     // Configure Container
-                    ContainerContent.HorizontalOptions = LayoutOptions.Center;
                     switch (IconOrientation)
                     {
                         case IconOrientation.Left:
-                            FirstColumn.Width = new GridLength(1, GridUnitType.Star);
-                            SecondColumn.Width = GridLength.Auto;
-                            Grid.SetColumn(ButtonIcon, 0);
-                            Grid.SetColumnSpan(ButtonIcon, 1);
-                            Grid.SetColumn(ButtonText, 1);
+                            ContainerContent.Direction = FlexDirection.Row;
                             break;
 
                         case IconOrientation.Right:
-                            FirstColumn.Width = GridLength.Auto;
-                            SecondColumn.Width = new GridLength(1, GridUnitType.Star);
-                            Grid.SetColumn(ButtonIcon, 1);
-                            Grid.SetColumnSpan(ButtonIcon, 1);
-                            Grid.SetColumn(ButtonText, 0);
+                            ContainerContent.Direction = FlexDirection.RowReverse;
                             break;
                     }
 
                     // Set Visibilities
                     ButtonText.IsVisible = true;
+                    ButtonIcon.IsVisible = true;
 
                     // Adjust Default Padding
                     if (!userChangedPadding)
@@ -378,13 +384,14 @@ namespace Flex.Controls
                 case ButtonMode.TextOnly:
 
                     // Configure Container
-                    ContainerContent.HorizontalOptions = LayoutOptions.FillAndExpand;
+                    //ContainerContent.HorizontalOptions = LayoutOptions.FillAndExpand;
                     Grid.SetColumnSpan(ButtonIcon, 1);
                     Grid.SetColumnSpan(ButtonText, 2);
                     Grid.SetColumn(ButtonText, 0);
 
                     // Set Visibilities
                     ButtonText.IsVisible = true;
+                    ButtonIcon.IsVisible = false;
 
                     // Adjust Default Padding
                     if (!userChangedPadding)
@@ -400,7 +407,6 @@ namespace Flex.Controls
             // since Xamarin.Forms 2.5.1
             try
             {
-                Border.BackgroundColor = Color.Red;
                 Border.BackgroundColor = BorderColor;
                 Border.CornerRadius = CornerRadius;
                 Border.Padding = BorderThickness;
@@ -412,6 +418,7 @@ namespace Flex.Controls
                 ButtonText.FontAttributes = FontAttributes;
                 ButtonText.FontFamily = FontFamily;
                 ButtonText.TextColor = ForegroundColor;
+                ButtonText.MaxLines = MaxLines;
                 ButtonIcon.Margin = IconPadding;
             }
             catch (NullReferenceException)

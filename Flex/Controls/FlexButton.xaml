@@ -6,8 +6,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
     xmlns:extensions="clr-namespace:Flex.Extensions"
     xmlns:controls="clr-namespace:Flex.Controls"
-    BackgroundColor="Transparent"
-    VerticalOptions="Start">
+    BackgroundColor="Transparent">
 
     <controls:GestureFrame
         x:Name="Border"
@@ -15,6 +14,7 @@
         CornerRadius="{Binding Source={x:Reference this}, Path=CornerRadius}"
         Padding="{Binding Source={x:Reference this}, Path=BorderThickness}"
         HasShadow="false">
+        
         <controls:GestureFrame.BorderColor>
             <!--- HACK: Temporary Bugfix for Xamarin.Forms 3.0 bug https://github.com/xamarin/Xamarin.Forms/issues/2634 -->
             <OnPlatform x:TypeArguments="Color" Default="Transparent">
@@ -39,43 +39,31 @@
                     <!--<On Platform="Android" Value="{Binding Source={x:Reference this}, Path=BackgroundColor}" />-->
                 </OnPlatform>
             </controls:GestureFrame.BorderColor>
-
-            <ContentView
-                HorizontalOptions="FillAndExpand"
-                VerticalOptions="FillAndExpand">
-
-                <Grid 
+            
+            <AbsoluteLayout> 
+                <FlexLayout 
                     x:Name="ContainerContent"
-                    Margin="{Binding Source={x:Reference this}, Path=Padding}" 
-                    RowSpacing="0"
-                    ColumnSpacing="0">
-    
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition x:Name="FirstColumn" Width="*" />
-                        <ColumnDefinition x:Name="SecondColumn" Width="Auto" />
-                    </Grid.ColumnDefinitions>
-                
+                    Direction="Row" 
+                    AlignItems="Center" 
+                    JustifyContent="Center">
+                    
                     <Image 
                         x:Name="ButtonIcon"
-                        Grid.Column="0"
-                        Grid.ColumnSpan="2"
                         Margin="{Binding Source={x:Reference this}, Path=IconPadding}"
-                        Source="{Binding Source={x:Reference this}, Path=Icon}"/>
+                        Source="{Binding Source={x:Reference this}, Path=Icon}" />
 
                     <Label
                         x:Name="ButtonText"
-                        Grid.Column="1"
+                        Margin="0"
+                        HorizontalTextAlignment="Center"
+                        MaxLines="{Binding Source={x:Reference this}, Path=MaxLines}"
                         Text="{Binding Source={x:Reference this}, Path=Text}"
                         FontSize="{Binding Source={x:Reference this}, Path=FontSize}"
                         FontAttributes="{Binding Source={x:Reference this}, Path=FontAttributes}"
                         FontFamily="{Binding Source={x:Reference this}, Path=FontFamily}"
-                        VerticalOptions="Fill"
-                        VerticalTextAlignment="Center"
-                        HorizontalOptions="FillAndExpand"
-                        HorizontalTextAlignment="Center"
                         TextColor="{Binding Source={x:Reference this}, Path=ForegroundColor}" />
-                </Grid>
-            </ContentView>
+                </FlexLayout>                
+            </AbsoluteLayout>
         </controls:GestureFrame>
     </controls:GestureFrame>
         <!--<Label
