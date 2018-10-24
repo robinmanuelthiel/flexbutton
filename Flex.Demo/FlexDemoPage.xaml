@@ -34,7 +34,7 @@
             Spacing="10" 
             Padding="0,10,0,10" 
             WidthRequest="380" 
-            HorizontalOptions="Center"> 
+            HorizontalOptions="Center">             
 
             <!-- Standard Button -->    
             <flex:FlexButton
@@ -43,6 +43,8 @@
                 IconOrientation="Left"
                 WidthRequest="76"
                 HeightRequest="76"
+                Padding="0"
+                IconPadding="0"
                 CornerRadius="38"
                 Icon="lightbulb.png"
                 ForegroundColor="#ffffff"
@@ -77,7 +79,6 @@
                     HeightRequest="40"
                     CornerRadius="20"
                     Text="Pill Button"
-                    MaxLines="1"
                     FontSize="Small"                    
                     HorizontalOptions="CenterAndExpand"
                     VerticalOptions="Start"
@@ -183,9 +184,9 @@
                 Text="Button with text only and different font family, attributes and size"
                 FontAttributes="Bold"
                 FontFamily="TimesNewRomanPSMT"
-                MaxLines="0"
+                MaxLines="-1"
+                HeightRequest="100"
                 Margin="20,0"
-                Padding="20"
                 FontSize="24"
                 ForegroundColor="#ffffff"
                 HighlightForegroundColor="#49516F"
@@ -206,7 +207,7 @@
             
                 <flex:FlexButton
                     HorizontalOptions="Center"
-                    WidthRequest="110"
+                    WidthRequest="120"
                     HeightRequest="40"
                     CornerRadius="20"
                     Text="True"
@@ -233,7 +234,7 @@
 
                 <flex:FlexButton
                     HorizontalOptions="Center"
-                    WidthRequest="110"
+                    WidthRequest="120"
                     HeightRequest="40"
                     CornerRadius="20"
                     Text="False"

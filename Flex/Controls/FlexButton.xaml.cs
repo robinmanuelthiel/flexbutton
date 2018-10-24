@@ -33,7 +33,7 @@ namespace Flex.Controls
             set => SetValue(HighlightBackgroundColorProperty, value);
         }
 
-        public static readonly BindableProperty ForegroundColorProperty = BindableProperty.Create(nameof(ForegroundColor), typeof(Color), typeof(FlexButton), Color.White);
+        public static readonly BindableProperty ForegroundColorProperty = BindableProperty.Create(nameof(ForegroundColor), typeof(Color), typeof(FlexButton), Color.Accent);
         public Color ForegroundColor
         {
             get => (Color)GetValue(ForegroundColorProperty);

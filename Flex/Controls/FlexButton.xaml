@@ -30,9 +30,9 @@
             x:Name="Container"
             BackgroundColor="{Binding Source={x:Reference this}, Path=BackgroundColor}"
             CornerRadius="{Binding Source={x:Reference this}, Path=InnerCornerRadius}"
-            HasShadow="false"
             Padding="0"
-            Margin="0">
+            Margin="0"
+            HasShadow="false">
             <controls:GestureFrame.BorderColor>
                 <!--- HACK: Temporary Bugfix for Xamarin.Forms 3.0 bug https://github.com/xamarin/Xamarin.Forms/issues/2634 -->
                 <OnPlatform x:TypeArguments="Color" Default="Transparent">
@@ -42,7 +42,8 @@
             
             <AbsoluteLayout> 
                 <FlexLayout 
-                    x:Name="ContainerContent"
+                    x:Name="ContainerContent"                    
+                    Margin="{Binding Source={x:Reference this}, Path=Padding}"
                     Direction="Row" 
                     AlignItems="Center" 
                     JustifyContent="Center">
@@ -54,7 +55,6 @@
 
                     <Label
                         x:Name="ButtonText"
-                        Margin="0"
                         HorizontalTextAlignment="Center"
                         MaxLines="{Binding Source={x:Reference this}, Path=MaxLines}"
                         Text="{Binding Source={x:Reference this}, Path=Text}"
@@ -66,11 +66,4 @@
             </AbsoluteLayout>
         </controls:GestureFrame>
     </controls:GestureFrame>
-        <!--<Label
-            x:Name="ButtonSubText"
-            Text="Hallo Welt"
-            HorizontalOptions="Center"
-            HorizontalTextAlignment="Center"
-            Margin="0"
-            TextColor="{Binding Source={x:Reference this}, Path=ForegroundColor}" />-->
 </ContentView>
