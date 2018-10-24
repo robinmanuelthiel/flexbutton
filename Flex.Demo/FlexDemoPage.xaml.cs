@@ -34,6 +34,11 @@ namespace Flex.Demo
             WideButton.IconOrientation = WideButton.IconOrientation == IconOrientation.Left ? IconOrientation.Right : IconOrientation.Left;
         }
 
+        public void ToggleHasShadow_Clicked(object sender, EventArgs e)
+        {
+            WideButton.HasShadow = !WideButton.HasShadow;
+        }
+
         void ButtonWithoutBackground_Clicked(object sender, EventArgs e)
         {
             DisplayAlert("Hello from Code Behind", "The Flex Button rocks! ", "Yeah");

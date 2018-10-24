@@ -78,6 +78,8 @@ Take a look a the [Demo Project](/Flex.Demo) in this repository for a full sampl
 | `ToggleMode` | `false` | Sets the button in Toggle Mode |
 | `IsToggled` | `false` | Represents the Toggle state, when Toggle Mode is enabled |
 | `IconTintEnabled` | `true` | Enables tinting of the icon (Set to false, if your icon is colorized) |
+| `HasShadow` | `false` | Enables Xamarin.Forms Frame's Shadow around the button |
+| `MaxLines` | `1` | Maximum number of lines for test. Set it to `-1` for flexible amount of lines |
 
 | Event | Description |
 |------------------|---------|

@@ -13,7 +13,7 @@
         BackgroundColor="{Binding Source={x:Reference this}, Path=BorderColor}"
         CornerRadius="{Binding Source={x:Reference this}, Path=CornerRadius}"
         Padding="{Binding Source={x:Reference this}, Path=BorderThickness}"
-        HasShadow="false">
+        HasShadow="{Binding Source={x:Reference this}, Path=HasShadow}">
         
         <controls:GestureFrame.BorderColor>
             <!--- HACK: Temporary Bugfix for Xamarin.Forms 3.0 bug https://github.com/xamarin/Xamarin.Forms/issues/2634 -->

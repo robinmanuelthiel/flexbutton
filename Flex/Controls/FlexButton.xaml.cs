@@ -139,7 +139,6 @@ namespace Flex.Controls
             set => SetValue(MaxLinesProperty, value);
         }
 
-
         // Toggle Properties
 
         public static readonly BindableProperty ToggleModeProperty = BindableProperty.Create(nameof(ToggleMode), typeof(bool), typeof(FlexButton), false);
@@ -170,6 +169,13 @@ namespace Flex.Controls
         {
             get => (Thickness)GetValue(IconPaddingProperty);
             set => SetValue(IconPaddingProperty, value);
+        }
+
+        public static readonly BindableProperty HasShadowProperty = BindableProperty.Create(nameof(HasShadow), typeof(bool), typeof(FlexButton), false);
+        public bool HasShadow
+        {
+            get => (bool)GetValue(HasShadowProperty);
+            set => SetValue(HasShadowProperty, value);
         }
 
         #endregion
@@ -268,6 +274,7 @@ namespace Flex.Controls
                 propertyName == IconOrientationProperty.PropertyName ||
                 propertyName == BorderThicknessProperty.PropertyName ||
                 propertyName == FontSizeProperty.PropertyName ||
+                propertyName == HasShadowProperty.PropertyName ||
                 propertyName == ToggleModeProperty.PropertyName)
             {
                 SetButtonMode();
@@ -410,6 +417,7 @@ namespace Flex.Controls
                 Border.BackgroundColor = BorderColor;
                 Border.CornerRadius = CornerRadius;
                 Border.Padding = BorderThickness;
+                Border.HasShadow = HasShadow;
                 Container.BackgroundColor = BackgroundColor;
                 Container.CornerRadius = InnerCornerRadius;
                 ContainerContent.Margin = Padding;
@@ -420,6 +428,7 @@ namespace Flex.Controls
                 ButtonText.TextColor = ForegroundColor;
                 ButtonText.MaxLines = MaxLines;
                 ButtonIcon.Margin = IconPadding;
+
             }
             catch (NullReferenceException)
             {
