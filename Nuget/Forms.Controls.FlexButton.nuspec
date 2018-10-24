@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata minClientVersion="">
     <id>Forms.Controls.FlexButton</id>
-    <version>0.8.0</version>
+    <version>0.9.0</version>
     <title>FlexButton for Xamarin.Forms</title>
     <authors>Robin-Manuel Thiel</authors>
     <owners>Robin-Manuel Thiel</owners>
@@ -12,25 +12,13 @@
     <iconUrl>https://raw.githubusercontent.com/robinmanuelthiel/flexbutton/master/Design/Logo-150.png</iconUrl>
     <description>Flexible button control for Xamarin.Forms</description>
     <summary>Flexible button control for Xamarin.Forms</summary>
-    <releaseNotes>Add UWP support and update to Xamarin.Forms 3.1</releaseNotes>
+    <releaseNotes>Update to Xamarin.Form 3.3, Add HasShadow and MaxLines properties, various bug fixes</releaseNotes>
     <copyright></copyright>
     <language></language>
     <tags>flex xamarin.forms control button flexbutton xamarin flexible pill</tags>
     <dependencies>
-      <!--<group targetFramework=".NETStandard1.0">
-        <dependency id="Xamarin.Forms" version="3.0.0.482510" />
-      </group>
-
-      <group targetFramework="Xamarin.iOS1.0">
-        <dependency id="Xamarin.Forms" version="3.0.0.482510" />
-      </group>
-
-      <group targetFramework="MonoAndroid10">
-        <dependency id="Xamarin.Forms" version="3.0.0.482510" />
-      </group>-->
-
       <group>
-        <dependency id="Xamarin.Forms" version="3.1.0.637273" />
+        <dependency id="Xamarin.Forms" version="3.3.0.912540" />
       </group>
     </dependencies>
   </metadata>
