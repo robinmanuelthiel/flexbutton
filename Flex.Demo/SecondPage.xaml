@@ -1,62 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns:flex="clr-namespace:Flex.Controls;assembly=Flex" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Flex.Demo.SecondPage">
 
-    <StackLayout Margin="20, 50" BackgroundColor="Azure">
+    <StackLayout Margin="20, 50">
         
         <flex:FlexButton
             x:Name="button1"
-            CornerRadius="20"
-            Text="Pill Button"
-            FontSize="Small"
-            VerticalOptions="Start"
-            HorizontalOptions="End"
-            Icon="lightbulb.png"
-            ForegroundColor="#ffffff"
-            HighlightForegroundColor="#49516F"
-            BackgroundColor="#6279B8"
-            HighlightBackgroundColor="#8EA4D2"
-            Clicked="button1_OnClicked"/>
-        
-        <flex:FlexButton
-            x:Name="button10"
-            HeightRequest="50"
-            CornerRadius="20"
-            FontSize="Small"
-            VerticalOptions="Start"
-            HorizontalOptions="End"
-            Icon="lightbulb.png"
-            ForegroundColor="#ffffff"
-            HighlightForegroundColor="#49516F"
-            BackgroundColor="#6279B8"
-            HighlightBackgroundColor="#8EA4D2"
-            Clicked="button1_OnClicked"/>
-        
-        <flex:FlexButton
-            x:Name="button3"
             HeightRequest="40"
             CornerRadius="20"
-            Text="Pill Button"
+            Text="Pill Button 1"
             FontSize="Small"
             VerticalOptions="Start"
-            HorizontalOptions="Start"
-            Icon="lightbulb.png"
             ForegroundColor="#ffffff"
             HighlightForegroundColor="#49516F"
             BackgroundColor="#6279B8"
             HighlightBackgroundColor="#8EA4D2"
-            IconOrientation="Left"
             Clicked="button1_OnClicked"/>
-            
-        <flex:FlexButton
-            Text="Foo"
-            Icon="lightbulb.png"
-            HorizontalOptions="Start" />
+        
         
         <flex:FlexButton
             x:Name="button2"
             HeightRequest="40"
             CornerRadius="20"
-            Text="Pill Button"
+            Text="Pill Button 2"
             FontSize="Small"
             VerticalOptions="Start"
             ForegroundColor="#ffffff"
@@ -65,37 +30,5 @@
             HighlightBackgroundColor="#8EA4D2"
             Clicked="button2_OnClicked"/>
     
-    
-<Frame HeightRequest="40" 
-       BackgroundColor="Brown"
-       HorizontalOptions="Start" HasShadow="false" CornerRadius="12"
-       >
-    <AbsoluteLayout> 
-        <FlexLayout 
-            x:Name="ContainerContent"
-            Direction="Row" 
-            AlignItems="Center" 
-            JustifyContent="Center">
-            
-            <Image 
-                x:Name="ButtonIcon"
-                Margin="10"
-                IsVisible="false"
-                Source="0" />
-
-            <Label
-                x:Name="ButtonText"
-                Margin="0"
-                HorizontalTextAlignment="Center"
-                MaxLines="1"
-                Text="Pill Button" />
-        </FlexLayout>                
-    </AbsoluteLayout>
-</Frame>
-        
-        <FlexLayout BackgroundColor="Red" HorizontalOptions="Start" Direction="RowReverse">
-             <Image Source="lightbulb.png" BackgroundColor="Blue" HeightRequest="50" />  
-             <Label Text="lightbulb.png" BackgroundColor="Lime"  HorizontalOptions="Start"/>  
-        </FlexLayout>
     </StackLayout>    
 </ContentPage>

@@ -275,6 +275,7 @@ namespace Flex.Controls
                 propertyName == BorderThicknessProperty.PropertyName ||
                 propertyName == FontSizeProperty.PropertyName ||
                 propertyName == HasShadowProperty.PropertyName ||
+                propertyName == BackgroundColorProperty.PropertyName ||
                 propertyName == ToggleModeProperty.PropertyName)
             {
                 SetButtonMode();

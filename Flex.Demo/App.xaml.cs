@@ -10,7 +10,7 @@ namespace Flex.Demo
         {
             InitializeComponent();
 
-            MainPage = new FlexDemoPage();
+            MainPage = new SecondPage();
         }
 
         protected override void OnStart()
