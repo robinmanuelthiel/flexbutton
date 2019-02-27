@@ -54,7 +54,7 @@ namespace Flex.UWP.CustomRenderers
                 // Fix Xamarin.Forms Frame Bugs on UWP
                 Control.SizeChanged += (s, a) => FixFormsBackgroundColor(Element);
                 Control.CornerRadius = new Windows.UI.Xaml.CornerRadius(Element.CornerRadius);
-            }
+            } 
         }
 
         /// <summary>
@@ -84,6 +84,9 @@ namespace Flex.UWP.CustomRenderers
 
         private void Control_PointerPressed(object sender, Windows.UI.Xaml.Input.PointerRoutedEventArgs e)
         {
+            if(Element == null)
+                return;
+                
             pressed = true;
 
             foreach (var recognizer in Element.GestureRecognizers.Where(x => x.GetType() == typeof(TouchGestureRecognizer)))
@@ -97,6 +100,9 @@ namespace Flex.UWP.CustomRenderers
 
         private void Control_PointerReleased(object sender, Windows.UI.Xaml.Input.PointerRoutedEventArgs e)
         {
+            if(Element == null)
+                return;
+                
             foreach (var recognizer in Element.GestureRecognizers.Where(x => x.GetType() == typeof(TouchGestureRecognizer)))
             {
                 if (recognizer is TouchGestureRecognizer touchGestureRecognizer)
