@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata minClientVersion="">
     <id>Forms.Controls.FlexButton</id>
-    <version>0.9.0</version>
+    <version>0.9.1</version>
     <title>FlexButton for Xamarin.Forms</title>
     <authors>Robin-Manuel Thiel</authors>
     <owners>Robin-Manuel Thiel</owners>
@@ -12,7 +12,7 @@
     <iconUrl>https://raw.githubusercontent.com/robinmanuelthiel/flexbutton/master/Design/Logo-150.png</iconUrl>
     <description>Flexible button control for Xamarin.Forms</description>
     <summary>Flexible button control for Xamarin.Forms</summary>
-    <releaseNotes>Update to Xamarin.Form 3.3, Add HasShadow and MaxLines properties, various bug fixes</releaseNotes>
+    <releaseNotes>Fix crash on UWP</releaseNotes>
     <copyright></copyright>
     <language></language>
     <tags>flex xamarin.forms control button flexbutton xamarin flexible pill</tags>
