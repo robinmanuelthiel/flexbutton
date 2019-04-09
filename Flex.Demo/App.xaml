@@ -1,6 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Application xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Flex.Demo.App">
+<Application
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:flex="clr-namespace:Flex.Controls;assembly=Flex"
+    x:Class="Flex.Demo.App">
     <Application.Resources>
         <!-- Application resource dictionary -->
+        <ResourceDictionary>
+            <Style
+                TargetType="flex:FlexButton"
+                x:Key="ToggleButton">
+                <Setter
+                    Property="BackgroundColor"
+                    Value="#6279B8" />
+                <Setter
+                    Property="ForegroundColor"
+                    Value="#ffffff" />
+                <Setter
+                    Property="HighlightForegroundColor"
+                    Value="#49516F" />
+                <Setter
+                    Property="HighlightBackgroundColor"
+                    Value="#8EA4D2" />
+            </Style>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>
