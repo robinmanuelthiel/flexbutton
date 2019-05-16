@@ -362,6 +362,10 @@ namespace Flex.Controls
                     // Configure Container
                     switch (IconOrientation)
                     {
+                        case IconOrientation.Top:
+                            ContainerContent.Direction = FlexDirection.Column;
+                            break;
+
                         case IconOrientation.Left:
                             ContainerContent.Direction = FlexDirection.Row;
                             break;
@@ -383,7 +387,12 @@ namespace Flex.Controls
                     }
                     if (!userChangedIconPadding)
                     {
-                        IconPadding = IconOrientation == IconOrientation.Left ? new Thickness(0, 0, 6, 0) : new Thickness(6, 0, 0, 0);
+                        switch (IconOrientation)
+                        {
+                            case IconOrientation.Top: IconPadding = new Thickness(0, 0, 0, 6); break;
+                            case IconOrientation.Left: IconPadding = new Thickness(0, 0, 6, 0); break;
+                            case IconOrientation.Right: IconPadding = new Thickness(6, 0, 0, 0); break;
+                        }
                         userChangedIconPadding = false; // Set this back to false, as the above line triggers OnPropertyChanged 
                     }
 
