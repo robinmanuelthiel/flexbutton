@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <ContentPage
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
@@ -24,7 +24,14 @@
                             <On Platform="iOS" Value="Gray" />
                         </OnPlatform>
                     </Setter.Value>
-                </Setter>
+                </Setter>                
+            </Style>
+            
+            <Style x:Key="DefaultFlexButton" TargetType="flex:FlexButton">
+                <Setter Property="BackgroundColor" Value="#6279B8" />
+                <Setter Property="ForegroundColor" Value="#ffffff" />
+                <Setter Property="HighlightForegroundColor" Value="#49516F" />
+                <Setter Property="HighlightBackgroundColor" Value="#8EA4D2" />
             </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
@@ -47,7 +54,10 @@
                 IconPadding="0"
                 CornerRadius="38"
                 Icon="lightbulb.png"
-                Style="{StaticResource ToggleButton}"
+                ForegroundColor="#ffffff"
+                HighlightForegroundColor="#49516F"
+                BackgroundColor="#6279B8"
+                HighlightBackgroundColor="#8EA4D2"
                 BorderColor="#8EA4D2"
                 HighlightBorderColor="#8EA4D2"
                 BorderThickness="3"
@@ -67,10 +77,7 @@
                     CornerRadius="20"
                     Icon="lightbulb.png"
                     VerticalOptions="Start"
-                    ForegroundColor="#ffffff"
-                    HighlightForegroundColor="#49516F"
-                    BackgroundColor="#6279B8"
-                    HighlightBackgroundColor="#8EA4D2"/>
+                    Style="{StaticResource DefaultFlexButton}"/>
 
                 <flex:FlexButton
                     HeightRequest="40"

@@ -288,3 +288,4 @@ __pycache__/
 *.xsd.cs
 Flex.Demo.Droid/Resources/Resource.designer.cs
 .mfractor/
+.DS_Store
