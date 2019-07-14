@@ -42,6 +42,10 @@ namespace Flex.Android.Effects
                 ((ImageView)Control).SetImageDrawable(drawable);
                 ((IVisualElementController)Element).NativeSizeChanged();
             }
+            catch (NullReferenceException)
+            {
+                return;
+            }
             catch (ObjectDisposedException)
             {
                 return;
