@@ -120,6 +120,7 @@
                 ClickedCommand="{Binding ButtonClickedCommand}"
                 IconOrientation="Right"
                 HorizontalOptions="Center"
+                Padding="0"
                 WidthRequest="300"
                 HeightRequest="76"
                 HasShadow="false"

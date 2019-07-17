@@ -31,7 +31,18 @@ namespace Flex.Demo
 
         void ToggleIconOrientation_Clicked(object sender, EventArgs e)
         {
-            WideButton.IconOrientation = WideButton.IconOrientation == IconOrientation.Left ? IconOrientation.Right : IconOrientation.Left;
+            switch (WideButton.IconOrientation)
+            {
+                case IconOrientation.Left:
+                    WideButton.IconOrientation = IconOrientation.Right;
+                    break;
+                case IconOrientation.Right:
+                    WideButton.IconOrientation = IconOrientation.Top;
+                    break;
+                case IconOrientation.Top:
+                    WideButton.IconOrientation = IconOrientation.Left;
+                    break;
+            }            
         }
 
         public void ToggleHasShadow_Clicked(object sender, EventArgs e)
