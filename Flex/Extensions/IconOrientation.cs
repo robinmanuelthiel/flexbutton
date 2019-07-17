@@ -3,6 +3,7 @@
     public enum IconOrientation
     {
         Left,
-        Right
+        Right,
+        Top
     }
 }
