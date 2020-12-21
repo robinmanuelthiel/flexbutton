@@ -45,9 +45,9 @@ namespace Flex.UWP.CustomRenderers
 
                 Control.PointerPressed += Control_PointerPressed;
                 Control.PointerReleased += Control_PointerReleased;
-                Control.PointerCanceled += Control_PointerReleased;
-                Control.PointerCaptureLost += Control_PointerReleased;
-                Control.PointerExited += Control_PointerReleased;
+                Control.PointerCanceled += Control_PointerCanceled;
+                Control.PointerCaptureLost += Control_PointerCanceled;
+                Control.PointerExited += Control_PointerCanceled;
 
                 // Fix Xamarin.Forms Frame Bugs on UWP
                 Control.SizeChanged += (s, a) => FixFormsBackgroundColor(Element);
@@ -108,6 +108,24 @@ namespace Flex.UWP.CustomRenderers
                     // Only fire, if button has been pressed before and not when mouse pointer just leaves the control
                     if (pressed)
                         touchGestureRecognizer?.TouchUp();
+                }
+            }
+
+            pressed = false;
+        }
+
+        private void Control_PointerCanceled(object sender, Windows.UI.Xaml.Input.PointerRoutedEventArgs e)
+        {
+            if (Element == null)
+                return;
+
+            foreach (var recognizer in Element.GestureRecognizers.Where(x => x.GetType() == typeof(TouchGestureRecognizer)))
+            {
+                if (recognizer is TouchGestureRecognizer touchGestureRecognizer)
+                {
+                    // Only fire, if button has been pressed before and not when mouse pointer just leaves the control
+                    if (pressed)
+                        touchGestureRecognizer?.TouchCanceled();
                 }
             }
 
