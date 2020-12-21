@@ -77,7 +77,7 @@ namespace Flex.UWP.CustomRenderers
                 parent.Background = null;
             }
 
-            Control.Background = new SolidColorBrush(color);
+            Control.Background = new Windows.UI.Xaml.Media.SolidColorBrush(color);
         }
 
         private void Control_PointerPressed(object sender, Windows.UI.Xaml.Input.PointerRoutedEventArgs e)
