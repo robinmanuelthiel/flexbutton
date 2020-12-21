@@ -2,27 +2,29 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata minClientVersion="">
     <id>Forms.Controls.FlexButton</id>
-    <version>0.11.0</version>
+    <version>0.12.0</version>
     <title>FlexButton for Xamarin.Forms</title>
     <authors>Robin-Manuel Thiel</authors>
     <owners>Robin-Manuel Thiel</owners>
     <license type="expression">MIT</license>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <projectUrl>https://github.com/robinmanuelthiel/flexbutton</projectUrl>
-    <iconUrl>https://raw.githubusercontent.com/robinmanuelthiel/flexbutton/master/Design/Logo-150.png</iconUrl>
+    <icon>images/Logo-150.png</icon>
     <description>Flexible button control for Xamarin.Forms</description>
     <summary>Flexible button control for Xamarin.Forms</summary>
-    <releaseNotes>Add IconOrientation.Top</releaseNotes>
+    <releaseNotes>Add TouchCanceled event, when moving the pointer out of the button area</releaseNotes>
     <copyright></copyright>
     <language></language>
     <tags>flex xamarin.forms control button flexbutton xamarin flexible pill</tags>
     <dependencies>
       <group>
-        <dependency id="Xamarin.Forms" version="3.3.0.912540" />
+        <dependency id="Xamarin.Forms" version="4.3.0.991250" />
       </group>
     </dependencies>
   </metadata>
   <files>
+    <file src="../Design/Logo-150.png" target="images" />
+
     <!-- .NET Standard -->
     <file src="../Flex/bin/Release/netstandard2.0/Flex.dll" target="lib/netstandard1.0" />
 
