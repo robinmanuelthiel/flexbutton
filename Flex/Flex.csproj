@@ -16,7 +16,7 @@
     </PropertyGroup>
     <ItemGroup>
         <PackageReference Include="NuGet.Build.Packaging" Version="0.2.2" />
-        <PackageReference Include="Xamarin.Forms" Version="3.3.0.912540" />
+        <PackageReference Include="Xamarin.Forms" Version="4.3.0.991250" />
     </ItemGroup>
     <ItemGroup>
         <Folder Include="Controls\" />
