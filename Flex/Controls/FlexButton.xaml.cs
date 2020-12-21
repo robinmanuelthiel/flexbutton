@@ -326,8 +326,12 @@ namespace Flex.Controls
             // Unsubscribe from command events when Command changes
             if (propertyName == ClickedCommandProperty.PropertyName && ClickedCommand != null)
                 ClickedCommand.CanExecuteChanged -= CommandCanExecuteChanged;
-            if (propertyName == TouchedDownCommandProperty.PropertyName && TouchedDownCommandProperty != null)
+            if (propertyName == TouchedDownCommandProperty.PropertyName && TouchedDownCommand != null)
                 TouchedDownCommand.CanExecuteChanged -= CommandCanExecuteChanged;
+            if (propertyName == TouchedUpCommandProperty.PropertyName && TouchedUpCommand != null)
+                TouchedUpCommand.CanExecuteChanged -= CommandCanExecuteChanged;
+            if (propertyName == TouchCanceledCommandProperty.PropertyName && TouchCanceledCommand != null)
+                TouchCanceledCommand.CanExecuteChanged -= CommandCanExecuteChanged;
 
             base.OnPropertyChanging(propertyName);
         }
