@@ -532,12 +532,13 @@ namespace Flex.Controls
         {
             if (IsEnabled)
             {               
-                if (!ToggleMode)
-                {
-                    TouchCanceled?.Invoke(this, EventArgs.Empty);
-                    TouchCanceledCommand?.Execute(TouchCanceledCommandParameter);
-                    Highlight(false);                    
-                }
+                TouchCanceled?.Invoke(this, EventArgs.Empty);
+                TouchCanceledCommand?.Execute(TouchCanceledCommandParameter);
+
+                if (ToggleMode)
+                    Highlight(IsToggled);
+                else
+                    Highlight(false);          
             }
         }
 
