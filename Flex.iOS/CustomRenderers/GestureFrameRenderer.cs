@@ -42,33 +42,70 @@ namespace Flex.iOS.CustomRenderers
                 if (!e.NewElement.GestureRecognizers.Any(x => x.GetType() == typeof(TouchGestureRecognizer)))
                     return;
 
+                var hasLeftButtonBounds = false;
+               
                 pressGestureRecognizer = new UILongPressGestureRecognizer(() =>
                 {
+                    var touchedPoint = pressGestureRecognizer.LocationInView(this);
+                    var isInsideButtonBounds = e.NewElement.Bounds.Contains(touchedPoint.ToPoint());
+                    if (!isInsideButtonBounds)
+                    {
+                        // Pointer left the bounds of the button.
+                        hasLeftButtonBounds = true;
+                        FireTouchCanceled();
+                    }
+
                     if (pressGestureRecognizer.State == UIGestureRecognizerState.Began)
                     {
-                        foreach (var recognizer in Element.GestureRecognizers.Where(x => x.GetType() == typeof(TouchGestureRecognizer)))
-                        {
-                            if (recognizer is TouchGestureRecognizer touchGestureRecognizer)
-                            {
-                                touchGestureRecognizer?.TouchDown();
-                            }
-                        }
-                    }
+                        // Reset
+                        hasLeftButtonBounds = false;
+                        FireTouchDown();
+                    }                    
                     else if (pressGestureRecognizer.State == UIGestureRecognizerState.Ended)
                     {
-                        foreach (var recognizer in Element.GestureRecognizers.Where(x => x.GetType() == typeof(TouchGestureRecognizer)))
+                        // Only fire, when pointer has never left the button bounds
+                        if (!hasLeftButtonBounds)
                         {
-                            if (recognizer is TouchGestureRecognizer touchGestureRecognizer)
-                            {
-                                touchGestureRecognizer?.TouchUp();
-                            }
+                            FireTouchUp();
                         }
                     }
                 });
 
                 pressGestureRecognizer.MinimumPressDuration = 0.0;
-
                 AddGestureRecognizer(pressGestureRecognizer);
+            }
+        }
+
+        private void FireTouchDown()
+        {
+            foreach (var recognizer in Element.GestureRecognizers.Where(x => x.GetType() == typeof(TouchGestureRecognizer)))
+            {
+                if (recognizer is TouchGestureRecognizer touchGestureRecognizer)
+                {
+                    touchGestureRecognizer?.TouchDown();
+                }
+            }
+        }
+
+        private void FireTouchUp()
+        {
+            foreach (var recognizer in Element.GestureRecognizers.Where(x => x.GetType() == typeof(TouchGestureRecognizer)))
+            {
+                if (recognizer is TouchGestureRecognizer touchGestureRecognizer)
+                {
+                    touchGestureRecognizer?.TouchUp();
+                }
+            }
+        }
+
+        private void FireTouchCanceled()
+        {
+            foreach (var recognizer in Element.GestureRecognizers.Where(x => x.GetType() == typeof(TouchGestureRecognizer)))
+            {
+                if (recognizer is TouchGestureRecognizer touchGestureRecognizer)
+                {
+                    touchGestureRecognizer?.TouchCanceled();
+                }
             }
         }
     }

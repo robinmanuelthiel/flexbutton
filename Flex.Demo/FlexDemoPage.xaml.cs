@@ -23,6 +23,11 @@ namespace Flex.Demo
             ButtonStatus.Text = "Released";
         }
 
+        void DemoButton_TouchedCanceled(object sender, EventArgs e)
+        {
+            ButtonStatus.Text = "Canceled";
+        }
+
         void ToggleIsEnabled_Clicked(object sender, EventArgs e)
         {
             ((FlexDemoPageViewModel)BindingContext).IsButtonEnabled = !((FlexDemoPageViewModel)BindingContext).IsButtonEnabled;

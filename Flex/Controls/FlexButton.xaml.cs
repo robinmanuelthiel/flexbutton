@@ -224,6 +224,20 @@ namespace Flex.Controls
             set => SetValue(TouchedUpCommandParameterProperty, value);
         }
 
+        public static BindableProperty TouchCanceledCommandProperty = BindableProperty.Create(nameof(TouchCanceledCommand), typeof(ICommand), typeof(FlexButton), null);
+        public ICommand TouchCanceledCommand
+        {
+            get => (ICommand)GetValue(TouchCanceledCommandProperty);
+            set => SetValue(TouchCanceledCommandProperty, value);
+        }
+
+        public static readonly BindableProperty TouchCanceledCommandParameterProperty = BindableProperty.Create(nameof(TouchCanceledCommandParameter), typeof(object), typeof(FlexButton), null, propertyChanged: (bindable, oldValue, newValie) => ((FlexButton)bindable).CommandCanExecuteChanged(bindable, EventArgs.Empty));
+        public object TouchCanceledCommandParameter
+        {
+            get => GetValue(TouchedUpCommandParameterProperty);
+            set => SetValue(TouchedUpCommandParameterProperty, value);
+        }
+
         #endregion
 
         #region Events
@@ -438,7 +452,6 @@ namespace Flex.Controls
                 ButtonText.TextColor = ForegroundColor;
                 ButtonText.MaxLines = MaxLines;
                 ButtonIcon.Margin = IconPadding;
-
             }
             catch (NullReferenceException)
             {
@@ -460,6 +473,7 @@ namespace Flex.Controls
 
         public event EventHandler<EventArgs> TouchedDown;
         public event EventHandler<EventArgs> TouchedUp;
+        public event EventHandler<EventArgs> TouchCanceled;
         public event EventHandler<EventArgs> Clicked;
         public event EventHandler<ToggledEventArgs> Toggled;
 
@@ -467,8 +481,9 @@ namespace Flex.Controls
         {
             InitializeComponent();
 
-            TouchRecognizer.TouchDown += TouchDown;
-            TouchRecognizer.TouchUp += TouchUp;
+            TouchRecognizer.TouchDown += OnTouchDown;
+            TouchRecognizer.TouchUp += OnTouchUp;
+            TouchRecognizer.TouchCanceled += OnTouchCanceled;
             SizeChanged += FlexButton_SizeChanged;
         }
 
@@ -479,7 +494,7 @@ namespace Flex.Controls
             ColorIcon(ForegroundColor);
         }
 
-        void TouchDown()
+        void OnTouchDown()
         {
             if (IsEnabled)
             {
@@ -490,7 +505,7 @@ namespace Flex.Controls
             }
         }
 
-        void TouchUp()
+        void OnTouchUp()
         {
             if (IsEnabled)
             {
@@ -509,6 +524,19 @@ namespace Flex.Controls
                 else
                 {
                     Highlight(false);
+                }
+            }
+        }
+
+        void OnTouchCanceled()
+        {
+            if (IsEnabled)
+            {               
+                if (!ToggleMode)
+                {
+                    TouchCanceled?.Invoke(this, EventArgs.Empty);
+                    TouchCanceledCommand?.Execute(TouchCanceledCommandParameter);
+                    Highlight(false);                    
                 }
             }
         }

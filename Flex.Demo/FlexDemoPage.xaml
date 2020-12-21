@@ -62,7 +62,8 @@
                 HighlightBorderColor="#8EA4D2"
                 BorderThickness="3"
                 TouchedDown="DemoButton_TouchedDown"
-                TouchedUp="DemoButton_TouchedUp"/>
+                TouchedUp="DemoButton_TouchedUp"
+                TouchCanceled="DemoButton_TouchedCanceled" />
                             
             <Label x:Name="ButtonStatus" Text="Untouched" FontSize="Small" TextColor="Gray" HorizontalTextAlignment="Center" HorizontalOptions="Center"/>
 
