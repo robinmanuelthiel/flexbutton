@@ -36,11 +36,22 @@ namespace Flex.iOS.CustomRenderers
                 // Fix Xamarin.Forms Frame BackgroundColor Bug (https://github.com/xamarin/Xamarin.Forms/issues/2218)
                 this.Layer.BackgroundColor = e.NewElement.BackgroundColor.ToUIColor().CGColor;
 
+                // FIX: This fixes another Xamarin.Forms bug introduced in Xamarin.Forms 4.7, that messes with corner radius
+                // in iOS. To find out, of the bug has been resolved, just take out the following lines and check, if the border
+                // radiusses render correctly.
+                // Bug: https://github.com/xamarin/Xamarin.Forms/issues/2405 and https://github.com/xamarin/Xamarin.Forms/issues/7823
+                if (e.NewElement != null)
+                {
+                    NativeView.Layer.CornerRadius = e.NewElement.CornerRadius;
+                    NativeView.ClipsToBounds = false;
+                }
+                // END FIX
+
                 if (!e.NewElement.GestureRecognizers.Any())
                     return;
 
                 if (!e.NewElement.GestureRecognizers.Any(x => x.GetType() == typeof(TouchGestureRecognizer)))
-                    return;
+                    return;                
 
                 var hasLeftButtonBounds = false;
                

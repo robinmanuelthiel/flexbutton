@@ -70,13 +70,13 @@ namespace Flex.Controls
             set => SetValue(BorderThicknessProperty, value);
         }
 
-        public static readonly BindableProperty CornerRadiusProperty = BindableProperty.Create(nameof(CornerRadius), typeof(int), typeof(FlexButton), 0);
-        public int CornerRadius
+        public static readonly BindableProperty CornerRadiusProperty = BindableProperty.Create(nameof(CornerRadius), typeof(float), typeof(FlexButton), 0f);
+        public float CornerRadius
         {
-            get => (int)GetValue(CornerRadiusProperty);
+            get => (float)GetValue(CornerRadiusProperty);
             set => SetValue(CornerRadiusProperty, value);
         }
-        public int InnerCornerRadius { get; private set; }
+        public float InnerCornerRadius { get; private set; }
 
         // Icon Properties
 
@@ -249,6 +249,7 @@ namespace Flex.Controls
 
         protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
+            var test = 0f;
             if (propertyName == PaddingProperty.PropertyName)
             {
                 userChangedPadding = true;
@@ -273,8 +274,12 @@ namespace Flex.Controls
                 SetButtonMode();
 
                 // Make sure, that Icon Source is set manually, as Binding is too slow sometimes
+                if (ButtonIcon != null)
+                {
                 ButtonIcon.Source = Icon;
                 ColorIcon(ForegroundColor);
+
+                }
             }
             if (propertyName == IsToggledProperty.PropertyName)
             {
@@ -352,6 +357,9 @@ namespace Flex.Controls
             {
                 mode = ButtonMode.TextOnly;
             }
+
+            if (ButtonIcon == null || ButtonText == null)
+                return;
 
             switch (mode)
             {

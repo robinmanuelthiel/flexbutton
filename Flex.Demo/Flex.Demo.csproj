@@ -4,9 +4,15 @@
         <TargetFramework>netstandard2.0</TargetFramework>
     </PropertyGroup>
     <ItemGroup>
-        <PackageReference Include="Xamarin.Forms" Version="4.3.0.991250" />
+        <PackageReference Include="Xamarin.Forms" Version="4.8.0.1821" />
     </ItemGroup>
     <ItemGroup>
       <ProjectReference Include="..\Flex\Flex.csproj" />
+    </ItemGroup>
+    <ItemGroup>
+      <None Remove="lightbulb.png" />
+    </ItemGroup>
+    <ItemGroup>
+      <Content Include="lightbulb.png" />
     </ItemGroup>
 </Project>

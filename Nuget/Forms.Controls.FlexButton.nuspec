@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata minClientVersion="">
     <id>Forms.Controls.FlexButton</id>
-    <version>0.12.0</version>
+    <version>0.13.0</version>
     <title>FlexButton for Xamarin.Forms</title>
     <authors>Robin-Manuel Thiel</authors>
     <owners>Robin-Manuel Thiel</owners>
@@ -12,13 +12,13 @@
     <icon>images/Logo-150.png</icon>
     <description>Flexible button control for Xamarin.Forms</description>
     <summary>Flexible button control for Xamarin.Forms</summary>
-    <releaseNotes>Add TouchCanceled event, when moving the pointer out of the button area</releaseNotes>
+    <releaseNotes>Update to Xamarin.Forms 4.8</releaseNotes>
     <copyright></copyright>
     <language></language>
     <tags>flex xamarin.forms control button flexbutton xamarin flexible pill</tags>
     <dependencies>
       <group>
-        <dependency id="Xamarin.Forms" version="4.3.0.991250" />
+        <dependency id="Xamarin.Forms" version="4.8.0.1821" />
       </group>
     </dependencies>
   </metadata>
