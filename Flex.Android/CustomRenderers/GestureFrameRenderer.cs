@@ -6,6 +6,8 @@ using Flex.Extensions;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 using Flex.Controls;
+using AndroidView = Android.Views;
+using Android.Views.Accessibility;
 
 [assembly: ExportRenderer(typeof(GestureFrame), typeof(GestureFrameRenderer))]
 namespace Flex.Android.CustomRenderers
@@ -14,6 +16,16 @@ namespace Flex.Android.CustomRenderers
     {
         public GestureFrameRenderer(Context context) : base(context)
         {
+            SetAccessibilityDelegate(new MyAccessibilityDelegate());
+        }
+        private class MyAccessibilityDelegate : AccessibilityDelegate
+        {
+            public override void OnInitializeAccessibilityNodeInfo(AndroidView.View host, AccessibilityNodeInfo info)
+            {
+                base.OnInitializeAccessibilityNodeInfo(host, info);
+                info.ClassName = "android.widget.Button";
+                info.Clickable = true;
+            }
         }
 
         protected override void OnElementChanged(ElementChangedEventArgs<Frame> e)

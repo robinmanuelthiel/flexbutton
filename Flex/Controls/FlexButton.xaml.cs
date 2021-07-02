@@ -178,6 +178,14 @@ namespace Flex.Controls
             set => SetValue(HasShadowProperty, value);
         }
 
+        public static readonly BindableProperty AccessibleNameProperty = BindableProperty.Create(nameof(AccessibleName), typeof(string), typeof(FlexButton), null);
+        public string AccessibleName
+        {
+            get => (string)GetValue(AccessibleNameProperty);
+            set => SetValue(AccessibleNameProperty, value);
+        }
+
+
         #endregion
 
         #region Commands
@@ -357,6 +365,8 @@ namespace Flex.Controls
             {
                 mode = ButtonMode.TextOnly;
             }
+
+            AutomationProperties.SetName(Border, AccessibleName ?? Text);
 
             if (ButtonIcon == null || ButtonText == null)
                 return;

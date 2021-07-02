@@ -1,12 +1,11 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<ContentPage
-    xmlns="http://xamarin.com/schemas/2014/forms"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:Flex.Demo"
-    x:Class="Flex.Demo.FlexDemoPage"
-    xmlns:flex="clr-namespace:Flex.Controls;assembly=Flex"
-    BackgroundColor="White">
-    
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage x:Class="Flex.Demo.FlexDemoPage"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:flex="clr-namespace:Flex.Controls;assembly=Flex"
+             xmlns:local="clr-namespace:Flex.Demo"
+             BackgroundColor="White">
+
     <ContentPage.Resources>
         <ResourceDictionary>
             <Style x:Key="SmallButton" TargetType="Button">
@@ -24,9 +23,9 @@
                             <On Platform="iOS" Value="Gray" />
                         </OnPlatform>
                     </Setter.Value>
-                </Setter>                
+                </Setter>
             </Style>
-            
+
             <Style x:Key="DefaultFlexButton" TargetType="flex:FlexButton">
                 <Setter Property="BackgroundColor" Value="#6279B8" />
                 <Setter Property="ForegroundColor" Value="#ffffff" />
@@ -37,248 +36,288 @@
     </ContentPage.Resources>
 
     <ScrollView>
-        <StackLayout 
-            Spacing="10" 
-            Padding="0,10,0,10" 
-            WidthRequest="380" 
-            HorizontalOptions="Center">             
+        <StackLayout Padding="0,10,0,10"
+                     HorizontalOptions="Center"
+                     Spacing="10"
+                     WidthRequest="380">
 
-            <!-- Standard Button -->    
-            <flex:FlexButton
-                x:Name="DemoButton"
-                HorizontalOptions="Center"
-                IconOrientation="Left"
-                WidthRequest="76"
-                HeightRequest="76"
-                Padding="0"
-                IconPadding="0"
-                CornerRadius="38"
-                Icon="lightbulb.png"
-                ForegroundColor="#ffffff"
-                HighlightForegroundColor="#49516F"
-                BackgroundColor="#6279B8"
-                HighlightBackgroundColor="#8EA4D2"
-                BorderColor="#8EA4D2"
-                HighlightBorderColor="#8EA4D2"
-                BorderThickness="3"
-                TouchedDown="DemoButton_TouchedDown"
-                TouchedUp="DemoButton_TouchedUp"
-                TouchCanceled="DemoButton_TouchedCanceled" />
-                            
-            <Label x:Name="ButtonStatus" Text="Untouched" FontSize="Small" TextColor="Gray" HorizontalTextAlignment="Center" HorizontalOptions="Center"/>
+            <!--  Standard Button  -->
+            <flex:FlexButton x:Name="DemoButton"
+                             Padding="0"
+                             BackgroundColor="#6279B8"
+                             BorderColor="#8EA4D2"
+                             BorderThickness="3"
+                             CornerRadius="38"
+                             ForegroundColor="#ffffff"
+                             HeightRequest="76"
+                             HighlightBackgroundColor="#8EA4D2"
+                             HighlightBorderColor="#8EA4D2"
+                             HighlightForegroundColor="#49516F"
+                             HorizontalOptions="Center"
+                             Icon="lightbulb.png"
+                             IconOrientation="Left"
+                             IconPadding="0"
+                             TouchCanceled="DemoButton_TouchedCanceled"
+                             TouchedDown="DemoButton_TouchedDown"
+                             TouchedUp="DemoButton_TouchedUp"
+                             WidthRequest="76" />
 
-            <BoxView BackgroundColor="#eee" HeightRequest="1" Margin="0,20"/>
-            
-            <!-- Small Buttons -->
-            <Label Text="Small Buttons" HorizontalTextAlignment="Center" HorizontalOptions="Center"/>
-            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Start">
-                <flex:FlexButton                    
-                    WidthRequest="40"
-                    HeightRequest="40"
-                    CornerRadius="20"
-                    Icon="lightbulb.png"
-                    VerticalOptions="Start"
-                    Style="{StaticResource DefaultFlexButton}"/>
+            <Label x:Name="ButtonStatus"
+                   FontSize="Small"
+                   HorizontalOptions="Center"
+                   HorizontalTextAlignment="Center"
+                   Text="Untouched"
+                   TextColor="Gray" />
 
-                <flex:FlexButton
-                    HeightRequest="40"
-                    CornerRadius="20"                    
-                    Text="Pill Button"
-                    FontSize="Small"                    
-                    HorizontalOptions="CenterAndExpand"
-                    VerticalOptions="Start"
-                    ForegroundColor="#ffffff"
-                    HighlightForegroundColor="#49516F"
-                    BackgroundColor="#6279B8"
-                    HighlightBackgroundColor="#8EA4D2"/>
+            <BoxView Margin="0,20"
+                     BackgroundColor="#eee"
+                     HeightRequest="1" />
 
-                <flex:FlexButton
-                    WidthRequest="40"
-                    HeightRequest="40"
-                    CornerRadius="20"
-                    IsEnabled="false"
-                    Icon="lightbulb.png"
-                    ForegroundColor="#ffffff"
-                    HighlightForegroundColor="#49516F"
-                    BackgroundColor="#6279B8"
-                    HighlightBackgroundColor="#8EA4D2"/>
+            <!--  Small Buttons  -->
+            <Label HorizontalOptions="Center"
+                   HorizontalTextAlignment="Center"
+                   Text="Small Buttons" />
+            <StackLayout HorizontalOptions="Center"
+                         Orientation="Horizontal"
+                         VerticalOptions="Start">
+                <flex:FlexButton AccessibleName="Light bulb"
+                                 CornerRadius="20"
+                                 HeightRequest="40"
+                                 Icon="lightbulb.png"
+                                 Style="{StaticResource DefaultFlexButton}"
+                                 VerticalOptions="Start"
+                                 WidthRequest="40" />
+
+                <flex:FlexButton BackgroundColor="#6279B8"
+                                 CornerRadius="20"
+                                 FontSize="Small"
+                                 ForegroundColor="#ffffff"
+                                 HeightRequest="40"
+                                 HighlightBackgroundColor="#8EA4D2"
+                                 HighlightForegroundColor="#49516F"
+                                 HorizontalOptions="CenterAndExpand"
+                                 Text="Pill Button"
+                                 VerticalOptions="Start" />
+
+                <flex:FlexButton BackgroundColor="#6279B8"
+                                 CornerRadius="20"
+                                 ForegroundColor="#ffffff"
+                                 HeightRequest="40"
+                                 HighlightBackgroundColor="#8EA4D2"
+                                 HighlightForegroundColor="#49516F"
+                                 Icon="lightbulb.png"
+                                 IsEnabled="false"
+                                 WidthRequest="40" />
             </StackLayout>
 
-            <BoxView BackgroundColor="#eee" HeightRequest="1" Margin="0,20"/>
+            <BoxView Margin="0,20"
+                     BackgroundColor="#eee"
+                     HeightRequest="1" />
 
-            <!-- Wide Button with Icon-->
-            <Label Text="Wide Button with Icon" HorizontalTextAlignment="Center" HorizontalOptions="Center"/>
-            <StackLayout HorizontalOptions="Center" Orientation="Horizontal" Margin="0,-10,0,0">
-                <Button Text="IsEnabled" Clicked="ToggleIsEnabled_Clicked" Style="{StaticResource SmallButton}" />
-                <Label Text="|" TextColor="Gray" VerticalOptions="Center"/>
-                <Button Text="IconOrientation" Clicked="ToggleIconOrientation_Clicked" Style="{StaticResource SmallButton}" />
-                <Label Text="|" TextColor="Gray" VerticalOptions="Center"/>
-                <Button Text="HasShadow" Clicked="ToggleHasShadow_Clicked" Style="{StaticResource SmallButton}" />
-            </StackLayout>
-            
-            <flex:FlexButton
-                x:Name="WideButton"
-                ClickedCommand="{Binding ButtonClickedCommand}"
-                IconOrientation="Right"
-                HorizontalOptions="Center"
-                Padding="0"
-                WidthRequest="300"
-                HeightRequest="76"
-                HasShadow="false"
-                CornerRadius="22"
-                Icon="lightbulb.png"
-                Text="Icon and Text"
-                BorderThickness="0,0,0,4"
-                BorderColor="#49516F"
-                HighlightBorderColor="#6279B8"
-                ForegroundColor="#ffffff"
-                HighlightForegroundColor="#49516F"
-                BackgroundColor="#6279B8"
-                HighlightBackgroundColor="#8EA4D2"/>
-            
-            <BoxView BackgroundColor="#eee" HeightRequest="1" Margin="0,10"/>
-
-            <!-- Buttons without background -->
-            <Label Text="Round Buttons without Background" HorizontalTextAlignment="Center" HorizontalOptions="Center"/>
-
-            <StackLayout Orientation="Horizontal" Spacing="10" HorizontalOptions="Center">
-            
-                <flex:FlexButton
-                    HorizontalOptions="Center"
-                    VerticalOptions="Center"
-                    WidthRequest="50"
-                    HeightRequest="50"
-                    CornerRadius="25"
-                    Icon="left.png"
-                    ForegroundColor="#6279B8"
-                    HighlightForegroundColor="#ffffff"
-                    BackgroundColor="Transparent"
-                    HighlightBackgroundColor="#6279B8"/>
-
-                <flex:FlexButton
-                    HorizontalOptions="Center"
-                    WidthRequest="76"
-                    HeightRequest="76"
-                    CornerRadius="38"
-                    Icon="lightbulb.png"
-                    ForegroundColor="#6279B8"
-                    HighlightForegroundColor="#ffffff"
-                    BackgroundColor="White"
-                    HighlightBackgroundColor="#6279B8"
-                    BorderColor="#6279B8"
-                    HighlightBorderColor="#49516F"
-                    Clicked="ButtonWithoutBackground_Clicked"
-                    BorderThickness="2"/>
-
-                <flex:FlexButton
-                    HorizontalOptions="Center"
-                    VerticalOptions="Center"
-                    WidthRequest="50"
-                    HeightRequest="50"
-                    CornerRadius="25"
-                    Icon="right.png"
-                    ForegroundColor="#6279B8"
-                    HighlightForegroundColor="#ffffff"
-                    BackgroundColor="Transparent"
-                    HighlightBackgroundColor="#6279B8"/>
+            <!--  Wide Button with Icon  -->
+            <Label HorizontalOptions="Center"
+                   HorizontalTextAlignment="Center"
+                   Text="Wide Button with Icon" />
+            <StackLayout Margin="0,-10,0,0"
+                         HorizontalOptions="Center"
+                         Orientation="Horizontal">
+                <Button Clicked="ToggleIsEnabled_Clicked"
+                        Style="{StaticResource SmallButton}"
+                        Text="IsEnabled" />
+                <Label Text="|"
+                       TextColor="Gray"
+                       VerticalOptions="Center" />
+                <Button Clicked="ToggleIconOrientation_Clicked"
+                        Style="{StaticResource SmallButton}"
+                        Text="IconOrientation" />
+                <Label Text="|"
+                       TextColor="Gray"
+                       VerticalOptions="Center" />
+                <Button Clicked="ToggleHasShadow_Clicked"
+                        Style="{StaticResource SmallButton}"
+                        Text="HasShadow" />
             </StackLayout>
 
-            <BoxView BackgroundColor="#eee" HeightRequest="1" Margin="0,10"/>
-            
-            <!-- Wide Text -->
-            <Label Text="Button with multi-line text and border" HorizontalTextAlignment="Center" HorizontalOptions="Center"/>
-            
-            <flex:FlexButton
-                HorizontalOptions="Center"
-                Text="Button with text only and different font family, attributes and size"
-                FontAttributes="Bold"
-                FontFamily="TimesNewRomanPSMT"
-                MaxLines="-1"
-                HeightRequest="100"
-                Margin="20,0"
-                FontSize="24"
-                ForegroundColor="#ffffff"
-                HighlightForegroundColor="#49516F"
-                BackgroundColor="#6279B8"
-                HighlightBackgroundColor="#8EA4D2"
-                BorderThickness="4"
-                BorderColor="#49516F"
-                HighlightBorderColor="#6279B8"/>
+            <flex:FlexButton x:Name="WideButton"
+                             Padding="0"
+                             BackgroundColor="#6279B8"
+                             BorderColor="#49516F"
+                             BorderThickness="0,0,0,4"
+                             ClickedCommand="{Binding ButtonClickedCommand}"
+                             CornerRadius="22"
+                             ForegroundColor="#ffffff"
+                             HasShadow="false"
+                             HeightRequest="76"
+                             HighlightBackgroundColor="#8EA4D2"
+                             HighlightBorderColor="#6279B8"
+                             HighlightForegroundColor="#49516F"
+                             HorizontalOptions="Center"
+                             Icon="lightbulb.png"
+                             IconOrientation="Right"
+                             Text="Icon and Text"
+                             WidthRequest="300" />
 
-            <BoxView BackgroundColor="#eee" HeightRequest="1" Margin="0,10"/>
+            <BoxView Margin="0,10"
+                     BackgroundColor="#eee"
+                     HeightRequest="1" />
 
-            <!-- Wide Text -->
-            <Label Text="Toggle Button" HorizontalTextAlignment="Center" HorizontalOptions="Center"/>
+            <!--  Buttons without background  -->
+            <Label HorizontalOptions="Center"
+                   HorizontalTextAlignment="Center"
+                   Text="Round Buttons without Background" />
 
-            <Button Text="Toggle IsToggled" Clicked="ToggleIsToggled_Clicked" Margin="0,-10,0,0" HorizontalOptions="Center" Style="{StaticResource SmallButton}" />
-            
-            <StackLayout Orientation="Horizontal" Spacing="10" HorizontalOptions="Center">
-            
-                <flex:FlexButton
-                    HorizontalOptions="Center"
-                    WidthRequest="120"
-                    HeightRequest="40"
-                    CornerRadius="20"
-                    Text="True"
-                    ToggleMode="true"
-                    IsToggled="true"
-                    Toggled="Handle_Toggled"
-                    ForegroundColor="#ffffff"
-                    HighlightForegroundColor="#ffffff"
-                    BackgroundColor="#6279B8"
-                    HighlightBackgroundColor="#49516F"/>
+            <StackLayout HorizontalOptions="Center"
+                         Orientation="Horizontal"
+                         Spacing="10">
 
-                <flex:FlexButton
-                    HorizontalOptions="Center"
-                    WidthRequest="40"
-                    HeightRequest="40"
-                    CornerRadius="20"
-                    Icon="check.png"
-                    ToggleMode="true"
-                    IsToggled="{Binding IsToggled}"
-                    ForegroundColor="#ffffff"
-                    HighlightForegroundColor="#ffffff"
-                    BackgroundColor="#6279B8"
-                    HighlightBackgroundColor="#49516F"/>
+                <flex:FlexButton BackgroundColor="Transparent"
+                                 CornerRadius="25"
+                                 ForegroundColor="#6279B8"
+                                 HeightRequest="50"
+                                 HighlightBackgroundColor="#6279B8"
+                                 HighlightForegroundColor="#ffffff"
+                                 HorizontalOptions="Center"
+                                 Icon="left.png"
+                                 VerticalOptions="Center"
+                                 WidthRequest="50" />
 
-                <flex:FlexButton
-                    HorizontalOptions="Center"
-                    WidthRequest="120"
-                    HeightRequest="40"
-                    CornerRadius="20"
-                    Text="False"
-                    ToggleMode="true"
-                    IsToggled="false"
-                    Toggled="Handle_Toggled"
-                    ForegroundColor="#ffffff"
-                    HighlightForegroundColor="#ffffff"
-                    BackgroundColor="#6279B8"
-                    HighlightBackgroundColor="#49516F"/>
+                <flex:FlexButton BackgroundColor="White"
+                                 BorderColor="#6279B8"
+                                 BorderThickness="2"
+                                 Clicked="ButtonWithoutBackground_Clicked"
+                                 CornerRadius="38"
+                                 ForegroundColor="#6279B8"
+                                 HeightRequest="76"
+                                 HighlightBackgroundColor="#6279B8"
+                                 HighlightBorderColor="#49516F"
+                                 HighlightForegroundColor="#ffffff"
+                                 HorizontalOptions="Center"
+                                 Icon="lightbulb.png"
+                                 WidthRequest="76" />
+
+                <flex:FlexButton BackgroundColor="Transparent"
+                                 CornerRadius="25"
+                                 ForegroundColor="#6279B8"
+                                 HeightRequest="50"
+                                 HighlightBackgroundColor="#6279B8"
+                                 HighlightForegroundColor="#ffffff"
+                                 HorizontalOptions="Center"
+                                 Icon="right.png"
+                                 VerticalOptions="Center"
+                                 WidthRequest="50" />
             </StackLayout>
 
-            <BoxView BackgroundColor="#eee" HeightRequest="1" Margin="0,10"/>
+            <BoxView Margin="0,10"
+                     BackgroundColor="#eee"
+                     HeightRequest="1" />
 
-            <!-- Color Icons -->
-            <Label Text="Colorized Icon" HorizontalTextAlignment="Center" HorizontalOptions="Center"/>
-            <Button Text="Toggle IconTintEnabled" Clicked="ToggleIconTintEnabled" Style="{StaticResource SmallButton}" />
+            <!--  Wide Text  -->
+            <Label HorizontalOptions="Center"
+                   HorizontalTextAlignment="Center"
+                   Text="Button with multi-line text and border" />
 
-            <flex:FlexButton
-                x:Name="ColorIconButton"
-                HorizontalOptions="Center"
-                IconOrientation="Left"
-                WidthRequest="76"
-                HeightRequest="76"
-                CornerRadius="38"
-                Padding="15"
-                Icon="flag.png"
-                ForegroundColor="#ffffff"
-                HighlightForegroundColor="#49516F"
-                BackgroundColor="#6279B8"
-                HighlightBackgroundColor="#8EA4D2"
-                BorderColor="#8EA4D2"
-                HighlightBorderColor="#8EA4D2"
-                BorderThickness="3"
-                IconTintEnabled="False"/>
+            <flex:FlexButton Margin="20,0"
+                             BackgroundColor="#6279B8"
+                             BorderColor="#49516F"
+                             BorderThickness="4"
+                             FontAttributes="Bold"
+                             FontFamily="TimesNewRomanPSMT"
+                             FontSize="24"
+                             ForegroundColor="#ffffff"
+                             HeightRequest="100"
+                             HighlightBackgroundColor="#8EA4D2"
+                             HighlightBorderColor="#6279B8"
+                             HighlightForegroundColor="#49516F"
+                             HorizontalOptions="Center"
+                             MaxLines="-1"
+                             Text="Button with text only and different font family, attributes and size" />
+
+            <BoxView Margin="0,10"
+                     BackgroundColor="#eee"
+                     HeightRequest="1" />
+
+            <!--  Wide Text  -->
+            <Label HorizontalOptions="Center"
+                   HorizontalTextAlignment="Center"
+                   Text="Toggle Button" />
+
+            <Button Margin="0,-10,0,0"
+                    Clicked="ToggleIsToggled_Clicked"
+                    HorizontalOptions="Center"
+                    Style="{StaticResource SmallButton}"
+                    Text="Toggle IsToggled" />
+
+            <StackLayout HorizontalOptions="Center"
+                         Orientation="Horizontal"
+                         Spacing="10">
+
+                <flex:FlexButton BackgroundColor="#6279B8"
+                                 CornerRadius="20"
+                                 ForegroundColor="#ffffff"
+                                 HeightRequest="40"
+                                 HighlightBackgroundColor="#49516F"
+                                 HighlightForegroundColor="#ffffff"
+                                 HorizontalOptions="Center"
+                                 IsToggled="true"
+                                 Text="True"
+                                 ToggleMode="true"
+                                 Toggled="Handle_Toggled"
+                                 WidthRequest="120" />
+
+                <flex:FlexButton BackgroundColor="#6279B8"
+                                 CornerRadius="20"
+                                 ForegroundColor="#ffffff"
+                                 HeightRequest="40"
+                                 HighlightBackgroundColor="#49516F"
+                                 HighlightForegroundColor="#ffffff"
+                                 HorizontalOptions="Center"
+                                 Icon="check.png"
+                                 IsToggled="{Binding IsToggled}"
+                                 ToggleMode="true"
+                                 WidthRequest="40" />
+
+                <flex:FlexButton BackgroundColor="#6279B8"
+                                 CornerRadius="20"
+                                 ForegroundColor="#ffffff"
+                                 HeightRequest="40"
+                                 HighlightBackgroundColor="#49516F"
+                                 HighlightForegroundColor="#ffffff"
+                                 HorizontalOptions="Center"
+                                 IsToggled="false"
+                                 Text="False"
+                                 ToggleMode="true"
+                                 Toggled="Handle_Toggled"
+                                 WidthRequest="120" />
+            </StackLayout>
+
+            <BoxView Margin="0,10"
+                     BackgroundColor="#eee"
+                     HeightRequest="1" />
+
+            <!--  Color Icons  -->
+            <Label HorizontalOptions="Center"
+                   HorizontalTextAlignment="Center"
+                   Text="Colorized Icon" />
+            <Button Clicked="ToggleIconTintEnabled"
+                    Style="{StaticResource SmallButton}"
+                    Text="Toggle IconTintEnabled" />
+
+            <flex:FlexButton x:Name="ColorIconButton"
+                             Padding="15"
+                             BackgroundColor="#6279B8"
+                             BorderColor="#8EA4D2"
+                             BorderThickness="3"
+                             CornerRadius="38"
+                             ForegroundColor="#ffffff"
+                             HeightRequest="76"
+                             HighlightBackgroundColor="#8EA4D2"
+                             HighlightBorderColor="#8EA4D2"
+                             HighlightForegroundColor="#49516F"
+                             HorizontalOptions="Center"
+                             Icon="flag.png"
+                             IconOrientation="Left"
+                             IconTintEnabled="False"
+                             WidthRequest="76" />
         </StackLayout>
     </ScrollView>
 </ContentPage>

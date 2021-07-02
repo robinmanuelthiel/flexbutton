@@ -31,6 +31,8 @@ namespace Flex.iOS.CustomRenderers
         {
             base.OnElementChanged(e);
 
+            AccessibilityTraits = UIAccessibilityTrait.Button;
+
             if (e.OldElement == null)
             {
                 // Fix Xamarin.Forms Frame BackgroundColor Bug (https://github.com/xamarin/Xamarin.Forms/issues/2218)

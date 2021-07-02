@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<ContentView
-    x:Name="this"
-    x:Class="Flex.Controls.FlexButton"
-    xmlns="http://xamarin.com/schemas/2014/forms"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-    xmlns:extensions="clr-namespace:Flex.Extensions"
-    xmlns:controls="clr-namespace:Flex.Controls">
+<ContentView x:Class="Flex.Controls.FlexButton"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:Flex.Controls"
+             xmlns:extensions="clr-namespace:Flex.Extensions"
+             x:Name="this">
 
-    <controls:GestureFrame
-        x:Name="Border"
-        BackgroundColor="{Binding Source={x:Reference this}, Path=BorderColor}"
-        CornerRadius="{Binding Source={x:Reference this}, Path=CornerRadius}"
-        Padding="{Binding Source={x:Reference this}, Path=BorderThickness}"
-        HasShadow="{Binding Source={x:Reference this}, Path=HasShadow}">
-        
+    <controls:GestureFrame x:Name="Border"
+                           Padding="{Binding Source={x:Reference this}, Path=BorderThickness}"
+                           AutomationProperties.IsInAccessibleTree="True"
+                           AutomationProperties.Name="{Binding Source={x:Reference this}, Path=Text}"
+                           BackgroundColor="{Binding Source={x:Reference this}, Path=BorderColor}"
+                           CornerRadius="{Binding Source={x:Reference this}, Path=CornerRadius}"
+                           HasShadow="{Binding Source={x:Reference this}, Path=HasShadow}">
+
         <controls:GestureFrame.BorderColor>
-            <!--- HACK: Temporary Bugfix for Xamarin.Forms 3.0 bug https://github.com/xamarin/Xamarin.Forms/issues/2634 -->
+            <!--  - HACK: Temporary Bugfix for Xamarin.Forms 3.0 bug https://github.com/xamarin/Xamarin.Forms/issues/2634  -->
             <OnPlatform x:TypeArguments="Color" Default="Transparent">
                 <!--<On Platform="Android" Value="{Binding Source={x:Reference this}, Path=BorderColor}" />-->
             </OnPlatform>
@@ -24,44 +24,40 @@
         <controls:GestureFrame.GestureRecognizers>
             <extensions:TouchGestureRecognizer x:Name="TouchRecognizer" />
         </controls:GestureFrame.GestureRecognizers>
-        
-        <controls:GestureFrame
-            x:Name="Container"
-            BackgroundColor="{Binding Source={x:Reference this}, Path=BackgroundColor}"
-            CornerRadius="{Binding Source={x:Reference this}, Path=InnerCornerRadius}"
-            Padding="0"
-            Margin="0"
-            HasShadow="false">
+
+        <controls:GestureFrame x:Name="Container"
+                               Margin="0"
+                               Padding="0"
+                               BackgroundColor="{Binding Source={x:Reference this}, Path=BackgroundColor}"
+                               CornerRadius="{Binding Source={x:Reference this}, Path=InnerCornerRadius}"
+                               HasShadow="false">
             <controls:GestureFrame.BorderColor>
-                <!--- HACK: Temporary Bugfix for Xamarin.Forms 3.0 bug https://github.com/xamarin/Xamarin.Forms/issues/2634 -->
+                <!--  - HACK: Temporary Bugfix for Xamarin.Forms 3.0 bug https://github.com/xamarin/Xamarin.Forms/issues/2634  -->
                 <OnPlatform x:TypeArguments="Color" Default="Transparent">
                     <!--<On Platform="Android" Value="{Binding Source={x:Reference this}, Path=BackgroundColor}" />-->
                 </OnPlatform>
             </controls:GestureFrame.BorderColor>
-            
-            <AbsoluteLayout> 
-                <FlexLayout 
-                    x:Name="ContainerContent"                    
-                    Margin="{Binding Source={x:Reference this}, Path=Padding}"
-                    Direction="Row" 
-                    AlignItems="Center" 
-                    JustifyContent="Center">
-                    
-                    <Image 
-                        x:Name="ButtonIcon"
-                        Margin="{Binding Source={x:Reference this}, Path=IconPadding}"
-                        Source="{Binding Source={x:Reference this}, Path=Icon}" />
 
-                    <Label
-                        x:Name="ButtonText"
-                        HorizontalTextAlignment="Center"
-                        MaxLines="{Binding Source={x:Reference this}, Path=MaxLines}"
-                        Text="{Binding Source={x:Reference this}, Path=Text}"
-                        FontSize="{Binding Source={x:Reference this}, Path=FontSize}"
-                        FontAttributes="{Binding Source={x:Reference this}, Path=FontAttributes}"
-                        FontFamily="{Binding Source={x:Reference this}, Path=FontFamily}"
-                        TextColor="{Binding Source={x:Reference this}, Path=ForegroundColor}" />
-                </FlexLayout>                
+            <AbsoluteLayout>
+                <FlexLayout x:Name="ContainerContent"
+                            Margin="{Binding Source={x:Reference this}, Path=Padding}"
+                            AlignItems="Center"
+                            Direction="Row"
+                            JustifyContent="Center">
+
+                    <Image x:Name="ButtonIcon"
+                           Margin="{Binding Source={x:Reference this}, Path=IconPadding}"
+                           Source="{Binding Source={x:Reference this}, Path=Icon}" />
+
+                    <Label x:Name="ButtonText"
+                           FontAttributes="{Binding Source={x:Reference this}, Path=FontAttributes}"
+                           FontFamily="{Binding Source={x:Reference this}, Path=FontFamily}"
+                           FontSize="{Binding Source={x:Reference this}, Path=FontSize}"
+                           HorizontalTextAlignment="Center"
+                           MaxLines="{Binding Source={x:Reference this}, Path=MaxLines}"
+                           Text="{Binding Source={x:Reference this}, Path=Text}"
+                           TextColor="{Binding Source={x:Reference this}, Path=ForegroundColor}" />
+                </FlexLayout>
             </AbsoluteLayout>
         </controls:GestureFrame>
     </controls:GestureFrame>
