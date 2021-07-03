@@ -1,4 +1,4 @@
-# FlexButton
+# Xamarin.Forms FlexButton
 
 Flexible button control for Xamarin.Forms with events for different states, color overlays and adjustable shapes and paddings. Supports iOS, Android and UWP.
 
