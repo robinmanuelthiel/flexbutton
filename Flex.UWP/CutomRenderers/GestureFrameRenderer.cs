@@ -12,6 +12,7 @@ using Windows.UI.Xaml.Media;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.UWP;
 using Flex.Controls;
+using Windows.UI.Xaml.Automation.Peers;
 
 [assembly: ExportRenderer(typeof(GestureFrame), typeof(GestureFrameRenderer))]
 namespace Flex.UWP.CustomRenderers
@@ -32,6 +33,8 @@ namespace Flex.UWP.CustomRenderers
         protected override void OnElementChanged(ElementChangedEventArgs<Xamarin.Forms.Frame> e)
         {
             base.OnElementChanged(e);
+
+            Control.SetAutomationPropertiesAccessibilityView(e.NewElement, AccessibilityView.Control);
 
             if (e.OldElement == null)
             {

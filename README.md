@@ -80,6 +80,7 @@ Take a look a the [Demo Project](/Flex.Demo) in this repository for a full sampl
 | `IconTintEnabled` | `true` | Enables tinting of the icon (Set to false, if your icon is colorized) |
 | `HasShadow` | `false` | Enables Xamarin.Forms Frame's Shadow around the button |
 | `MaxLines` | `1` | Maximum number of lines for test. Set it to `-1` for flexible amount of lines |
+| `AccessibleName` | `string.Empty` | Accessibility Name for Automation |
 
 | Event | Description |
 |------------------|---------|

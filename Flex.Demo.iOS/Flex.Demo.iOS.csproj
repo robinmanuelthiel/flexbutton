@@ -135,6 +135,8 @@
     <ProjectReference Include="..\Flex.iOS\Flex.iOS.csproj">
       <Project>{43DD689A-3918-43EB-B654-8E1C54F23C72}</Project>
       <Name>Flex.iOS</Name>
+      <IsAppExtension>false</IsAppExtension>
+      <IsWatchApp>false</IsWatchApp>
     </ProjectReference>
     <ProjectReference Include="..\Flex\Flex.csproj">
       <Project>{4FBE2794-BD54-4C5E-B95A-46B2D5606C5F}</Project>
@@ -153,7 +155,6 @@
     <BundleResource Include="Resources\right.png" />
     <BundleResource Include="Resources\right%402x.png" />
     <BundleResource Include="Resources\right%403x.png" />
-    <BundleResource Include="Resources\arrow.svg" />
     <BundleResource Include="Resources\lightbulb.png" />
   </ItemGroup>
   <ItemGroup>
