@@ -16,9 +16,10 @@ namespace Flex.Android.CustomRenderers
     {
         public GestureFrameRenderer(Context context) : base(context)
         {
-            SetAccessibilityDelegate(new MyAccessibilityDelegate());
+            SetAccessibilityDelegate(new GestureFrameRendererAccessibilityDelegate());
         }
-        private class MyAccessibilityDelegate : AccessibilityDelegate
+
+        private class GestureFrameRendererAccessibilityDelegate : AccessibilityDelegate
         {
             public override void OnInitializeAccessibilityNodeInfo(AndroidView.View host, AccessibilityNodeInfo info)
             {
