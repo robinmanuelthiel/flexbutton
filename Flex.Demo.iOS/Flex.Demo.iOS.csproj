@@ -155,7 +155,6 @@
     <BundleResource Include="Resources\right.png" />
     <BundleResource Include="Resources\right%402x.png" />
     <BundleResource Include="Resources\right%403x.png" />
-    <BundleResource Include="Resources\arrow.svg" />
     <BundleResource Include="Resources\lightbulb.png" />
   </ItemGroup>
   <ItemGroup>

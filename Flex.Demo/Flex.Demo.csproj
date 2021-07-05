@@ -9,10 +9,4 @@
     <ItemGroup>
       <ProjectReference Include="..\Flex\Flex.csproj" />
     </ItemGroup>
-    <ItemGroup>
-      <None Remove="lightbulb.png" />
-    </ItemGroup>
-    <ItemGroup>
-      <Content Include="lightbulb.png" />
-    </ItemGroup>
 </Project>

@@ -54,6 +54,7 @@
                 IconPadding="0"
                 CornerRadius="38"
                 Icon="lightbulb.png"
+                AccessibleName="Light bulb"
                 ForegroundColor="#ffffff"
                 HighlightForegroundColor="#49516F"
                 BackgroundColor="#6279B8"
@@ -72,7 +73,7 @@
             <!-- Small Buttons -->
             <Label Text="Small Buttons" HorizontalTextAlignment="Center" HorizontalOptions="Center"/>
             <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Start">
-                <flex:FlexButton                    
+                <flex:FlexButton
                     WidthRequest="40"
                     HeightRequest="40"
                     CornerRadius="20"
