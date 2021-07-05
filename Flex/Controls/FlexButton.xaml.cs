@@ -257,7 +257,6 @@ namespace Flex.Controls
 
         protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
-            var test = 0f;
             if (propertyName == PaddingProperty.PropertyName)
             {
                 userChangedPadding = true;
@@ -366,6 +365,7 @@ namespace Flex.Controls
                 mode = ButtonMode.TextOnly;
             }
 
+            // Set Accessibility Name
             AutomationProperties.SetName(Border, AccessibleName ?? Text);
 
             if (ButtonIcon == null || ButtonText == null)
